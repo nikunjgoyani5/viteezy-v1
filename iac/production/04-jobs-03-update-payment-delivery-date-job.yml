@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: update-payment-delivery-date
+  namespace: viteezy-production
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-update-payment-delivery-date
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "POST"
+                - "backend:8081/tasks/update-payment-delivery-date"
+                - "--ignore-stdin"
+                - "--check-status"
+                - "-f"
+          restartPolicy: Never

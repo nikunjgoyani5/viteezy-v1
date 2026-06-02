@@ -1,0 +1,15 @@
+.usericon {
+  display: inline-block;
+  border: none;
+  line-height: 24px;
+}
+.round {
+  border-radius: 50%;
+}
+.usericoncharacter {
+  display: flex;
+  border-radius: 50%;
+  border: none;
+  align-items: center;
+  justify-content: center;
+}

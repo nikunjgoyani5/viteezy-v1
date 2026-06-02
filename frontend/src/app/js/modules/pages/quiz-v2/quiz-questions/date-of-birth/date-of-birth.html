@@ -1,0 +1,15 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Wat is je leeftijd?</h1>
+    </div>
+
+    <form name="vm.birthDateForm" class="age-form" novalidate ng-submit="vm.birthDateForm.$valid && vm.submitQuestionAnswer(vm.user.birthdate)" id="birth-date-form">
+      <input type="number" name="birthdate" class="age-input" placeholder="Leeftijd?" ng-model="vm.user.birthdate" required>
+      <span ng-click="vm.submitQuestionAnswer(vm.user.birthdate)"><i class="icon icon-arrowTabbar"></i></span>
+    </form>
+    <span class="input-error" ng-if="vm.birthDateForm.birthdate.$dirty && vm.birthDateForm.birthdate.$error.required">Een leeftijd is verplicht om verder te gaan.</span>
+    <span class="input-error" ng-if="vm.user.birthdate < 18">Je moet minimaal 18 jaar of ouder zijn.</span>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

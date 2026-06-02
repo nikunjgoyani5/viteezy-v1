@@ -1,0 +1,332 @@
+$button-input-border-radius: 0.3em;
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  border: none;
+  padding: 0.2em 0.5em;
+  border-radius: $button-input-border-radius;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background: $white;
+  -webkit-box-shadow: 0 0 0px 20rem $white inset;
+}
+
+input[type="text"].simple-input,
+input[type="tel"].simple-input,
+input[type="email"].simple-input {
+  border-radius: 0;
+  background: none;
+  border-bottom: 2px solid $sub-border-color;
+  padding: 1em 0;
+  text-align: center;
+}
+
+input[type="date"] {
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: 0.1em solid $sub-border-color;
+  border-radius: 2em;
+  padding: 1.25em;
+  margin: 0.5em auto 0;
+  background: $white;
+  display: block;
+  color: $darker-grey;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  left: -9999%;
+}
+
+input[type="checkbox"]:checked+label::before {
+  content: "\ead1";
+  font-size: 1.07em;
+  margin: -1px 0 0 -1px;
+}
+
+input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 1.25em;
+
+  &::before {
+    content: "\e844";
+    font-family: Viteezy-Icons;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.button-input {
+  display: flex;
+  justify-content: center;
+
+  input,
+  button {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  input {
+    flex-grow: 2;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: $main-background-color;
+  }
+
+  button {
+    border-radius: $button-input-border-radius;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+label[disabled] {
+  color: $darker-grey;
+  pointer-events: none;
+
+  .pricing__plan-about {
+    color: $darker-grey;
+  }
+}
+
+button[disabled] {
+  background-color: $grey;
+  border-color: $grey;
+  pointer-events: none;
+}
+
+input.large-input {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 1.25em;
+  margin: 3em 0 0;
+  border: 0.1em solid $sub-border-color;
+  width: 100%;
+
+  &::placeholder {
+    color: $main-font-color;
+  }
+}
+
+input[type=range] {
+  background: $white;
+  border-radius: 0.3em;
+  -webkit-appearance: none;
+  padding: 1.5em 1em;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 2em;
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    background: $sub-border-color;
+    border-radius: 1.3px;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    background: $sub-border-color;
+    border-radius: 1.3px
+  }
+
+  &::-webkit-slider-thumb {
+    background: $white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0.05em solid $sub-border-color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background-image: url("/assets/image/slider.svg");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &::-moz-range-thumb {
+    background: $white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: relative;
+    top: 50%;
+    border: 0.05em solid $sub-border-color;
+    cursor: pointer;
+    background-image: url("/assets/image/slider.svg");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.range-value {
+  font-weight: bold;
+  font-size: 1.25rem;
+  text-align: center;
+  display: block;
+  margin: 0.5em 0;
+}
+
+
+input[type="text"].forminput {
+  width: 100%;
+  padding: 0.75em 1em;
+  background: $white;
+  border: 1px solid $dark-grey;
+  border-radius: $main-border-radius;
+}
+
+.input-wrapper {
+  border: 1px solid $sub-border-color;
+  border-radius: $main-border-radius;
+  margin-bottom: 1em;
+  position: relative;
+  box-sizing: border-box;
+
+  input, select {
+    padding: 1.2em 0.5em 1.2em 1em;
+  }
+
+  &.small {
+    padding: 0.5em 0.5em;
+  }
+
+  input:read-only {
+    background-color: $grey;
+  }
+
+  label {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    font-size: 0.8em;
+    transition: all 0.1s ease-in;
+    top: 1.5em;
+    left: 1.26em;
+  }
+
+  input {
+    width: 100%;
+
+    &:focus {
+      &::placeholder {
+        color: transparent;
+      }
+
+      + label {
+        opacity: 1;
+        top: 0.5em;
+        color: darken($dark-grey, 20%);
+      }
+    }
+  }
+}
+
+.input-success,
+.input-error {
+  margin: -0.5em 0 1em 0;
+
+  &.price {
+    margin: 1em 0 1em 0.5em;
+  }
+
+  &.customer {
+    margin: 1em;
+  }
+
+  &.spacing {
+    text-align: center;
+    margin-top: 1em;
+  }
+}
+
+.input-error {
+  color: $red;
+}
+
+.input-success {
+  color: $main-brand-color;
+}
+
+input#birthdate {
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: 0.1em solid #E1DDDA;
+  border-radius: .3em;
+  padding: 1.25em;
+  margin: 3em auto 0;
+  background: #fff;
+  display: block;
+  color: #203048;
+  width: 100%;
+}
+
+#birth-date-form {
+  text-align: center;
+}
+
+.age-form,
+.name-form,
+.email-form {
+  position: relative;
+
+  span {
+    position: absolute;
+    background-color: $main-brand-color;
+    color: white;
+    transform: translateY(-50%) rotate(180deg);
+    top: 50%;
+    right: 0.75em;
+    padding: 0em 0.25em 0.25em;
+    font-size: 1.25em;
+    border-radius: 50%;
+  }
+}
+
+input.age-input,
+input.name-input,
+input.email-input {
+  font-weight: bold;
+  font-size: 1.25rem;
+  border: 0.125em solid $main-font-color;
+  border-radius: $main-border-radius;
+  padding: 0.5em;
+  margin: 3em auto 1em;
+  background: #fff;
+  display: block;
+  color: $main-font-color;
+  width: 100%;
+  text-align: center;
+}
+
+select.country {
+  border: none;
+  border-radius: 0.3em
+}
+
+select.houseNumberAddition {
+  border: none;
+  border-radius: 0.3em
+}

@@ -1,0 +1,19 @@
+.menu {
+  position: absolute;
+  right: 10px;
+}
+mat-icon {
+  font-size: 30px;
+}
+mat-card-actions {
+  margin-left: 9px;
+}
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+  margin-top: -25px;
+}
+.hover-to-showinfo-link {
+  cursor: pointer;
+}
+.nameAndIcon {
+  margin-top: -6px;
+}

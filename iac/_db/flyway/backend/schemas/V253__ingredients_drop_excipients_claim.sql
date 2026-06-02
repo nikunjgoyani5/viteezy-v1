@@ -1,0 +1,2 @@
+--ALTER TABLE ingredients DROP COLUMN excipients;
+--ALTER TABLE ingredients DROP COLUMN claim;

@@ -1,0 +1,17 @@
+<div class="login-wrapper">
+  <form (ngSubmit)="sendMagicLink()">
+    <div class="login-form-wrapper">
+      <img class="login-head-image" src="/assets/image/icons/orange-dots.svg">
+      <h1>Inloggen</h1>
+      <p>Vul je email in voor een persoonlijke beveiligde inlog link</p>
+
+      <div class="email-wrapper">
+        <div class="input-wrapper small">
+          <input type="email" [(ngModel)]="email" placeholder="E-mail" required>
+        </div>
+        <button type="submit" name="button" class="submit-button" id="magic-link-button">Login</button>
+      </div>
+
+    </div>
+  </form>
+</div>

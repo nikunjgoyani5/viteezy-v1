@@ -1,0 +1,22 @@
+.cart {
+  top: 7em;
+}
+
+.menu-icon {
+  top: 2em !important;
+  color: #fff !important;
+}
+
+.header-content .discount-code {
+  padding-bottom: 0;
+  font-size: 0.94rem;
+  padding-top: 1em;
+  color: #F7F3ED;
+}
+
+@media (max-width: 48em) {
+  .menu-icon {
+    top: 2.5em !important;
+  }
+}
+

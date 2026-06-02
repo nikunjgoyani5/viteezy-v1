@@ -1,0 +1,222 @@
+.button,
+button {
+  text-decoration: none;
+  padding: 0.3rem 1rem 0.4rem;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  box-sizing: border-box;
+
+  .icon {
+    line-height: 0;
+    vertical-align: sub;
+  }
+}
+
+.submit-button {
+  background: $main-brand-color;
+  border: 0.2em solid $main-brand-color;
+  color: $sub-font-color !important;
+
+  &:hover {
+    color: $main-brand-color !important;
+    background: $sub-font-color;
+  }
+
+  &.mobile-wide {
+    @include media-small {
+      width: 100%;
+    }
+  }
+
+  &.margin-bottom-small {
+    margin-bottom: 2.5rem;
+  }
+
+  &.square {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0.2em;
+    margin: 0 0 5em;
+  }
+}
+
+.submit-button--2 {
+  background: $submit-button-2-background-color;
+  border: 0.2em solid $submit-button-2-background-color;
+  color: $submit-button-2-font-color !important;
+
+  &:hover {
+    color: $submit-button-2-background-color !important;
+    background: $submit-button-2-font-color;
+  }
+}
+
+.submit-button--3 {
+  background: $white;
+  color: $main-brand-color;
+  margin: 2em 0;
+  padding: 1rem 2rem 0.9rem;
+}
+
+.submit-button--4 {
+  background: $dark-blue-1;
+  color: $white;
+  margin: 2em 0;
+  padding: 1rem 2rem 0.9rem;
+}
+
+.submit-button--5 {
+  color: $main-brand-color;
+  background: $sub-font-color;
+  border: 0.2em solid $main-brand-color;
+}
+
+.submit-button--small {
+  margin: 0;
+  padding: 0.5em 1em;
+  border: none;
+}
+
+.button-fullwidth {
+  display: block;
+  text-align: center;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.button-previous {
+  background: none;
+  border: none;
+  color: $darker-grey;
+  padding: 0 1em;
+  vertical-align: text-bottom;
+}
+
+.select-button,
+.option-button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $main-font-color;
+
+  label {
+    border: 0.125em solid $white;
+    background: $white;
+    border-radius: 0.4em;
+    margin: 1em 0;
+    padding: 0.75em 1em 0.75em 4em;
+    display: block;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      content: "" !important;
+    }
+
+    &:hover {
+      border: 0.125em solid $main-font-color;
+    }
+
+    &::before {
+      content: "" !important;
+    }
+  }
+
+  i {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 1em;
+    transform: translateY(-50%);
+  }
+
+  input {
+    position: absolute;
+    left: -9999%;
+  }
+
+  input:checked+label {
+    border: 0.125em solid $main-font-color;
+  }
+}
+
+.option-button-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em auto;
+
+  .option-button {
+    flex-grow: 1;
+    flex-basis: 8.5rem;
+    height: 8.5rem;
+  }
+
+  +.input-error {
+    display: block;
+    text-align: center;
+  }
+}
+
+.option-button {
+  text-align: center;
+  float: left;
+  margin: 0.5em;
+  position: relative;
+
+
+  label {
+    padding: 0.5em !important;
+    margin: 0;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+
+  }
+
+  i {
+    display: block;
+    width: 100%;
+    position: static;
+    transform: none;
+    margin: 0.75em 0 0.5em;
+  }
+}
+
+@include media-large {
+  .option-button label:hover {
+    border-color: transparent;
+  }
+}
+
+@include media-small {
+  .option-button-wrap .option-button {
+    height: 5.5rem;
+  }
+
+  .select-button,
+  .option-button {
+    font-size: 0.95em;
+
+    label {
+      margin: 0.75em 0;
+      padding: 0.75em 1em 0.75em 4.5em
+    }
+  }
+
+  .option-button {
+    label {
+      padding: 0.5em;
+    }
+
+    i {
+      margin: 0 0 0.5em;
+    }
+  }
+}

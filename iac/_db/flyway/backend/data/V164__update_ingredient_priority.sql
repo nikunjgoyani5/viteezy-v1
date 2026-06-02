@@ -1,0 +1,11 @@
+UPDATE ingredients SET priority = 1 WHERE code = "gut-support";
+UPDATE ingredients SET priority = 2, is_active = true WHERE code = "energy-formula";
+UPDATE ingredients SET priority = 3 WHERE code = "green-tea-extract";
+UPDATE ingredients SET priority = 4 WHERE code = "skin-formula";
+UPDATE ingredients SET priority = 5 WHERE code = "stress-formula";
+UPDATE ingredients SET priority = 6 WHERE code = "hormone-control";
+UPDATE ingredients SET priority = 7 WHERE code = "libido-formula";
+UPDATE ingredients SET priority = 8 WHERE code = "brain-boost";
+UPDATE ingredients SET priority = 9 WHERE code = "hair-and-nail-formula";
+UPDATE ingredients SET priority = 10 WHERE code = "detox-formula";
+UPDATE ingredients SET priority = 11 WHERE code = "kurkuma";

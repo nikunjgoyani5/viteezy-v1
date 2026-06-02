@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: flyway-schema
+  namespace: viteezy-local
+spec:
+  completions: 1
+  ttlSecondsAfterFinished: 60
+  template:
+    spec:
+      containers:
+        - name: flyway-db-backend-schema
+          image: boxfuse/flyway:5.2.4
+          volumeMounts:
+            - name: db-backend-schema-migrations-volume
+              mountPath: /flyway/sql
+          args:
+            - -url=jdbc:mysql://db-backend-service
+            - -schemas=viteezy
+            - -user=root
+            - -password=rootpassword
+            - -connectRetries=60
+            - -baselineOnMigrate=true
+            - -baselineVersion=0
+            - migrate
+      restartPolicy: Never
+
+      volumes:
+        - name: db-backend-schema-migrations-volume
+          configMap:
+            name: db-backend-schema-migrations

@@ -1,0 +1,53 @@
+$turquoise:    #00AB96;
+$light-orange: #fff4ec;
+$saffron:      #F7A637;
+$orange:       #EAAA00;
+$orange-1:     #F0B86B;
+$orange-brown: #e7b777;
+$dark-blue:    #203048;
+$dark-blue-1:  #234560;
+$dark-blue-2:  #284464;
+$white:        #fff;
+$lime-white:   #E8F4F4;
+$orange-grey:  #F9EDDD;
+$grey:         #F6F3EF;
+$dark-grey:    #E1DDDA;
+$darker-grey:  #6f737b;
+$clay:         #98a4ac;
+$black:        #000000;
+$flesh:        #fdebd2;
+
+
+$red:          #f44336; // Used for the toast
+$green:        #00e676; // Used for the toast
+
+$darker-red:   #CC3E12;
+
+
+$main-brand-color: $turquoise;
+$main-brand-highlight-color: $orange;
+
+$main-font-color: $dark-blue;
+$sub-font-color: $white;
+
+$main-background-color: $grey;
+$sub-background-color: $dark-grey;
+
+$main-border-color: $grey;
+$sub-border-color: $dark-grey;
+$main-border-radius: 0.3rem; // I thought it's better to keep this one at the same location as the border colors
+
+$navigation-background-color: $white;
+$navigation-font-color: $main-brand-color;
+
+$footer-background-color: $white;
+
+
+$submit-button-2-font-color: $dark-blue;
+$submit-button-2-background-color: $white;
+
+$error-text-colour: $white;
+$error-background-colour: $red;
+
+$success-text-colour: $white;
+$success-background-colour: $green;

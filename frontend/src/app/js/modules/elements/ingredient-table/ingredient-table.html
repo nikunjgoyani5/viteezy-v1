@@ -1,0 +1,22 @@
+<div class="ingredient-table-wrapper">
+  <div class="table-container">
+    <table class="ingredient-table">
+      <tr>
+        <th class="first-row">Actieve bestanddelen</th>
+        <th>Hoeveelheid</th>
+        <th>% DRI*</th>
+      </tr>
+      <tr ng-repeat="component in vm.ingredient.components">
+        <td>{{ component.name }}</td>
+        <td>{{ component.amount }}</td>
+        <td>{{ component.percentage }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <p>* DRI = Dagelijkse Referentie Inname volgens de Europese Verordening 1169/2011, blz 61</p>
+  <p>** geen DRI vastgesteld</p>
+  <p>
+    <b>Hulpstoffen</b>: {{ vm.ingredient.content.excipients }}
+  </p>
+</div>

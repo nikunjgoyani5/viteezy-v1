@@ -1,0 +1,221 @@
+.bundle-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.bundle-head {
+  .head-title {
+    @include media-medium {
+      padding: 1em;
+    }
+
+    h2 {
+      font-size: x-large;
+    }
+
+    span {
+      color: $darker-grey;
+    }
+  }
+
+  .head-description {
+    padding: 0em 1em 1em;
+    line-height: 2em;
+    font-size: 16px;
+  }
+
+  .header-image-wrapper {
+    padding: 0.25em;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      height: 350px;
+      border-radius: 10px;
+    }
+
+    .resize {
+      object-fit: cover;
+    }
+  }
+  
+  @include media-from-medium {
+     display: flex;
+     margin: 2.5em 0 2.5em;
+
+     .bundle-head-carousel {
+       .head-title {
+        display: none !important;
+       }
+     }
+
+     .bundle-head-info {
+      flex: 1;
+      margin-left: 2em;
+
+      .head-title {
+        display: initial !important;
+      }
+
+    }
+
+    .header-image-wrapper img {
+      max-width: 600px;
+      height: initial;
+    }
+  }
+}
+
+.bundle-plan-options {
+  font-size: 16px;
+  background-color: $white;
+  padding: 1.5em 1em;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.8rem 0.25em 1.6rem;
+
+  input {
+    position: absolute;
+    left: -9999%;
+  }
+
+  input:checked+.bundle-plan-option {
+    background-color: #fff;
+
+    &::before {
+      border-color: $main-brand-color;
+      background-color: $main-brand-color;
+    }
+  }
+
+  button {
+    display: block;
+    margin: 1em auto 0;
+    padding: 0.4rem 1rem;
+    font-size: initial;
+    width: 100%;
+    max-width: 22em;
+  }
+
+  .fixed {
+    position: fixed;
+    bottom: 20px;
+    z-index: 1;
+  }
+}
+
+.bundle-plan-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bundle-plan-option {
+  padding: 0.4rem 0.4rem 0.4rem 1.25rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    border: 1px solid $main-font-color;
+    border-radius: 50%;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+@include media-from-medium {
+  .bundle-plan-option {
+    justify-content: initial;
+  }
+}  
+
+.discount-notice {
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  color: $saffron;
+  background-color: $flesh;
+
+  @include media-from-medium {
+    margin-left: 1em;
+  }
+}
+
+.bundle-price-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    color: $turquoise;
+  }
+}
+
+.bundle-usp {
+  ul {
+    list-style-image: url('/assets/image/icons/check.svg');
+    margin: 2em 2.5em;
+  }
+
+  li {
+    line-height: 30px;
+    
+    span {
+      position: relative;
+      left: 10px;
+    }
+  }
+}
+
+.diet-info {
+  background-color: $white;
+  padding: 1.5em 1em;
+}
+
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.carousel-dots-wrapper {
+  position: absolute;
+  bottom: 1em;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.carousel-dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0px 10px;
+  background-color: $dark-grey;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.carousel-dot.active, .carousel-dot:hover {
+  background-color: $darker-grey;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}

@@ -1,0 +1,2 @@
+INSERT INTO ingredients (name, type, description, excipients, claim, code, url, is_vegan, is_active, sku) VALUES ('Waterfles', 'Bottle', 'bottle', null, null, 'bottle', null, true, true, 'FLES1');
+INSERT INTO ingredient_prices (ingredient_id, amount, international_system_unit, price, currency) VALUES (40, 250, 'G', 15, 'EUR');

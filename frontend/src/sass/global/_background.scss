@@ -1,0 +1,74 @@
+$ingredients:
+  brain-boost,
+  cranberry,
+  detox-formula,
+  energy-formula,
+  fish-oil,
+  green-tea-extract,
+  hair-and-nail-formula,
+  iron,
+  kurkuma,
+  libido-formula,
+  magnesium,
+  omega-three-vegan,
+  peptide-collagen,
+  prenatal-multi,
+  skin-formula,
+  sleep-formula,
+  stress-formula,
+  vegan-protein,
+  vitamin-b12,
+  vitamin-c,
+  vitamin-d,
+  whey-protein,
+  gut-support,
+  brain-boost,
+  hormone-control,
+  zinc;
+
+$backgrounds:
+  cranberry,
+  detox-formula,
+  energy-formula,
+  fish-oil,
+  green-tea-extract,
+  hair-and-nail-formula,
+  iron,
+  kurkuma,
+  libido-formula,
+  magnesium,
+  omega-three-vegan,
+  peptide-collagen,
+  prenatal-multi,
+  skin-formula,
+  sleep-formula,
+  stress-formula,
+  vegan-protein,
+  vitamin-b12,
+  vitamin-c,
+  vitamin-d,
+  whey-protein,
+  gut-support,
+  brain-boost,
+  hormone-control,
+  zinc;
+
+@each $ingredient in $ingredients {
+  ##{$ingredient} {
+    background-image: url("/assets/image/capsules/#{$ingredient}-big.jpg");
+  }
+}
+
+.slide-ingredient-information {
+  .background {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @each $background in $backgrounds {
+      &.#{$background} {
+        background-image: url("/assets/image/background/#{$background}.jpg");
+      }
+    }
+  }
+}

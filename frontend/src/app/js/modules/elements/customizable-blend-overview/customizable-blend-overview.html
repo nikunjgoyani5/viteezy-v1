@@ -1,0 +1,52 @@
+<div class="checkout-main">
+  <div class="ingredient-category">
+    <h3 ng-if="vm.isCheckout">Mijn persoonlijke plan</h3>
+    <div class="ingredient-wrapper ingredient-wrapper-compact" ng-repeat="item in vm.vitamines | orderBy: 'title' track by $index">
+      <div class="ingredient-compact">
+        <div class="ingredient-compact-image" ng-click="vm.openIngredientPopup(item.code, item)">
+          <img src="{{ item.image }}">
+        </div>
+
+        <div class="ingredient-compact-information">
+          <h4>{{ item.title }}</h4>
+          <span ng-repeat="explanation in item.explanation track by $index">{{ explanation }}</span>
+        </div>
+        <div class="ingredient-compact-action">
+          <i class="icon icon-trash" ng-click="vm.removeIngredientFromBlend(item)"></i>
+        </div>
+      </div>
+
+      <div class="price-wrapper">
+        <div>
+          <span class="ingredient-information" ng-click="vm.openIngredientPopup(item.code, item)" ng-if="!item.sku">Meer informatie</span>
+        </div>
+        <div class="price">
+          &euro; {{ item.price }} <span class="price-amount-information" ng-if="!item.sku">/ maand (30 pillen)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="additional-products" ng-class="{'white': vm.isDomain == true}">
+      <div ng-if="vm.additionalProducts.length && vm.displayAdditionalProducts">
+        <h4 class="additional-title">Maak jouw vitamineplan compleet:</h4>
+        <div class="ingredient-wrapper ingredient-wrapper-compact">
+          <div class="ingredient-compact" ng-repeat="capsule in vm.additionalProducts">
+            <div class="ingredient-compact-image" ng-click="vm.openIngredientPopup(capsule.code, capsule)">
+              <img ng-src="/assets/image/capsules/{{ capsule.code }}.jpg">
+            </div>
+
+            <div class="ingredient-compact-information">
+              <h4>{{ capsule.name }}</h4>
+              <a href class="button submit-button" ng-click="vm.addCapsule(capsule)">+ Voeg toe &euro; {{ capsule.price }}</a>
+            </div>
+            <span class="cross" ng-click="vm.removeAdditionalCapsule(capsule)">&#10005;</span>
+          </div>
+        </div>
+      </div>
+      <div class="additional-footer">
+        <span class="title">Op zoek naar een ander product?</span>
+        <a href="" class="button submit-button" ng-click="vm.openAddCapsulePopup()">Bekijk alles</a>
+      </div>
+    </div>
+  </div>
+</div>

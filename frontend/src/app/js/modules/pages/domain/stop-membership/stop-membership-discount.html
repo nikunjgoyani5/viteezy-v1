@@ -1,0 +1,30 @@
+<div class="membership-wrapper">
+  <div class="wrapper-compact-wide">
+    <div class="domain-page-information">
+      <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+      <h3>Zullen we anders 10% korting afspreken op je aankomende levering?</h3>
+      <h4>Wij adviseren om vitamines voor de lange termijn te nemen voor optimaal resultaat.<br>We bieden 10% korting op je volgende levering, als je blijft.</h4>
+    </div>
+
+    <div class="stop-membership-wrapper">
+      <div class="quiz-button--1 quiz-button--icon">
+        <input type="radio" id="answer-yes" name="reason" value="yes" ng-model="vm.reason" ng-click="vm.pauseMembership()">
+        <label for="answer-yes">
+          <i class="icon icon-curious"></i>
+          Ja, ik ga voor korting
+          <span>De 10% korting wordt automatisch verwerkt in je volgende betaling</span>
+        </label>
+      </div>
+      <div class="quiz-button quiz-button--icon">
+        <input type="radio" id="answer-no" name="reason" value="no" ng-model="vm.reason" ng-click="vm.stopMembership()">
+        <label for="answer-no">
+          Nee, ik wil toch graag stopzetten
+          <span></span>
+        </label>
+      </div>
+    </div>
+    <div class="domain-page-information">
+      <h4><a href="/domain">Laat maar zitten, ik wil helemaal niet stopzetten</a></h4>
+    </div>
+  </div>
+</div>

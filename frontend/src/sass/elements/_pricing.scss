@@ -1,0 +1,178 @@
+$pricing-default-spacing: 0.8rem;
+
+.pricing {
+  background-color: $main-background-color;
+  border-radius: $main-border-radius;
+  padding: $pricing-default-spacing;
+  margin-top: $pricing-default-spacing;
+
+  h4 {
+    margin-bottom: $pricing-default-spacing;
+  }
+
+  .pricing__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: $pricing-default-spacing;
+
+    span {
+      text-align: right;
+      font-size: 0.8em;
+    }
+  }
+
+  .pricing__plan-options {
+    border: 2px solid $dark-grey;
+    border-radius: $main-border-radius;
+    overflow: hidden;
+    margin: $pricing-default-spacing 0;
+
+    input {
+      position: absolute;
+      left: -9999%;
+    }
+
+    input:checked+.pricing__plan-option {
+      background-color: #fff;
+
+      &::before {
+        border-color: $main-brand-color;
+        background-color: $main-brand-color;
+      }
+    }
+  }
+
+  .pricing__plan-option {
+    padding: $pricing-default-spacing $pricing-default-spacing $pricing-default-spacing ($pricing-default-spacing * 2.5);
+    border-bottom: 2px solid $dark-grey;
+    display: block;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1.1rem;
+      left: $pricing-default-spacing;
+      width: 0.66em;
+      height: 0.66em;
+      border: 1px solid $main-font-color;
+      border-radius: 50%;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .pricing__plan-type {
+    display: flex;
+    justify-content: space-between;
+
+    span:last-child {
+      text-align: right;
+    }
+  }
+
+  .pricing__plan-about {
+    color: $main-brand-color;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: calc($pricing-default-spacing / 2);
+  }
+
+  .pricing__divider {
+    border: 1px solid $dark-grey;
+    margin: $pricing-default-spacing 0;
+  }
+
+  .pricing__plan-information {
+    margin: 0;
+
+    dd {
+      float: right;
+      font-weight: bold;
+    }
+
+    dt {
+      margin: calc($pricing-default-spacing / 2) 0;
+    }
+  }
+
+  .pricing__plan-highlight {
+    color: $main-brand-color;
+  }
+
+  .pricing__cta {
+    border-radius: $main-border-radius;
+    overflow: hidden;
+    margin-top: $pricing-default-spacing;
+  }
+
+  .pricing__cta-price {
+    font-weight: bold;
+    color: $main-font-color;
+    text-align: right;
+
+    span {
+      display: inline-block;
+    }
+
+    span:first-child {
+      text-decoration: line-through;
+      color: $darker-grey;
+      font-weight: normal;
+      margin: 0 calc($pricing-default-spacing / 2);
+    }
+  }
+
+  .pricing__cta-information {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    padding: $pricing-default-spacing;
+
+    div:first-child {
+      color: $main-brand-color;
+      font-weight: bold;
+    }
+  }
+
+  .pricing__cta-button {
+    background: $main-brand-color;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    padding: $pricing-default-spacing;
+    font-size: 1em;
+    outline: none;
+    border-radius: 25px;
+  }
+
+  .pricing__notice {
+    font-size: 0.8em;
+    display: block;
+    text-align: center;
+    margin: $pricing-default-spacing 0 0;
+  }
+}
+
+.daily-pricing-information {
+  background-color: $main-brand-color;
+  border-radius: $main-border-radius;
+  color: $sub-font-color;
+  padding: 0.8rem 0.8rem 0.8rem 1em;
+  text-align: left;
+  font-size: 1.5rem;
+  border-radius: 10px;
+
+  h3 {
+    display: inline-block;
+    margin: 0.25em 0;
+  }
+
+  span {
+    font-size: 0.75rem;
+    display: inline-block;
+  }
+}

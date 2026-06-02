@@ -1,0 +1,160 @@
+.header-landing {
+  height: 90vh;
+  color: $sub-font-color;
+  padding-top: 5em;
+  box-sizing: border-box;
+
+  .header-content {
+    text-align: center;
+    padding: 4rem 0;
+    background: none;
+    color: inherit;
+
+    a {
+      color: inherit;
+    }
+
+    .header-sub-content {
+      max-width: 30rem;
+      display: inline-block;
+      font-size: 1.25em;
+    }
+  }
+
+  .header-sub-content {
+    .button {
+      margin-bottom: 2em;
+    }
+    .button:not(:last-of-type) {
+      margin-right: 1em;
+    }
+
+    span {
+      display: block;
+      font-size: 0.8em;
+    }
+  }
+}
+
+.header-image {
+  position: absolute;
+  z-index: -1;
+  top : 0;
+  right : 0;
+  bottom: 0;
+  left: 0;
+  width : 100%;
+  height: 90vh;
+  max-height: 50em;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+.header-content {
+  background: $main-background-color;
+  color: $main-font-color;
+  text-align: center;
+  padding: 7em 0 2em;
+
+  h1 {
+    font-size: 2.1rem;
+  }
+  .header-sub-content {
+    p {
+      padding: 1.5em 0;
+      font-weight: 400;
+    }
+  }
+}
+
+.header-image-background {
+  background-size: cover;
+  background-position: center;
+}
+
+.header-central-content {
+  padding: 4em 0 24vw;
+}
+
+.header-image-about-us {
+  background-image: url("/assets/image/about-us.jpg");
+  background-position: center 91%;
+}
+
+.basic-navigation {
+  .navigation {
+    background: transparent;
+  }
+
+  .navigation-toggle {
+    display: none;
+  }
+}
+
+.about-us-header {
+  h1, p {
+    color: $white;
+  }
+
+  p {
+    font-size: 1.25em;
+  }
+}
+
+@include media-medium {
+  .header-landing {
+    .header-content {
+      padding: 0;
+      margin-top: 2.5em;
+    }
+
+    .header-sub-content .button {
+      margin-bottom: 1em;
+    }
+  }
+
+  .header-content {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.magazine-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 50em;
+  margin: 0.5em auto 2em;
+
+  @include media-from-medium {
+    margin: 2em auto;
+  }
+
+  span {
+    margin: 0 auto;
+  }
+
+  div {
+    flex: 45%;
+    
+    @include media-medium-small {
+      margin: 2em 0.5em;
+    }
+    
+    @include media-min-small {
+      flex: 1;
+    }
+  }
+
+  img {
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+  }
+}

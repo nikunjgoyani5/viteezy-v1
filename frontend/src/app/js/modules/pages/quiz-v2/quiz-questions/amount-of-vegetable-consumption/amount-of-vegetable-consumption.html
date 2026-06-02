@@ -1,0 +1,18 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Hoeveel groente eet je gemiddeld per dag?</h1>
+      <h2>Bijvoorbeeld een paprika of een portie broccoli</h2>
+    </div>
+
+    <div class="quiz-button quiz-button--icon" ng-repeat="answer in vm.questionAnswers">
+      <input type="radio" id="answer-{{answer.code}}" name="amount-of-vegetable-consumption" value="{{answer.id}}" ng-model="vm.questionConfig.answerId" ng-click="vm.submitQuestionAnswer(answer.id)">
+      <label for="answer-{{answer.code}}">
+        <i class="icon icon-vegetable-{{answer.code}}"></i>
+        {{answer.name}}
+        <span ng-if="answer.subtitle">{{answer.subtitle}}</span>
+      </label>
+    </div>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

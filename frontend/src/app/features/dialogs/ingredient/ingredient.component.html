@@ -1,0 +1,53 @@
+<div class="dialog-ingredient-information slide-ingredient-information">
+  <i class="icon icon-close" mat-dialog-close></i>
+  <div class="section-wrapper no-padding">
+    <h4 class="section-title">{{ content?.title }}</h4>
+  </div>
+
+  <div class="section-wrapper no-padding">
+    <div class="section-left extra-padding">
+      <p class="ingredient-reason-description">{{ content?.description }}</p>
+    </div>
+    <div class="section-right" [ngStyle]="{'background-image': content ? 'url(' + content?.productImage.data?.attributes.url + ')' : 'none'}"></div>
+  </div>
+
+  <div class="section-wrapper">
+    <h3 class="section-title ingredient-title">{{ content?.findingTitle }}</h3>
+    <p>{{ content?.findingText1 }}</p>
+  </div>
+
+  <div class="section-wrapper" class="our-product-background" [ngStyle]="{'background-image': content ? 'url(' + content?.ourProductImage.data?.attributes.url + ')' : 'none'}">
+    <h3 class="section-title ingredient-title text-white">{{ content?.ourProductTitle }}</h3>
+    <p class="text-white text-center small">{{ content?.ourProductText }}</p>
+  </div>
+
+  <div class="section-wrapper">
+    <h3 class="section-title ingredient-title title-left">{{ content?.title }}</h3>
+
+    <div class="characteristics-container">
+      <div class="characteristics-child" *ngFor="let diet of content?.diets">
+        <img [src]="diet?.image.data?.attributes.url">
+        <span>{{ diet?.text }}</span>
+      </div>
+    </div>
+
+    <table class="ingredient-table">
+      <tr *ngFor="let header of content?.ingredientComponentHeaders">
+        <th>{{ header.text }}</th>
+        <th>{{ header.amount }}</th>
+        <th>{{ header.percentage }}</th>
+      </tr>
+      <tr *ngFor="let component of ingredient.components">
+        <td>{{ component.name }}</td>
+        <td>{{ component.amount }}</td>
+        <td>{{ component.percentage }}</td>
+      </tr>
+    </table>
+
+    <p *ngFor="let notice of content?.ingredientComponentNotices">{{ notice.text }}</p>
+  </div>
+
+  <div class="section-wrapper extra-padding-bottom">
+    <span class="text-center big">{{ content?.claim }}</span>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="daily-pricing-information" *ngIf="pricing.months == 1 || pricing.months == 3 ">
+  <h3>Jouw dagelijkse kosten</h3>
+  <br>
+  <h3 *ngIf="pricing.months == 1">&euro; {{ pricing.recurringAmount/30 | number : '1.2-2' }} &nbsp;</h3>
+  <span *ngIf="pricing.months == 1">&euro; {{ pricing.recurringAmount | number : '1.2-2' }} per maand</span>
+  <h3 *ngIf="pricing.months == 3">&euro; {{ pricing.recurringAmount/90 | number : '1.2-2' }} &nbsp;</h3>
+  <span *ngIf="pricing.months == 3">&euro; {{ pricing.recurringAmount | number : '1.2-2' }} per drie maanden</span>
+</div>
+
+<div class="pricing">
+  <div class="pricing__header">
+    <h3>Kies een plan</h3>
+    <span>
+      Stop of pauzeer
+      <br> wanneer je wil
+    </span>
+  </div>
+
+  <div class="pricing__plan-options">
+    <input type="radio" name="plan-month" value="0" id="single" [(ngModel)]="pricing.months" (ngModelChange)="getPricing()">
+    <label class="pricing__plan-option" for="single" *ngIf="singleBuyAvailable">
+      <div class="pricing__plan-type">
+        Eenmalig
+      </div>
+    </label>
+    <input type="radio" name="plan-month" value="1" id="monthly" [(ngModel)]="pricing.months" (ngModelChange)="getPricing()">
+    <label class="pricing__plan-option" for="monthly">
+      <div class="pricing__plan-type">
+        <span>Maandelijks</span>
+        <span *ngIf="singleBuyAvailable">Bespaar <strong>15%</strong></span>
+      </div>
+    </label>
+
+    <input type="radio" name="plan-month" value="3" id="quarter" [(ngModel)]="pricing.months" (ngModelChange)="getPricing()">
+    <label class="pricing__plan-option" for="quarter">
+      <div class="pricing__plan-type">
+        <span>Per 3 maanden</span>
+        <span *ngIf="!singleBuyAvailable">Bespaar <strong>15%</strong></span>
+        <span *ngIf="singleBuyAvailable">Bespaar <strong>28%</strong></span>
+      </div>
+      <div class="pricing__plan-about">
+        Meest gekozen & <br>
+        Beste deal
+      </div>
+    </label>
+
+    <label class="pricing__plan-option" for="halfyear" disabled>
+      <div class="pricing__plan-type">
+        <span>Per 6 maanden</span>
+        <span>Uitverkocht</span>
+      </div>
+    </label>
+  </div>
+
+  <div class="pricing-discount" [ngClass]="{'valid-coupon': pricing.couponDiscount > 0 || pricing.referralDiscount > 0 }">
+    <input type="text" name="" value="" class="forminput" [(ngModel)]="pricing.couponCode" (ngModelChange)="onCouponCodeChange($event)" placeholder="Referralcode">
+    <p class="input-error price" *ngIf="pricing.couponError && pricing.couponCode.length">Deze code is niet geldig.</p>
+    <p class="input-error price" *ngIf="pricing.couponPlanError && pricing.months == 1 && pricing.couponCode.length && pricing.couponDiscount == 0">Deze code is alleen geldig op een 3-maanden plan.</p>
+    <p class="input-error price" *ngIf="pricing.couponPlanError && pricing.months == 3 && pricing.couponCode.length && pricing.couponDiscount == 0">Deze code is alleen geldig op een 1-maand plan.</p>
+    <p class="input-error price" *ngIf="pricing.coupon && pricing.basePriceCoupon < pricing.coupon.minimumAmount">Voor deze code moet er minimaal &euro; {{ pricing.coupon.minimumAmount }} in je vitamineplan zitten.</p>
+    <p class="input-success price" *ngIf="pricing.coupon && pricing.months == 3 && pricing.couponCode.length && pricing.couponDiscount > 0">Deze code is succesvol ingevuld.</p>
+  </div>
+
+  <hr class="pricing__divider">
+
+  <dl class="pricing__plan-information">
+    <h4>Jouw plan</h4>
+    <dd>&euro; {{ pricing.basePrice | number : '1.2-2' }}</dd>
+    <dt>Vitaminemix</dt>
+    <hr class="pricing__divider">
+    <dd *ngIf="pricing.shippingCost === 0">Gratis</dd>
+    <dd *ngIf="pricing.shippingCost > 0">&euro; {{ pricing.shippingCost }}</dd>
+    <dt>Verzendkosten</dt>
+    <dd class="pricing__plan-highlight" *ngIf="pricing.months == 1 && singleBuyAvailable">- &euro; {{ pricing.noSubscriptionFee | number : '1.2-2' }}</dd>
+    <dt *ngIf="pricing.months == 1 && singleBuyAvailable">Korting 1 maand</dt>
+    <dd class="pricing__plan-highlight" *ngIf="pricing.months == 3 && pricing.planDiscount">- &euro; {{ pricing.planDiscount | number : '1.2-2' }}</dd>
+    <dt *ngIf="pricing.months == 3 && pricing.planDiscount">Korting 3 maanden</dt>
+    <dd class="pricing__plan-highlight" *ngIf="pricing.couponDiscount > 0">- &euro; {{ pricing.couponDiscount | number : '1.2-2' }}</dd>
+    <dt *ngIf="pricing.couponDiscount > 0 && discountedIngredient">Korting {{ discountedIngredient }}</dt>
+    <dt *ngIf="pricing.couponDiscount > 0 && pricing.coupon.recurringTerms">Kortingscode variabel</dt>
+    <dt *ngIf="pricing.couponDiscount > 0 && !isRecurringCoupon && !discountedIngredient && !pricing.coupon.recurringTerms">Kortingscode eenmalig</dt>
+    <dt *ngIf="pricing.couponDiscount > 0 && isRecurringCoupon && !discountedIngredient && !pricing.coupon.recurringTerms">Kortingscode blijvend</dt>
+    <dd class="pricing__plan-highlight" *ngIf="pricing.referralDiscount > 0 && pricing.basePriceCoupon > pricing.coupon.minimumAmount">- &euro; {{ pricing.referralDiscount | number : '1.2-2' }}</dd>
+    <dt *ngIf="pricing.referralDiscount > 0 && pricing.basePriceCoupon > pricing.coupon.minimumAmount">Korting van {{ referralFirstName }}</dt>
+  </dl>
+
+  <dl class="pricing__plan-information">
+    <dd>&euro; {{ pricing.firstAmount | number : '1.2-2' }}</dd>
+    <dt>Totaal</dt>
+  </dl>
+
+  <div class="pricing__cta">
+    <div class="pricing__cta-information" *ngIf="pricing.months == 3">
+      <div *ngIf="!singleBuyAvailable">15% korting voor altijd</div>
+      <div *ngIf="singleBuyAvailable">28% korting voor altijd</div>
+    </div>
+    <button *ngIf="action" id="payment-submit" class="button pricing__cta-button fullwidth" (click)="action()">{{ submitButtonText }}</button>
+    <button *ngIf="!action" id="payment-submit" type="submit" class="button pricing__cta-button fullwidth">{{ submitButtonText }}</button>
+  </div>
+
+  <span class="pricing__notice" *ngIf="pricing.months == 3">Verzending en afrekening elke 3 maanden</span>
+  <span class="pricing__notice" *ngIf="pricing.months == 1">Verzending en afrekening elke maand</span>
+
+  <div *ngIf="!action" class="payment-methods">
+    <div *ngFor="let paymentMethod of paymentMethods" class="payment-method">
+      <img [src]="paymentMethod.image.svg" (click)="setPaymentMethod(paymentMethod.id)">
+    </div>
+  </div>
+</div>
+
+<div class="checkout-reviews">
+  <reviews slidesToShow="1"></reviews>
+</div>

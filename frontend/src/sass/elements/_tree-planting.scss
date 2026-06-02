@@ -1,0 +1,54 @@
+.tree-planting-wrapper {
+  overflow-x: hidden;
+
+  img {
+    width: 100%;
+    margin-bottom: 1em;
+
+    @include media-from-medium {
+      display: block;
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+
+  div {
+    font-size: 0.95em;
+    animation: next-question-exit ease-in-out 0.25s 4.5s 1;
+    animation-fill-mode: forwards;
+  }
+  
+  b, span {
+    display: block;
+    text-align: center;
+    line-height: 1.5em;
+  }
+
+  span {
+    font-size: smaller;
+  }
+}
+
+@keyframes next-question-entry {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes next-question-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,46 @@
+<div fxLayout="row">
+  <!-- Row-actions -->
+  <button
+    mat-icon-button
+    class="action-button"
+    *ngFor="let action of getActiveRowActions(entity)"
+    (click)="onAction(action, $event)"
+  >
+    <mat-icon
+      [matTooltip]="getActionTooltip(action.tooltip)"
+      class="action-button-icon"
+      *ngIf="action.icon"
+      matTooltip="action.label"
+      >{{ action.icon }}</mat-icon
+    >
+  </button>
+
+  <!-- Menu with actions -->
+  <ng-container *ngIf="getActiveMenuActions(entity).length > 0">
+    <mat-menu #appMenu="matMenu" [overlapTrigger]="true">
+      <button
+        *ngFor="let action of getActiveMenuActions(entity)"
+        mat-menu-item
+        (click)="onAction(action)"
+      >
+        <mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
+        <span>{{ action.label }}</span>
+      </button>
+    </mat-menu>
+
+    <!-- Button which shows menu with actions -->
+    <button mat-icon-button class="action-button" [matMenuTriggerFor]="appMenu">
+      <mat-icon class="action-button-icon">more_vert</mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- close button is shown on the readonly select dialog -->
+  <button
+    *ngIf="showCloseButton"
+    mat-icon-button
+    class="action-button"
+    (click)="onAction({ label: 'close' })"
+  >
+    <mat-icon class="action-button-icon">close</mat-icon>
+  </button>
+</div>

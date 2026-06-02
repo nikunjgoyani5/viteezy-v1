@@ -1,0 +1,18 @@
+.product-configurations {
+  display: flex;
+  align-items: center;
+
+  .price {
+    margin-right: 1em;
+  }
+}
+
+@include media-mega-mobile {
+  .product-configurations {
+    display: inline-block;
+  }
+  .product-selector {
+    margin-top: 20px;
+  }
+}
+

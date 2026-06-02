@@ -1,0 +1,174 @@
+.navigation {
+  color: $navigation-font-color;
+  background: $navigation-background-color;
+  position: relative;
+
+  svg {
+    max-width: 11em;
+    margin: 0 auto 0;
+    display: block;
+
+    path {
+      fill: $main-brand-color;
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: inline-block;
+
+    @include media-from-large {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      white-space: nowrap; 
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  li {
+    padding: 0 0.75em;
+    display: inline-block;
+  }
+}
+
+.navigation-items-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 -0.9rem;
+
+  > div {
+    flex-grow: 1;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.navigation-homepage {
+  background-image: url("/assets/image/header-top.webp");
+  background-size: cover;
+  color: $white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  svg path {
+    fill: $white;
+  }
+
+  .navigation-toggle {
+    color: $white;
+  }
+}
+
+.navigation-toggle {
+  position: absolute;
+  left: 0;
+  text-decoration: none;
+  color: $main-brand-color;
+  font-size: 2rem;
+  margin: 0.25em;
+  display: none;
+
+  i {
+    display: block;
+  }
+}
+
+.mobile-logo {
+  display: none;
+}
+
+.close-navigation {
+  display: none;
+}
+
+.quiz-previous-button {
+  text-decoration: none;
+  color: $darker-grey;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.75rem;
+}
+
+@include media-large {
+  .navigation li {
+    padding: 1em 1em;
+  }
+
+  .logo {
+    order: -1;
+    margin-bottom: 1em;
+  }
+
+  .navigation-items-wrap {
+    background-color: $main-background-color;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    color: $main-brand-color;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    transform: translateX(-100%);
+    transition: transform ease-in-out 0.25s;
+    z-index: 2;
+
+    svg path {
+      fill: $main-brand-color;
+    }
+
+    div:last-child {
+      text-align: left;
+    }
+
+    li {
+      display: list-item;
+    }
+
+    > div {
+      padding: 0;
+      flex-basis: 100%;
+    }
+  }
+
+  .navigation-visible {
+    transform: translateX(0);
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation-toggle {
+    display: inline-block;
+  }
+
+  .blend-page {
+    .navigation-toggle {
+      display: none;
+    }
+  }
+
+  .close-navigation {
+    position: absolute;
+    top: 0.25em;
+    right: 0.5em;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin: 0.25em;
+    color: $main-brand-color;
+    display: block;
+  }
+}

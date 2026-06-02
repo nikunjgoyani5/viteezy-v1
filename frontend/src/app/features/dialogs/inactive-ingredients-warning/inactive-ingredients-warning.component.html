@@ -1,0 +1,24 @@
+<div class="dialog-content-wrap">
+  <h2>Product tijdelijk niet beschikbaar</h2>
+  <p>
+    Dit product is tijdelijk niet op voorraad en wordt over ongeveer 10-14 dagen geleverd.
+    Kies hoe je je bestelling wilt laten versturen.
+  </p>
+
+  <ul *ngIf="data?.inactiveIngredients?.length">
+    <li *ngFor="let ingredientName of data.inactiveIngredients">{{ ingredientName }}</li>
+  </ul>
+
+  <div class="dialog-actions">
+    <button type="button" class="button button-fullwidth inactive-shipment-secondary" (click)="chooseSplitShipment()">
+      Verstuur nu, naleveren later
+    </button>
+    <button type="button" class="submit-button button-fullwidth inactive-shipment-primary" (click)="chooseHoldOrder()">
+      Wacht en verstuur alles samen
+    </button>
+  </div>
+
+  <div class="dialog-close-footer">
+    <span (click)="close()">Sluiten</span>
+  </div>
+</div>

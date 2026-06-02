@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: upcoming-payment-job
+  namespace: viteezy-staging
+spec:
+  schedule: "0 11 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-subscription-payment
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "--ignore-stdin"
+                - "--check-status"
+                - "-f"
+                - "backend:8081/tasks/upcoming-payments"
+                - "daysUntil=10"
+          restartPolicy: Never

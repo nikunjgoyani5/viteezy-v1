@@ -1,0 +1,21 @@
+<div class=dialog-content-wrap>
+  <i class="icon icon-close close-capsule" (click)="closeThisPopup()"></i>
+  <h1 class="fullwidth">Voeg capsules toe aan je vitaminemix</h1>
+
+  <div class="ingredient-wrapper ingredient-wrapper-compact">
+    <div class="ingredient-compact" *ngFor="let availableIngredient of availableIngredients">
+      <div *ngIf="availableIngredient.price" class="ingredient-compact-image" (click)="openIngredientPopup(availableIngredient)">
+        <img [src]="availableIngredient.content?.productImage.data?.attributes.url">
+      </div>
+
+      <div class="ingredient-compact-information">
+        <h4>{{ availableIngredient.content?.title }}</h4>
+        <span *ngIf="availableIngredient.content && availableIngredient.content.checks.length > 0">{{ availableIngredient.content.checks[0].text }}</span>
+        <button class="add-vitamin-link" (click)="addIngredient(availableIngredient)">+ Voeg toe voor &euro; {{ availableIngredient.price }}</button>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-close-footer">
+    <span (click)="closeThisPopup()">Sluiten</span>
+  </div>
+</div>

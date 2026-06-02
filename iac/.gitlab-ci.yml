@@ -1,0 +1,66 @@
+stages:
+  - persist-version
+  - deploy-staging
+  - deploy-production
+
+update-service-version:
+  stage: persist-version
+  image: google/cloud-sdk:525.0.0-debian_component_based
+  before_script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$GITLAB_SSH_PRIVATE_KEY")
+    - git config --global user.email $GIT_USERNAME
+    - git config --global user.name $GIT_EMAIL
+    - mkdir -p ~/.ssh
+    - ssh-keyscan gitlab.com >> gitlab-known-hosts
+    - cat gitlab-known-hosts >> ~/.ssh/known_hosts
+    - cd /tmp
+    - rm -rf /tmp/iac
+    - git clone git@gitlab.com:viteezy/iac.git
+    - cd iac
+  script:
+    - make set-new-version
+    - make git-commit-push-new-version
+  only:
+    - pipelines
+
+deploy:staging:one:service:
+  stage: deploy-staging
+  image: google/cloud-sdk:525.0.0-debian_component_based
+  before_script:
+    - cat versions.env
+    - cd staging
+  script:
+    - make deploy-new-service-version
+  dependencies:
+    - update-service-version
+  only:
+    - pipelines
+
+deploy:staging:all:
+  stage: deploy-staging
+  image: google/cloud-sdk:525.0.0-debian_component_based
+  before_script:
+    - cat versions.env
+    - cd staging
+    - apt-get -y install gettext-base
+  script:
+    - make deploy
+  except:
+    changes:
+      - "versions.env"
+  only:
+    - master
+
+deploy:production:all:
+  stage: deploy-production
+  image: google/cloud-sdk:525.0.0-debian_component_based
+  before_script:
+    - cat versions.env
+    - cd production
+    - apt-get -y install gettext-base
+  script:
+    - make deploy
+  when: manual
+  only:
+    - master

@@ -1,0 +1,31 @@
+<div class="membership-wrapper">
+  <div class="wrapper-compact-wide">
+    <div class="domain-page-information">
+      <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+          <h3>Wil je niet liever even een maandje overslaan?</h3>
+      <h4 ng-if="vm.deliveryDate">Jouw eerstvolgende levering is al in productie en wordt bezorgd op <b>{{ vm.deliveryDate }}</b>.<br>Wil je de daaropvolgende levering aanpassen?</h4>
+      <h4>Dan pauzeren wij je levering tot <b>{{vm.pauseMonthPaymentPlan}}</b> en ook de betaling gaat op pauze</h4>
+    </div>
+
+    <div class="stop-membership-wrapper">
+      <div class="quiz-button--1 quiz-button--icon">
+        <input type="radio" id="answer-yes" name="reason" value="yes" ng-model="vm.reason" ng-click="vm.pauseMembership()">
+        <label for="answer-yes">
+          <i class="icon icon-well-informed"></i>
+          Ja, we pauzeren even
+          <span>We versturen je volgende vitaminepakket op {{vm.pauseMonthPaymentPlan}}</span>
+        </label>
+      </div>
+      <div class="quiz-button quiz-button--icon">
+        <input type="radio" id="answer-no" name="reason" value="no" ng-model="vm.reason" ng-click="vm.stopMembership()">
+        <label for="answer-no">
+          Nee, ik wil graag stopzetten
+          <span></span>
+        </label>
+      </div>
+    </div>
+    <div class="domain-page-information">
+      <h4><a href="/domain">Laat maar zitten, ik wil helemaal niet stopzetten</a></h4>
+    </div>
+  </div>
+</div>

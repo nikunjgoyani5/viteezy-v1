@@ -1,0 +1,382 @@
+/**
+ * Use the JSON file in assets/font/src/icomoon to import the font into IcoMoon (icomoon.io).
+ * Add the icons you need, export as font, overwrite the font files in the folder,
+ * (don't forget to update the JSON file as well) and add the icon the the icon-
+ * list variable below
+ */
+
+@include font-face(Viteezy-Icons, '../../assets/font/icomoon', (font-weight: normal, font-style: normal), (file-types: woff));
+
+$icon-list:
+  ("1-2"                                    "\e905")
+  ("2"                                      "\e938")
+  ("2-3"                                    "\e906")
+  ("4"                                      "\e907")
+  ("5"                                      "\e93d")
+  (zero-to-four                             "\e905")
+  (five-to-six                              "\e938")
+  (seven-to-eight                           "\e906")
+  (eight-to-nine                            "\e907")
+  (nine-to-ten                              "\e93d")
+  (more-than-ten                            "\e93d")
+  (alarm                                    "\e908")
+  (alarm2                                   "\e909")
+  (animal                                   "\e90a")
+  (animal-pig                               "\e809")
+  (arrow                                    "\e90b")
+  (arrowLeft                                "\e90c")
+  (arrowRight                               "\e90d")
+  (arrowTabbar                              "\e90e")
+  (arrowUp                                  "\e90f")
+  (bed                                      "\e910")
+  (borstvoeding                             "\e911")
+  (broccoli                                 "\e912")
+  (vegetable-zero-to-one-hundred            "\e901")
+  (vegetable-one-hundred-to-two-hundred     "\e902")
+  (vegetable-two-hundred-to-three-hundred   "\e903")
+  (vegetable-more-than-three-hundred        "\e904")
+  (cardio                                   "\e913")
+  (endurance                                "\e913")
+  (movement                                 "\e913")
+  (cricket                                  "\e914")
+  (doc-file-blank                           "\e865")
+  (dot                                      "\e905")
+  (Dot                                      "\e915")
+  (dots1                                    "\e906")
+  (emoji                                    "\e916")
+  (emoji2                                   "\e917")
+  (environment-leaf                         "\e937")
+  (non-smoking                              "\e93a")
+  (smoking                                  "\e93b")
+  (environment-no-smoke                     "\e93a")
+  (environment-smoke                        "\e93b")
+  (facebook                                 "\e918")
+  (vrouw                                    "\e919")
+  (fitness                                  "\e91a")
+  (media                                    "\e91b")
+  (flyer                                    "\e91b")
+  (folder                                   "\e91b")
+  (food                                     "\e91c")
+  (food-apple                               "\e939")
+  (food-cherry                              "\e93c")
+  (fruit-once                               "\e93c")
+  (football                                 "\e91d")
+  (voetbal                                  "\e91d")
+  (gluten                                   "\e91e")
+  (fiber-once                               "\e91e")
+  (fiber-twice-or-more                      "\e975")
+  (dairy-once                               "\e926")
+  (golf                                     "\e91f")
+  (hockey                                   "\e920")
+  (instagram                                "\e921")
+  (online                                   "\e922")
+  (internet                                 "\e922")
+  (man                                      "\e923")
+  (measure                                  "\e924")
+  (brew                                     "\e982")
+  (mouth                                    "\e925")
+  (message                                  "\e925")
+  (method-draw-image-4                      "\e900")
+  (milk                                     "\e926")
+  (minerals                                 "\e927")
+  (person                                   "\e928")
+  (zwanger                                  "\e929")
+  (protein                                  "\e92a")
+  (rugby                                    "\e92b")
+  (shake                                    "\e92c")
+  (shape                                    "\e92d")
+  (slider                                   "\e92e")
+  (smoke                                    "\e92f")
+  (soya                                     "\e930")
+  (sport-dumbell-a                          "\e992")
+  (krachttraining                           "\e992")
+  (sport-trophy                             "\e97d")
+  (stopwatch                                "\e931")
+  (strong                                   "\e932")
+  (tennis                                   "\e933")
+  (time-alarm                               "\e99b")
+  (time-speed-meter                         "\e9a5")
+  (user-single-a-group                      "\ea06")
+  (personal-trainer                         "\ea06")
+  (user-group                               "\ea06")
+  (vitamines                                "\e934")
+  (vitamines-five-plus                      "\e934")
+  (sun                                      "\ea35")
+  (yoga                                     "\e935")
+  (insufficient-knowledge                   "\e935")
+  (resistance                               "\e935")
+  (total-health                             "\e935")
+  (zigzag                                   "\e936")
+  (stress                                   "\e936")
+  (anders                                   "\e900")
+  (geslachtneutraal                         "\e900")
+  (iktrainniet                              "\e900")
+  (geenvanbeide                             "\e900")
+  (vitamines-none                           "\e900")
+  (vitamines-one-to-three                   "\e97c")
+  (none-of-the-above                        "\e900")
+  (pretty-fine                              "\e900")
+  (barely                                   "\e900")
+  (fruit-barely                             "\e900")
+  (dairy-barely                             "\e900")
+  (protein-barely                           "\e900")
+  (fiber-barely                             "\e900")
+  (geen                                     "\e900")
+  (apple-none                               "\e900")
+  (when-wanneerikzinheb                     "\e900")
+  (interface-circle-tick                    "\eada")
+  (interface-star-a                         "\eb1f")
+  (email                                    "\e81a")
+  (user-single-a                            "\ea03")
+  (slider-left                              "\e93e")
+  (slider-right                             "\e93f")
+  (apple-one                                "\e939")
+  (apple-two                                "\e940")
+  (apple-more-than-three                    "\e941")
+  (when-nahetopstaan                        "\e908")
+  (when-voorhettrainen                      "\e90c")
+  (when-nahettrainen                        "\e90d")
+  (when-tijdenshettrainen                   "\e931")
+  (when-voorhetslapen                       "\e909")
+  (never                                    "\e900")
+  (meat-never                               "\e900")
+  (fish-never                               "\e900")
+  (others                                   "\e905")
+  (vitamins                                 "\e934")
+  (weight-loose                             "\e924")
+  (meal-replacement                         "\e91c")
+  (muscle-building                          "\e932")
+  (muscle-maintenance                       "\e932")
+  (specific-goal                            "\e932")
+  (strengthening                            "\e932")
+  (ngdialog-close                           "\eae3")
+  (close                                    "\eae3")
+  (very-weak                                "\e905")
+  (weak                                     "\e938")
+  (average                                  "\e906")
+  (good                                     "\e907")
+  (very-good                                "\e93d")
+  (other                                    "\e900")
+  (getting-wider                            "\e90b")
+  (recover-after-training                   "\e910")
+  (improve-sport-performance                "\e97d")
+  (increase-calories                        "\e90f")
+  (more-energy                              "\e936")
+  (reduce-stress                            "\e92d")
+  (lactose                                  "\e926")
+  (soy                                      "\e930")
+  (protein-once                             "\e930")
+  (protein-twice-or-more                    "\e976")
+  (dairy                                    "\e926")
+  (vegan                                    "\e937")
+  (vegetarian                               "\e809")
+  (none                                     "\e900")
+  (nail-none                                "\e900")
+  (checkbox                                 "\e844")
+  (checkbox-checked                         "\ead1")
+  (check                                    "\eb23")
+  (stress-low                               "\e943")
+  (stress-average                           "\e9a5")
+  (stress-high                              "\e942")
+  (sun-zero-to-five                         "\e947")
+  (sun-five-to-ten                          "\e946")
+  (sun-twenty-to-thirty                     "\e945")
+  (sun-thirty-to-forty-five                 "\e944")
+  (sun-thirty-to-forty-five                 "\e944")
+  (sun-forty-five-plus                      "\ea35")
+  (ketogenic                                "\e948")
+  (roeien                                   "\e949")
+  (hardlopen                                "\e94c")
+  (skin-care                                "\e94b")
+  (vitamine-increase                        "\e94a")
+  (overall-nutrition                        "\e94a")
+  (fruit-twice-or-more                      "\e94a")
+  (fish                                     "\e900")
+  (shellfish                                "\e900")
+  (blood-thinners                           "\e900")
+  (heartburners                             "\e900")
+  (beta-blockers                            "\e900")
+  (fish-never-or-almost-never               "\e900")
+  (fish-one                                 "\e94d")
+  (fish-one-or-two                          "\e94d")
+  (fish-two-or-more                         "\e94d")
+  (bone                                     "\e94e")
+  (lightning                                "\e94f")
+  (pregnant-alt                             "\e950")
+  (pregnant                                 "\e929")
+  (circle                                   "\e951")
+  (moon                                     "\e952")
+  (sleep                                     "\e952")
+  (wand                                     "\e953")
+  (leaf                                     "\e954")
+  (crown                                    "\e955")
+  (arrow                                    "\e956")
+  (fish                                     "\e94d")
+  (menu                                     "\e957")
+  (account                                  "\e971")
+  (calendar                                 "\e958")
+  (hair-and-nails                           "\e959")
+  (getting-thinner                          "\e959")
+  (digestion                                "\e95a")
+  (bottle                                   "\e95b")
+  (breastfeeding                            "\e95b")
+  (pregnancy-kilos                          "\e95b")
+  (skin                                     "\e95c")
+  (libido                                   "\e95d")
+  (energy                                   "\e95e")
+  (high-intensity                           "\e95e")
+  (nails                                    "\e95f")
+  (nail-power                               "\e95f")
+  (nail-length                              "\e969")
+  (nail-condition                           "\e967")
+  (well-informed                            "\e961")
+  (convinced                                "\e961")
+  (have-it-first                            "\e961")
+  (curious                                  "\e960")
+  (open-minded                              "\e960")
+  (knowing-more                             "\e960")
+  (skeptical                                "\e962")
+  (wait                                     "\e962")
+  (discipline                               "\e964")
+  (hyper                                    "\e963")
+  (discover                                 "\e965")
+  (pregnant-in-two-years                    "\e966")
+  (slow-growing                             "\e968")
+  (snacks                                   "\e96a")
+  (menopause                                "\e96b")
+  (dairy-twice-or-more                      "\e96c")
+  (meat-one-or-two                          "\e96d")
+  (meat-three-or-more                       "\e96e")
+  (fish-three-or-more                       "\e96f")
+  (dry                                      "\e97b")
+  (fat                                      "\e970")
+  (restless                                 "\e973")
+  (dull                                     "\e974")
+  (vegetable-barely                         "\e900")
+  (vegetable-once                           "\e912")
+  (vegetable-twice-or-more                  "\e902")
+  (burnt-out                                "\e964")
+  (skin-acne                                "\e979")
+  (skin-pigment-spots                       "\e977")
+  (skin-wrinkles                            "\e973")
+  (skin-elasticity                          "\e978")
+  (skin-skin-aging                          "\e900")
+  (skin-none                                "\e900")
+  (damaged                                  "\e97a")
+  (flexibility                              "\e978")
+  (trash                                    "\e97e")
+  (brain                                    "\e97f")
+  (menstruation                             "\e980")
+  (bus                                      "\e9b0")
+  (cart                                     "\e981")
+  (home                                     "\e983")
+  (search                                   "\e984")
+  (tune                                     "\e985");
+
+@each $item in $icon-list {
+  .icon.icon-#{nth($item, 1)}::before {
+    content: quote(nth($item, 2));
+  }
+}
+
+@mixin icon($icon-name: 0) {
+  font-family: Viteezy-Icons;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1rem;
+  text-transform: none;
+  @include icon-only($icon-name);
+}
+
+@mixin icon-only($icon-name) {
+  @each $item in $icon-list {
+    @if $icon-name == nth($item, 1) { content: quote(nth($item, 2)); }
+  }
+}
+
+.icon::before {
+  @include icon;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.icon.icon-sun-zero-to-five::before {
+  font-size: 0.75em;
+}
+
+.icon.icon-eight-to-nine::before {
+  font-size: 0.9em;
+}
+
+.icon-large {
+  font-size: 1.5rem;
+}
+
+.icon-menu::before {
+  vertical-align: middle;
+}
+
+@keyframes brewing {
+  20% {
+    transform: scale(1.1) rotate(-10deg);
+    text-shadow: 2px 2px 0.4em rgba(0, 0, 0, 0.3);
+  }
+
+  40% {
+    transform: scale(1);
+    text-shadow: none;
+  }
+
+  60% {
+    transform: scale(1.1) rotate(-10deg);
+    text-shadow: 2px 2px 0.4em rgba(0, 0, 0, 0.3);
+  }
+
+  80% {
+    transform: scale(1) rotate(0);
+    text-shadow: none;
+  }
+}
+
+.icon-brew.is-loading {
+  animation: brewing 4s infinite;
+}
+
+@keyframes wink {
+  0% {
+    background-image: url("../../assets/image/icons/smiley.svg");
+  }
+
+  25% {
+    background-image: url("../../assets/image/icons/smiley.svg");
+  }
+
+  50% {
+    background-image: url("../../assets/image/icons/smiley-wink.svg");
+  }
+
+  55% {
+    background-image: url("../../assets/image/icons/smiley.svg");
+  }
+
+  70% {
+    background-image: url("../../assets/image/icons/smiley-wink.svg");
+  }
+
+  75% {
+    background-image: url("../../assets/image/icons/smiley.svg");
+  }
+
+  100% {
+    background-image: url("../../assets/image/icons/smiley.svg");
+  }
+}
+
+.smiley-animation {
+  background-image: url("../../assets/image/icons/smiley.svg");
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  margin: 1em auto;
+  animation: wink 4s step-end;
+}

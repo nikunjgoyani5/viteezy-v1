@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Admin</h1>
+
+  <span>{{ordersPackingSlipReady}} openstaande bestellingen voor apotheker</span>
+  <br>
+  <button *ngIf="ordersPackingSlipReady > 0" (click)="createPharmacistRequest()" mat-button mat-flat-button color="primary">Maak bestellingen</button>
+</div>
+
+<div class="container">
+  <h1>Ingredienten</h1>
+  <mat-icon (click)="openAddIngredientDialog('Toevoegen', 'Add', null)">add</mat-icon>
+  <app-table *ngIf="ingredients"
+    [entities]="ingredients"
+    [properties]="ingredientProperties"
+    (actionEmitter)="onActionEmitIngredient($event)"
+    [hoverEnabled]="false"
+  ></app-table>
+</div>

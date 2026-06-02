@@ -1,0 +1,1 @@
+UPDATE ingredients SET is_active = false WHERE code = "energy-formula";

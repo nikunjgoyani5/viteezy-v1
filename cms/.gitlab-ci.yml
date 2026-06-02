@@ -1,0 +1,45 @@
+cache:
+  paths:
+  - .npm/ # Cache downloaded node.js dependencies between builds.
+
+stages:
+  - distribute:docker
+  - deploy
+
+distribute:docker:
+  image: google/cloud-sdk:debian_component_based
+  services:
+    - docker:19.03.13-dind
+#   - docker:dind    <--- docker:dind does not work well
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_TLS_VERIFY: 1
+    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
+  stage: distribute:docker
+  before_script:
+    - gcloud auth activate-service-account --key-file=${GCLOUD_SERVICE_KEY}
+    - gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+    - gcloud --quiet config set compute/region ${GOOGLE_COMPUTE_REGION}
+    - gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+    - gcloud --quiet auth configure-docker europe-west4-docker.pkg.dev
+  script:
+    - docker build --build-arg NODE_ENV=production -t europe-west4-docker.pkg.dev/viteezy/cms/docker:${CI_COMMIT_SHORT_SHA} .
+    - docker push europe-west4-docker.pkg.dev/viteezy/cms/docker:${CI_COMMIT_SHORT_SHA}
+  only:
+    - master
+
+deploy:staging:
+  stage: deploy
+  variables:
+    k8s_deployment_key: deployment/strapi-app
+    k8s_deployment_value: strapi
+    IMAGE_FULL_QUALIFIED: europe-west4-docker.pkg.dev/viteezy/cms/docker:${CI_COMMIT_SHORT_SHA}
+    SERVICE_DOCKER_IMAGE_NAME: strapi
+    SERVICE_DOCKER_IMAGE_VERSION: ${CI_COMMIT_SHORT_SHA}
+  trigger:
+    project: viteezy/iac
+    branch: master
+  when: on_success
+  only:
+    - master

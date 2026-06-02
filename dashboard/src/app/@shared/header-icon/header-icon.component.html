@@ -1,0 +1,16 @@
+<span
+  class="usericon"
+  [ngClass]="{ round: !square }"
+  [style.background-color]="getIconColor()"
+  [style.width]="getSize()"
+  [style.height]="getSize()"
+>
+  <span
+    class="usericoncharacter"
+    [style.font-size]="getFontSize()"
+    [style.color]="getFontColor()"
+    [style.lineHeight]="getSize()"
+  >
+    {{ getIconCharacter() }}
+  </span>
+</span>

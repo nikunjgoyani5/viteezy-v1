@@ -1,0 +1,194 @@
+.homepage-wrapper {
+  max-width: 80em;
+  margin:  0 auto;
+
+  .orange-dots-1 {
+    display: none;
+  }
+
+  @include media-from-large {
+    .orange-dots-1 {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      width: 10%;
+    }
+  }
+}
+
+.explanation-wrapper {
+
+  div {
+    display: block;
+    padding: 0 2em 2em;
+    text-align: center;
+  }
+
+  @include media-from-medium {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 150px;
+  }
+
+  h4 {
+    padding: 0 1em 1em;
+  }
+
+  span {
+    display: block;
+    max-width: 20em;
+    line-height: 2em;
+    font-size: 16px;
+  }
+}
+
+.content-wrapper {
+  
+  @include media-from-medium {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h3 {
+    margin: 1em;
+    text-align: center;
+  }
+  
+  img, source {
+    height: 275px;
+    width: 100%;
+
+    @include media-from-medium {
+      width: initial;
+    }
+  }
+
+  p {
+    margin: 1em;
+    line-height: 2em;
+    font-size: 16px;
+
+  }
+
+  a {
+    margin: 0 0 1em 1em;
+    font-size: large;
+  }
+}
+
+.orthomolecular-therapist {
+  position: relative;
+  background-color: $dark-blue-2;
+  padding: 2em 1.25em 3em;
+  color: $grey;
+  line-height: 1.5em;
+  text-align: center;
+  font-size: larger;
+  border-radius: 1em;
+  margin: 0 auto;
+
+  .leaf {
+    position: absolute;
+    top: -1em;
+    right: 4em;
+  }
+
+  picture {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    padding: 0.3em;
+    border-style: solid;
+    border-color: $saffron;
+    border-radius: 50%;
+    border-width: 2px;
+}
+  source, img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+
+  span, q {
+    display: block;
+  }
+
+  .therapist-quote {
+    margin: 1em 0;
+  }
+
+  .therapist-name {
+    font-weight: 600;
+    font-size: smaller;
+  }
+
+  .therapist-description {
+    font-size: 16px;
+    color: $clay;
+    max-width: 18em;
+    margin: 0 auto;
+  }
+
+  .therapist-dots {
+    position: absolute;
+    width: 150px;
+    right: 6em;
+    bottom: -2em;
+  }
+}
+
+.bundle-preview-wrapper {
+  padding: 5em 0.1em 1em;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+
+  h3 {
+    margin-bottom: 1.5em;
+  }
+
+  .bundle-preview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    div{
+      background-color: $orange-grey;
+      flex: 40%;
+      border-radius: 2%;
+      margin: 0.1em;
+      padding: 0.5em;
+
+      @include media-from-medium {
+        max-width: 300px;
+        margin: 0.75em;
+      }
+    }
+
+    h5, span, a {
+      display: block;
+      margin: 0.5em 0;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .description {
+      color: $darker-grey;
+    }
+
+    .additional-information {
+      color: $orange-1;
+      text-decoration: none;
+    }
+  }
+}

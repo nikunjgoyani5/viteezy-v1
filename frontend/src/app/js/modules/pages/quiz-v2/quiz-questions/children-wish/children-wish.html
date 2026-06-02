@@ -1,0 +1,18 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <i class="icon icon-bottle"></i>
+      <h1>Heb je in de aankomende jaren een kinderwens?</h1>
+    </div>
+    <div class="quiz-button-wrapper">
+      <div class="quiz-button" ng-repeat="answer in vm.questionAnswers">
+        <input type="radio" id="answer-{{answer.code}}" name="children-wish" value="{{answer.id}}" ng-model="vm.questionConfig.answerId" ng-click="vm.submitQuestionAnswer(answer.id)">
+        <label for="answer-{{answer.code}}">
+          {{answer.name}}
+          <span ng-if="answer.subtitle">{{answer.subtitle}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

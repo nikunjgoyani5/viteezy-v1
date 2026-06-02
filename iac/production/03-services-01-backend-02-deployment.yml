@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: viteezy-production
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: backend
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: backend
+          image: europe-docker.pkg.dev/viteezy/backend/docker:${backend}
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: DATABASE_URL
+              value: db-backend-service:3306
+            - name: DATABASE_USER
+              value: viteezyUser
+            - name: DATABASE_PASSWORD
+              value: FIND-realize-whether-PART-stood
+            - name: JAVA_OPTS
+              value: -XX:MaxRAMPercentage=80
+            - name: LOGGING_LEVEL
+              value: WARN
+            - name: LOGGING_LOGGERS_VITEEZY_LEVEL
+              value: DEBUG
+            - name: LOGGING_LOGGERS_JERSEY
+              value: INFO # Set to DEBUG in order to fully print incoming HTTP requests
+            - name: PAYMENT_API_KEY
+              value: live_9HNcAF2B6S4UyMrrBbR6eF6qmsNzFh
+            - name: PAYMENT_REDIRECT_URL
+              value: https://viteezy.nl/confirmed
+            - name: PAYMENT_WEBHOOK_URL
+              value: https://api.viteezy.nl/viteezy/api/payment/callback
+            - name: REQUEST_REDIRECT_URL
+              value: https://viteezy.nl/payment-request
+            - name: PAYMENT_RECURRING_MONTHS
+              value: "1"
+            - name: PAYMENT_FIRST_DESCRIPTION
+              value: Betaling voor Viteezy
+            - name: PAYMENT_RECURRING_DESCRIPTION
+              value: Viteezy abonnement
+            - name: PAYMENT_SHIPPING_COSTS_THRESHOLD
+              value: "20"
+            - name: PAYMENT_START_DATE_IN_DAYS
+              value: "26"
+            - name: SLACK_ENVIRONMENT
+              value: live
+            - name: SLACK_URL
+              value: ""
+            - name: FRONTEND_BASE_URL
+              value: https://viteezy.nl
+            - name: MAIL_SERVER
+              value: in-v3.mailjet.com
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_USERNAME
+              value: 5508d55cd920211e0d3ae0cf42cf7b2d
+            - name: MAIL_PASSWORD
+              value: dcb4d667910327a2e8b92c550c82b64d
+            - name: MAIL_DEFAULT_ORDER_BCC
+              value: c.lakhani@viteezy.nl
+            - name: MAIL_PHARMACIST_CSV_RECIPIENT
+              value: orders@apotheekdehoofdrol.nl
+            - name: MAIL_PHARMACIST_CSV_SUBJECT
+              value: CSV bestanden apotheker
+            - name: DELIVERY_DATE_IN_DAYS
+              value: "3"
+            - name: PAYMENT_PROCESSING_IN_DAYS
+              value: "5"
+            - name: ACTIVECAMPAIGN_API_TOKEN
+              value: 6c494157fa815f0d0fe8d05235c8cbdd0ae845c61a5fd9decfb9595ed617b8bdaa68c7b5
+            - name: ACTIVECAMPAIGN_ACCOUNT_NAME
+              value: viteezy
+            - name: FACEBOOK_PIXEL_ID
+              value: "793317934447450"
+            - name: FACEBOOK_APP_SECRET
+              value: 03bb9416d8edede953344b9f04b33314
+            - name: FACEBOOK_TEST_EVENT_CODE
+              value:
+            - name: SFTP_REMOTE_HOST
+              value: sftp-gateway-transfer.p16.cldsvc.net
+            - name: SFTP_USERNAME
+              value: sftpviteezyp
+            - name: SFTP_PRIVATEKEY_FILENAME
+              value: /etc/viteezy-production-secret-volume/private_key_viteezy_prod.pem
+            - name: POST_NL_API_KEY
+              value: 2GiKWgfvOKbgobHbpChbRavhV2A9uYNX
+            - name: KLAVIYO_URL
+              value: https://a.klaviyo.com/api
+            - name: KLAVIYO_API_KEY
+              value: pk_f0633609cdb1dff56171368798b8f57a28
+            - name: NEWSLETTER_LIST_ID
+              value: WaqFWy
+            - name: EXISTING_CUSTOMER_LIST_ID
+              value: WNf6Dm
+          startupProbe:
+            httpGet:
+              path: /health-check?type=alive
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health-check?type=alive
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 1
+          resources:
+            requests:
+              memory: 768Mi
+              cpu: 100m
+            limits:
+              memory: 1500Mi
+              cpu: 1
+          volumeMounts:
+            - name: viteezy-production-secret-volume
+              readOnly: true
+              mountPath: "/etc/viteezy-production-secret-volume"
+      volumes:
+      - name: viteezy-production-secret-volume
+        secret:
+          secretName: viteezy-production-secrets

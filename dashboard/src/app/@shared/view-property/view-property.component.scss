@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.label {
+  width: 49%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.value {
+  display: inline-block;
+  overflow: hidden;
+}
+.viewProperty {
+  width: 100%;
+  word-break: break-word;
+}

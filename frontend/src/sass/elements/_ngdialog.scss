@@ -1,0 +1,225 @@
+$dialog-padding: 3em;
+
+@keyframes ngdialog-hide {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
+}
+
+@keyframes ngdialog-show {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.ngdialog-content,
+.ngdialog-overlay {
+  animation: ngdialog-show ease-out 0.25s;
+}
+
+.ngdialog.ngdialog-closing .ngdialog-content,
+.ngdialog.ngdialog-closing .ngdialog-overlay {
+  animation: ngdialog-hide ease-out 0.25s;
+}
+
+.ngdialog-open {
+  overflow: hidden;
+
+  .navigation,
+  main {
+    filter: blur(0.25em);
+  }
+
+  &::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+  }
+}
+
+.ngdialog-close {
+  position: absolute;
+  top: -2.5em;
+  right: 0.25rem;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &::before {
+    font-family: Viteezy-Icons;
+    content: "\eae3";
+    color: $white;
+  }
+}
+
+.ngdialog {
+  position: fixed;
+  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+    /* Adjusts for spacing */
+  }
+}
+
+.ngdialog-content, mat-dialog-container {
+  max-width: 50rem;
+  width: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  text-align: left;
+  vertical-align: middle;
+  
+  .error {
+    max-width: none;
+  }
+
+  textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .section-wrapper {
+    background-color: #fff;
+  }
+}
+
+.ngdialog-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.dialog-content-wrap {
+  background-color: $main-background-color;
+  box-sizing: border-box;
+  border-radius: 0.3rem;
+  overflow: auto;
+  max-height: 85vh;
+  padding: 1em;
+  overflow-x: hidden;
+
+  input {
+    width: 100%;
+    max-width: 16em;
+  }
+
+  h1 {
+    margin-bottom: 0.3em;
+    font-size: 1rem;
+  }
+
+  ul {
+    margin-left: 1em;
+  }
+
+  .submit-button {
+    display: block;
+    max-width: 12em;
+    margin: 2em auto;
+  }
+
+  p {
+    margin: 1em 0;
+    color: $darker-grey;
+  }
+
+  .input-error {
+    color: $red;
+    margin: 0.5em 0;
+  }
+}
+
+.dialog-close-footer {
+  border-top: 1px solid $main-border-color;
+  text-align: center;
+  font-weight: bold;
+  margin: 0 -3em;
+  padding: 1em 0 0;
+  color: $darker-grey;
+}
+
+.capsule-popup {
+  .dialog-content-wrap {
+    background: $white;
+    padding-bottom: 1em;
+  }
+}
+
+.close-capsule {
+  text-align: right;
+  display: block;
+}
+
+.dialog-ingredient-information {
+  color: $main-font-color;
+
+  h1 {
+    margin-bottom: 0.5em;
+  }
+
+  h2 {
+    margin: 0.5em 0;
+  }
+
+  p {
+    color: inherit;
+  }
+
+  span {
+    color: $darker-grey;
+    font-size: 0.8em;
+    display: block;
+    margin: 1em 0;
+  }
+}
+
+@include media-medium {
+  .ngdialog-open {
+    position: fixed;
+    z-index: 10;
+  }
+
+  .ngdialog-open::before {
+    z-index: 10;
+  }
+}
+
+.our-product-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em;
+}

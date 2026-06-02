@@ -1,0 +1,8 @@
+<div class="blend-progress">
+  <ol>
+    <li [ngClass]="{'active': blendStep == category.blendStep}" *ngFor="let category of blendCategories">
+      <a href="blend/{{ category.blendStep }}"><span *ngIf="blendStep > category.blendStep">{{ category.title }}</span></a>
+      <span *ngIf="blendStep <= category.blendStep">{{ category.title }}</span>
+    </li>
+  </ol>
+</div>

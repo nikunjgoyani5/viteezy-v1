@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>
+  <strong>{{ label }}</strong>
+</h1>
+<div mat-dialog-content>
+  <div class="viewProperties" *ngIf="observableViewProperties?.length > 0">
+    <app-view-property
+      *ngFor="let viewProperty of observableViewProperties"
+      [showlabel]="viewProperty.showlabel"
+      [label]="viewProperty.label"
+      [value]="viewProperty.value"
+      [type]="viewProperty.type"
+      [style]="viewProperty.style"
+    >
+    </app-view-property>
+    <mat-divider style="margin-top: 5px"></mat-divider>
+  </div>
+  <div class="viewProperties" *ngIf="staticViewProperties?.length > 0">
+    <app-view-property
+      *ngFor="let viewProperty of staticViewProperties"
+      [showlabel]="viewProperty.showlabel"
+      [label]="viewProperty.label"
+      [value]="viewProperty.value"
+      [type]="viewProperty.type"
+      [style]="viewProperty.style"
+    >
+    </app-view-property>
+    <mat-divider style="margin-top: 5px"></mat-divider>
+  </div>
+  <form *ngIf="formGroup && formModel?.length > 0" [formGroup]="formGroup">
+    <dynamic-material-form-control
+      [hidden]="controlModel.hidden"
+      *ngFor="let controlModel of formModel"
+      [group]="formGroup"
+      [model]="controlModel"
+    ></dynamic-material-form-control>
+  </form>
+</div>
+<div mat-dialog-actions class="buttons">
+  <button *ngIf="actionButtonVisible" mat-button (click)="doAction()">
+    {{ label }}
+  </button>
+  <button mat-button (click)="closeDialog()">Annuleren</button>
+</div>

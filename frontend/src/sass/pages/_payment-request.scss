@@ -1,0 +1,28 @@
+.payment-request-wrapper {
+  height: 50vh;
+  margin: 3em 1em;
+
+  span {
+    display: block;
+    text-align: center;
+    margin: 1em;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .paid {
+    font-size: 36px;
+    color: $turquoise;
+    font-weight: 600;
+    font-family: 'Sofia';
+    font-display: swap;
+  }
+}
+
+.payment-amount {
+  font-weight: 600;
+  font-size: 36px;
+}

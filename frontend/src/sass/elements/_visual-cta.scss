@@ -1,0 +1,95 @@
+.visual-cta {
+  position: relative;
+  display: flex;
+  background-color: $main-brand-color;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0.25em 0.8rem;
+  padding: 1em;
+  color: #fff;
+
+  svg {
+    position: absolute;
+    bottom: -3em;
+    right: 0;
+  }
+}
+
+.visual-cta--compact {
+  margin: 0 1em;
+}
+
+.visual-cta--section {
+  flex-basis: 100%;
+  flex-grow: 1;
+  padding: 1em 1em;
+  line-height: 30px;
+  box-sizing: border-box;
+
+  span {
+    display: block;
+    font-size: xx-large;
+    text-align: center;
+  }
+
+  a {
+    text-align: center;
+    max-width: 250px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &.wide {
+    flex-basis: initial;
+  }
+
+  .submit-button--small {
+    width: 100%;
+  }
+}
+
+@include media-from-medium {
+  .visual-cta {
+    padding: 5em;
+  }
+
+  .visual-cta--section {
+    flex-basis: 50%;
+
+    &:nth-child(1) {
+      font-weight: 600;
+    }
+
+    &:nth-child(2) {
+      text-align: left;
+    }
+  }
+
+  .visual-cta--section.large {
+    h3 {
+      font-size: 50px;
+    }
+
+    p, strong {
+      font-size: 24px;
+    }
+  }
+
+  .visual-cta--compact {
+    padding: 1em;
+    background-image: none;
+    align-items: center;
+
+    .visual-cta--section {
+      padding: 0;
+
+      &:nth-child(1) {
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        text-align: center;
+      }
+    }
+  }
+}

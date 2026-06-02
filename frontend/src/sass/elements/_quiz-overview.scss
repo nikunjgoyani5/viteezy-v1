@@ -1,0 +1,16 @@
+.quiz-overview__recommendation {
+  margin-bottom: 5em;
+
+  .submit-button {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 15em;
+  }
+}
+
+@include media-small {
+  .reccomendation-title {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,234 @@
+<div class="blend-page">
+  <div *ngIf="blendStep === 1">
+    <section class="section-blank">
+      <blend-progress blendStep="{{blendStep}}"></blend-progress>
+
+      <div class="wrapper wrapper-header-information">
+        <h1 class="recommendation-title">Unieke aanbeveling voor {{ user.firstName }}</h1>
+        <p class="recommendation-intro">Jouw persoonlijke aanbeveling is gebaseerd op de door jou gegeven antwoorden, ons algoritme en onze database van wetenschappelijk onderzoek. De aanbeveling is op maat gemaakt voor jou om je te helpen je doelen te bereiken. Dit persoonlijke plan, speciaal gemaakt voor jou, is aanbevolen om je lange termijn gezondheid te ondersteunen.</p>
+      </div>
+    </section>
+    <section>
+      <div class="wrapper">
+        <div class="blend-ingredient-type proteine">
+          <div class="type-information">
+            <h2>Vitamines, mineralen en kruiden</h2>
+            <span>Capsules</span>
+            <p class="capsule-intro">Speciaal geselecteerde capsules, geleverd in 30 handige zakjes zodat je er elke dag een kan nemen.</p>
+
+            <ul class="type-information-list">
+              <li *ngFor="let item of vitamines">{{ item.content?.title }}</li>
+            </ul>
+          </div>
+          <div class="type-ingredients">
+            <div class="ingredient" *ngFor="let item of vitamines">
+              <span class="out-of-stock-badge" *ngIf="!item.isActive">Tijdelijk niet beschikbaar</span>
+              <div class="ingredient-image">
+                <img [src]="item.content?.productImage.data?.attributes.url">
+              </div>
+              <div class="ingredient-reasons">
+                <span *ngFor="let explanation of item.explanation">{{ explanation }}</span>
+              </div>
+              <h2>{{ item.content?.title }}</h2>
+              <button class="arrow-link" (click)="openIngredientPopup(item)" *ngIf="!item.sku">Meer lezen <i class="icon icon-arrowTabbar"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-cta-wrapper">
+      <a href="/blend/2" class="button submit-button">Volgende</a>
+    </div>
+  </div>
+
+  <div *ngIf="blendStep === 2">
+    <div *ngIf="checkoutBanner?.active && checkoutBanner?.title" class="blend-information">
+      {{ checkoutBanner.title }}
+    </div>
+
+    <blend-progress blendStep="{{blendStep}}"></blend-progress>
+
+    <div class="wrapper">
+      <div class="checkout-wrapper">
+        <div class="checkout-main">
+          <div class="ingredient-category">
+            <h3 *ngIf="isCheckout">Mijn persoonlijke plan</h3>
+            <div class="ingredient-wrapper ingredient-wrapper-compact" *ngFor="let item of vitamines">
+              <span class="out-of-stock-badge" *ngIf="!item.isActive">Tijdelijk niet beschikbaar</span>
+              <div class="ingredient-compact">
+                <div class="ingredient-compact-image" (click)="openIngredientPopup(item)">
+                  <img [src]="item.content?.productImage.data?.attributes.url">
+                </div>
+        
+                <div class="ingredient-compact-information">
+                  <h4>{{ item.content?.title }}</h4>
+                  <span *ngFor="let explanation of item.explanation">{{ explanation }}</span>
+                </div>
+                <div class="ingredient-compact-action">
+                  <i class="icon icon-trash" (click)="removeIngredientFromBlend(item)"></i>
+                </div>
+              </div>
+        
+              <div class="price-wrapper">
+                <div>
+                  <span class="ingredient-information" (click)="openIngredientPopup(item)" *ngIf="!item.sku">Meer informatie</span>
+                </div>
+                <div class="price">
+                  &euro; {{ item.price }} <span class="price-amount-information" *ngIf="!item.sku">/ maand (30 pillen)</span>
+                </div>
+              </div>
+            </div>
+        
+            <div class="additional-products" [ngClass]="{'white': isDomain == true}">
+              <div *ngIf="additionalProducts.length && displayAdditionalProducts">
+                <h4 class="additional-title">Maak jouw vitamineplan compleet:</h4>
+                <div class="ingredient-wrapper ingredient-wrapper-compact">
+                  <div class="ingredient-compact" *ngFor="let additionalProduct of additionalProducts">
+                    <div class="ingredient-compact-image" (click)="openIngredientPopup(additionalProduct)">
+                      <img [src]="additionalProduct.content?.productImage.data?.attributes.url">
+                    </div>
+        
+                    <div class="ingredient-compact-information">
+                      <h4>{{ additionalProduct.content?.title }}</h4>
+                      <button class="button submit-button" (click)="addAdditionalProduct(additionalProduct)">+ Voeg toe &euro; {{ additionalProduct.price }}</button>
+                    </div>
+                    <span class="cross" (click)="removeAdditionalCapsule(additionalProduct)">&#10005;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="additional-footer">
+                <span class="title">Op zoek naar een ander product?</span>
+                <button class="button submit-button" (click)="openAdditionalProductPopup()">Bekijk alles</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="checkout-sidebar">
+          <pricing [action]="gotoPaymentInformation" submitButtonText="Naar de checkout"></pricing>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="blendStep === 3">
+    <div *ngIf="checkoutBanner?.active && checkoutBanner?.title" class="blend-information">
+      {{ checkoutBanner.title }}
+    </div>
+
+    <blend-progress blendStep="{{blendStep}}"></blend-progress>
+
+    <div class="wrapper">
+      <div class="checkout-wrapper">
+        <form id="checkout-form" name="form" novalidate #form="ngForm" (ngSubmit)="createPayment(form)">
+          <div class="checkout-main">
+            <h3 class="checkout-credentials-title" *ngIf="isCheckout">Jouw details</h3>
+            <div class="inactive-shipment-selection" *ngIf="canShowInactiveShipmentPreference()">
+              <span class="inactive-shipment-selection__label">Gekozen verzendoptie bij tijdelijk niet beschikbare producten:</span>
+              <strong class="inactive-shipment-selection__value">{{ getInactiveShipmentPreferenceLabel() }}</strong>
+              <button type="button" class="inactive-shipment-selection__change" (click)="changeInactiveShipmentPreference()">
+                Wijzig keuze
+              </button>
+            </div>
+            <div class="order-credentials">
+              <div class="input-row">
+                <div>
+                  <label for="name">Naam</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="name" id="name" value="" #firstName="ngModel" [(ngModel)]="user.firstName" required>
+                  </div>
+                  <p class="input-error" *ngIf="(firstName.dirty || firstName.touched || form.submitted) && firstName.errors?.['required']">Dit veld is verplicht</p> 
+                </div>
+                <div>
+                  <label for="lastname">Achternaam</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="lastname" id="lastname" value="" #lastName="ngModel" [(ngModel)]="user.lastName" required>
+                  </div>
+                  <p class="input-error" *ngIf="(lastName.dirty || lastName.touched || form.submitted) && lastName.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div>
+                  <label for="phonenumber">Telefoonnummer</label>
+                  <div class="input-wrapper">
+                    <input type="tel" name="phonenumber" id="phonenumber" value="" #phoneNumber="ngModel" [(ngModel)]="user.phoneNumber" required>
+                  </div>
+                  <p class="input-error" *ngIf="(phoneNumber.dirty || phoneNumber.touched || form.submitted) && phoneNumber.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+                <div>
+                  <label for="email">E-mailadres</label>
+                  <div class="input-wrapper">
+                    <input type="email" name="email" id="email" value="" #email="ngModel" email [(ngModel)]="user.email" [readonly]="isDomain" required>
+                  </div>
+                  <p class="input-error" *ngIf="(email.dirty || email.touched || form.submitted) && email.errors?.['required']">Dit veld is verplicht</p>
+                  <p class="input-error" *ngIf="(email.dirty || email.touched || form.submitted) && email.invalid">Vul een geldig e-mail in</p> 
+                </div>
+              </div>
+            </div>
+
+            <h3 class="checkout-credentials-title" *ngIf="isCheckout">Bezorgadres</h3>
+            <div class="order-credentials">
+              <div class="input-row">
+                <div>
+                  <label for="zipcode">Postcode</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="zipcode" id="zipcode" value="" #postcode="ngModel" [(ngModel)]="user.postcode" (ngModelChange)="addressInputChange(true)" (blur)="addressInputBlur()" required>
+                  </div>
+                  <p class="input-error" *ngIf="(postcode.dirty || postcode.touched || form.submitted) && postcode.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+                <div>
+                  <label for="houseNumber">Huisnummer</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="houseNumber" id="houseNumber" value="" #houseNumber="ngModel" [(ngModel)]="user.houseNumber" (ngModelChange)="addressInputChange(true)" (blur)="addressInputBlur()" required>
+                  </div>
+                  <p class="input-error" *ngIf="(houseNumber.dirty || houseNumber.touched || form.submitted) && houseNumber.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+                <div *ngIf="houseNumberAdditions || showHouseNumerAddition">
+                  <label for="houseNumberAddition">Toevoeging</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="houseNumberAddition" list="houseNumberAddition" #houseNumberAddition="ngModel" [(ngModel)]="user.houseNumberAddition" (ngModelChange)="addressInputChange(false)" (blur)="addressInputBlur()" [required]="houseNumberAdditions && houseNumberAdditions[0] !== null && user.country === 'NL'" autocomplete="off">
+                    <datalist id="houseNumberAddition">
+                      <option *ngFor="let houseNumberAddition of houseNumberAdditions" value="{{houseNumberAddition}}">{{houseNumberAddition}}</option>
+                    </datalist>
+                  </div>
+                  <p class="input-error" *ngIf="(houseNumberAddition.dirty || houseNumberAddition.touched || form.submitted) && houseNumberAddition.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+              </div>
+
+              <div class="input-row">
+                <div *ngIf="user.street || showStreet">
+                  <label for="street">Straat</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="street" id="street" value="" #street="ngModel" [(ngModel)]="user.street" [readonly]="!showStreet" (ngModelChange)="addressInputChange(false)" (blur)="addressInputBlur()" required>
+                  </div>
+                  <p class="input-error" *ngIf="(street.dirty || street.touched || form.submitted) && street.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+                <div *ngIf="user.city">
+                  <label for="city">Plaats</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="city" id="city" value="" #city="ngModel" [(ngModel)]="user.city" readonly required>
+                  </div>
+                  <p class="input-error" *ngIf="(city.dirty || city.touched || form.submitted) && city.errors?.['required']">Dit veld is verplicht</p>
+                </div>
+                <div class="country-select">
+                  <label for="country">Land</label>
+                  <div class="input-wrapper">
+                    <select class="country" name="country" [(ngModel)]="user.country" (ngModelChange)="addressInputChange(true)">
+                      <option value="NL">Nederland</option>
+                      <option value="BE">België</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <p class="input-error customer" *ngIf="noAddressFound">Adres wordt niet herkend</p>
+            </div>
+          </div>
+          <div class="checkout-sidebar">
+            <pricing submitButtonText="Betalen"></pricing>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

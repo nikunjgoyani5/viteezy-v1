@@ -1,0 +1,6 @@
+**/
+!/data
+!/vop
+!/tests
+!requirements.txt
+!pyproject.toml

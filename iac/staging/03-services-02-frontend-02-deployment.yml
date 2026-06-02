@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: viteezy-staging
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: frontend
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: frontend
+          image: europe-docker.pkg.dev/viteezy/frontend/docker:${frontend}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NG_APP_STRAPI_API_TOKEN
+              value: 3790d16ab987f737c4c0053f549601f391d19bc773178b1bc0950e6d243507fee2dfc07d74087332cd59b4391026e07822a14d16b88abd9c5cdbbd28a19841b17f0501a92fe621a95548637eac7b428d9d1e22865d10080bb65714eca5193b97e45dae4266ab2c685c022d66c819c79451dacb24a7e4d38e606a6b6e4b8ac9b7

@@ -1,0 +1,56 @@
+<section>
+  <div class="wrapper-compact-wide">
+    <div class="domain-page-information">
+      <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+    </div>
+    <div class="quiz-overview__recommendation">
+      <h2 class="reccomendation-title">Op basis van jouw antwoorden is dit je persoonlijke aanbeveling.</h2>
+
+      <div class="blend-ingredient-type" ng-if="vm.proteines.length">
+        <div class="type-information">
+          <h2>Eiwitten</h2>
+          <span>Blend</span>
+          <p>Speciaal geselecteerde eiwitten voor jou, geleverd met schepje op basis van jouw behoeftes.</p>
+
+          <ul class="type-information-list">
+            <li ng-repeat="item in vm.proteines">{{ item.title }}</li>
+          </ul>
+        </div>
+        <div class="type-ingredients">
+          <div class="ingredient" ng-repeat="item in vm.proteines">
+            <div class="ingredient-image">
+              <img src="{{ item.image }}">
+            </div>
+            <span ng-repeat="explanation in item.explanation track by $index">{{ explanation }}</span>
+            <h2>{{ item.title }}</h2>
+            <a href="#" class="arrow-link" ng-click="vm.openIngredientPopup(item.code, item)">Meer lezen <i class="icon icon-arrowTabbar"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="blend-ingredient-type">
+        <div class="type-information">
+          <h2>Vitamines, mineralen en kruiden</h2>
+          <span>Capsules</span>
+          <p>Speciaal geselecteerde capsules, geleverd in 30 handige zakjes zodat je er elke dag een kan nemen.</p>
+
+          <ul class="type-information-list">
+            <li ng-repeat="item in vm.vitamines">{{ item.title }}</li>
+          </ul>
+        </div>
+        <div class="type-ingredients">
+          <div class="ingredient" ng-repeat="item in vm.vitamines">
+            <div class="ingredient-image">
+              <img src="{{ item.image }}">
+            </div>
+            <span ng-repeat="explanation in item.explanation track by $index">{{ explanation }}</span>
+            <h2>{{ item.title }}</h2>
+            <a href="#" class="arrow-link" ng-click="vm.openIngredientPopup(item.code, item)">Meer lezen <i class="icon icon-arrowTabbar"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <a class="button submit-button" ng-click="vm.updateBlendWithPreview()">Ik wil deze samenstelling!</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+CREATE TABLE `ingredient_content` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ingredient_id` int(11) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `bullets` varchar(1000) DEFAULT NULL,
+  `title_1` varchar(250) DEFAULT NULL,
+  `text_1` varchar(2500) DEFAULT NULL,
+  `title_2` varchar(250) DEFAULT NULL,
+  `text_2` varchar(2500) DEFAULT NULL,
+  `title_3` varchar(250) DEFAULT NULL,
+  `text_3` varchar(2500) DEFAULT NULL,
+  `notice` varchar(1000) DEFAULT NULL,
+  `ingredient_article_id` int(11) DEFAULT NULL,
+  `excipients` varchar(1000) DEFAULT NULL,
+  `claim` varchar(1000) DEFAULT NULL,
+  `creation_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modification_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ingredient_content_ingredient_id_pk_2` (`ingredient_id`),
+  KEY `ingredient_articles_id_ingredient_id_fk` (`ingredient_article_id`),
+  CONSTRAINT `ingredient_articles_id_ingredient_id_fk` FOREIGN KEY (`ingredient_article_id`) REFERENCES `ingredient_articles` (`id`),
+  CONSTRAINT `ingredient_content_ingredient_id_fk` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;

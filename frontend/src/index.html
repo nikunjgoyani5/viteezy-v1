@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="nl-NL" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Viteezy - Gepersonaliseerde dagelijkse vitamines</title>
+  <base href="/">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <meta name=theme-color content="#00AB96">
+  <link rel=icon type=image/png href=/assets/image/favicon.png sizes=196x196>
+  <link rel="preload" as="image" href="/assets/image/header.webp">
+
+  <meta name="description" content="Vul de quiz in en ontvang vitamines en supplementen op basis van jouw persoonlijke eigenschappen en levensstijl, gemaakt van de beste ingrediënten.">
+  <meta name="keywords" content="Viteezy, Gepersonaliseerde vitamines">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Viteezy">
+  <meta property="og:locale" content="nl_NL">
+
+  <meta property="og:url" content="https://www.viteezy.nl/">
+  <meta property="og:title" content="Viteezy: Gepersonaliseerde dagelijkse vitamines">
+  <meta property="og:description" content="Vul de quiz in en ontvang vitamines en supplementen op basis van jouw persoonlijke eigenschappen en levensstijl, gemaakt van de beste ingrediënten.">
+  <meta property="og:image" content="https://www.viteezy.nl/assets/image/header.webp">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Viteezy: Gepersonaliseerde dagelijkse vitamines">
+  <meta name="twitter:description" content="Vul de quiz in en ontvang vitamines en supplementen op basis van jouw persoonlijke eigenschappen en levensstijl, gemaakt van de beste ingrediënten.">
+  <meta name="twitter:image" content="https://www.viteezy.nl/assets/image/header.webp">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <script src="/assets/env.js"></script>
+  <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=VMhqn7'></script>
+</head>
+
+<body ng-csp ng-class="[{'quiz-page': isQuiz, 'quiz-page-v2': isQuizv2, 'blend-page': isBlend, 'basic-navigation': isBasic }, quizAnimation]">
+  <vi-navigation homepage="isHomePage" compact="compactNavigation" previous-button="showPreviousButton" logo-clickable="logoClickable"></vi-navigation>
+  <main ui-view></main>
+  <vi-footer show-footer="visibleFooter"></vi-footer>
+</body>
+
+</html>

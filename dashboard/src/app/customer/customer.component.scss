@@ -1,0 +1,48 @@
+.container {
+  padding: 1em;
+}
+
+.addButton {
+  float: right;
+  margin-bottom: 10px;
+}
+
+.mat-form-field-infix {
+  width: 275px !important;
+}
+
+.search-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: baseline;
+  max-width: 750px;
+
+  form {
+    flex: 50%;
+  }
+}
+
+.form-notes-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notes-wrapper {
+  max-width: 900px;
+}
+
+.note-add {
+  color: #777;
+  margin: 10px 0 0 auto;
+  display: block;
+  font-size: 1.5em;
+}
+
+.note-add:hover {
+  color: #444;
+}
+
+.table-div {
+  z-index: 0;
+  position: relative;
+}

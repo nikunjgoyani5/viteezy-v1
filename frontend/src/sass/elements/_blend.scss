@@ -1,0 +1,72 @@
+.blend-information {
+  background: $main-brand-color;
+  text-align: center;
+  font-weight: bold;
+  color: $white;
+  padding: 1.25em 0;
+
+  .banner-btn {
+    padding: .1rem 0.5rem .2rem;
+    font-weight: 600;
+    font-size: 16px;
+    color: #00ab96;
+    background: #fff;
+    border: 1px solid #00AB96;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+
+    &:hover {
+      background: #00AB96;
+      color: #fff !important;
+      border-color: #fff;
+      box-shadow: 0 0 0 2px #fff, 0 6px 14px rgba(0,0,0,.15);
+    }
+  }
+}
+
+.blend-page {
+  background: #fff;
+
+  .bottom-cta-wrapper {
+    background: none;
+    position: static;
+  }
+}
+
+@include media-medium {
+  .ingredient {
+    margin: 0.5em 0;
+  }
+}
+
+@include media-small {
+  .recommendation-title {
+    font-size: 1.5rem;
+  }
+
+  .recommendation-intro,
+  .capsule-intro {
+    display: none;
+  }
+
+  .blend-page {
+    .bottom-cta-wrapper {
+      position: fixed;
+      text-align: inherit;
+      padding: 2em 1em;
+      background: linear-gradient(rgba($main-background-color, 0), $main-background-color 50%);
+
+      button {
+        padding: 0.3rem 0.75rem 0.4rem;
+      }
+    }
+
+    section:last-of-type {
+      padding-bottom: 5em;
+    }
+  }
+}
+
+.blend-page #launcher {
+  bottom: 1.3em !important;
+}

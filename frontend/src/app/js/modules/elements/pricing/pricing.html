@@ -1,0 +1,113 @@
+<div class="daily-pricing-information" ng-if="vm.daily && vm.pricing.months == 1 || vm.pricing.months == 3 ">
+  <h3>Jouw dagelijkse kosten</h3>
+  <br>
+  <h3 ng-if="vm.pricing.months == 1">&euro; {{ vm.pricing.recurringAmount/30 | number : 2 }}</h3>
+  <span ng-if="vm.pricing.months == 1">&euro; {{ vm.pricing.recurringAmount | number : 2 }} per maand</span>
+  <h3 ng-if="vm.pricing.months == 3">&euro; {{ vm.pricing.recurringAmount/90 | number : 2 }}</h3>
+  <span ng-if="vm.pricing.months == 3">&euro; {{ vm.pricing.recurringAmount | number : 2 }} per drie maanden</span>
+</div>
+
+<div class="pricing">
+  <div class="pricing__header">
+    <h3>Kies een plan</h3>
+    <span>
+      <a ng-href="{{ vm.isDomain ? '/domain/stop-membership' : '' }}" class="green-link no-underline">Stop</a> of
+      <a ng-href="{{ vm.isDomain ? '/domain/pause-membership/pause' : '' }}" class="green-link no-underline">pauzeer</a>
+      <br> wanneer je wil
+    </span>
+  </div>
+
+  <div class="pricing__plan-options">
+    <input type="radio" name="plan-month" value="0" id="single" ng-model="vm.pricing.months" ng-change="vm.getPricing()">
+    <label class="pricing__plan-option" for="single" ng-if="vm.singleBuyAvailable">
+      <div class="pricing__plan-type">
+        Eenmalig
+      </div>
+    </label>
+    <input type="radio" name="plan-month" value="1" id="monthly" ng-model="vm.pricing.months" ng-change="vm.getPricing()">
+    <label class="pricing__plan-option" for="monthly">
+      <div class="pricing__plan-type">
+        <span>Maandelijks</span>
+        <span ng-if="vm.singleBuyAvailable">Bespaar <strong>15%</strong></span>
+      </div>
+    </label>
+
+    <input type="radio" name="plan-month" value="3" id="quarter" ng-model="vm.pricing.months" ng-change="vm.getPricing()">
+    <label class="pricing__plan-option" for="quarter">
+      <div class="pricing__plan-type">
+        <span>Per 3 maanden</span>
+        <span ng-if="!vm.singleBuyAvailable">Bespaar <strong>15%</strong></span>
+        <span ng-if="vm.singleBuyAvailable">Bespaar <strong>28%</strong></span>
+      </div>
+      <div class="pricing__plan-about">
+        Meest gekozen & <br>
+        Beste deal
+      </div>
+    </label>
+  </div>
+
+  <div class="pricing-discount" ng-if="!vm.hideCouponCodeInput" ng-class="{'valid-coupon': vm.pricing.couponDiscount > 0 || vm.pricing.referralDiscount > 0 }">
+    <input type="text" name="" value="" class="forminput" ng-model="vm.pricing.couponCode" ng-model-options="{ debounce: 1000 }" ng-change="vm.checkCouponCode()" placeholder="Refferalcode">
+    <p class="input-error price" ng-if="vm.pricing.couponError && vm.pricing.couponCode.length">Deze code is niet geldig.</p>
+    <p class="input-error price" ng-if="vm.pricing.couponPlanError && vm.pricing.months == 1 && vm.pricing.couponCode.length">Deze code is alleen geldig op een 3-maanden plan.</p>
+    <p class="input-error price" ng-if="vm.pricing.couponPlanError && vm.pricing.months == 3 && vm.pricing.couponCode.length">Deze code is alleen geldig op een 1-maand plan.</p>
+    <p class="input-error price" ng-if="vm.pricing.basePriceCoupon < vm.pricing.coupon.minimumAmount">Voor deze code moet er minimaal &euro; {{ vm.pricing.coupon.minimumAmount }} in je vitamineplan zitten.</p>
+  </div>
+
+  <hr class="pricing__divider">
+
+  <dl class="pricing__plan-information">
+    <h4>Jouw plan</h4>
+    <dd>&euro; {{ vm.pricing.basePrice | number: 2 }}</dd>
+    <dt>Vitaminemix</dt>
+    <hr class="pricing__divider">
+    <dd ng-if="vm.pricing.shippingCost === 0">Gratis</dd>
+    <dd ng-if="vm.pricing.shippingCost > 0">&euro; {{ vm.pricing.shippingCost }}</dd>
+    <dt>Verzendkosten</dt>
+    <dd class="pricing__plan-highlight" ng-if="vm.pricing.months == 1 && vm.singleBuyAvailable">- &euro; {{ vm.pricing.noSubscriptionFee | number: 2 }}</dd>
+    <dt ng-if="vm.pricing.months == 1 && vm.singleBuyAvailable">Korting 1 maand</dt>
+    <dd class="pricing__plan-highlight" ng-if="vm.pricing.months == 3 && vm.pricing.planDiscount">- &euro; {{ vm.pricing.planDiscount | number: 2 }}</dd>
+    <dt ng-if="vm.pricing.months == 3 && vm.pricing.planDiscount">Korting 3 maanden</dt>
+    <dd class="pricing__plan-highlight" ng-if="vm.pricing.couponDiscount > 0">- &euro; {{ vm.pricing.couponDiscount | number: 2 }}</dd>
+    <dt ng-if="vm.pricing.couponDiscount > 0 && vm.discountedIngredient">Korting {{ vm.discountedIngredient }}</dt>
+    <dt ng-if="vm.pricing.couponDiscount > 0 && vm.pricing.coupon.recurringTerms">Kortingscode variabel</dt>
+    <dt ng-if="vm.pricing.couponDiscount > 0 && !vm.isRecurringCoupon && !vm.discountedIngredient && !vm.pricing.coupon.recurringTerms">Kortingscode eenmalig</dt>
+    <dt ng-if="vm.pricing.couponDiscount > 0 && vm.isRecurringCoupon && !vm.discountedIngredient && !vm.pricing.coupon.recurringTerms">Kortingscode blijvend</dt>
+    <dd class="pricing__plan-highlight" ng-if="vm.pricing.referralDiscount > 0 && vm.pricing.basePriceCoupon > vm.pricing.coupon.minimumAmount">- &euro; {{ vm.pricing.referralDiscount | number: 2 }}</dd>
+    <dt ng-if="vm.pricing.referralDiscount > 0 && vm.pricing.basePriceCoupon > vm.pricing.coupon.minimumAmount">Korting van {{ vm.referralFirstName }}</dt>
+  </dl>
+
+  <dl class="pricing__plan-information">
+    <dd>&euro; {{ vm.pricing.firstAmount | number: 2 }}</dd>
+    <dt>Totaal</dt>
+  </dl>
+
+  <div class="pricing__cta">
+    <div class="pricing__cta-information" ng-if="vm.pricing.months == 3">
+      <div ng-if="!vm.singleBuyAvailable">15% korting voor altijd</div>
+      <div ng-if="vm.singleBuyAvailable">28% korting voor altijd</div>
+
+      <div class="pricing__cta-price">
+        <span>&euro; {{ vm.pricing.basePrice | number: 2 }}</span>
+        <span>&euro; {{ vm.pricing.recurringAmount | number: 2 }}</span>
+      </div>
+    </div>
+    <a href="" class="button pricing__cta-button fullwidth" ng-click="vm.actions()" ng-if="vm.daily">{{vm.submitButtonText}}</a>
+    <button id="payment-submit" type="submit" class="button pricing__cta-button fullwidth" ng-if="!vm.daily"><span class="button__text">Betalen</span></button>
+  </div>
+
+  <span class="pricing__notice" ng-if="vm.pricing.months == 3">Verzending en afrekening elke 3 maanden</span>
+  <span class="pricing__notice" ng-if="vm.pricing.months == 1">Verzending en afrekening elke maand</span>
+  
+  <div class="payment-methods">
+    <div ng-repeat="paymentMethod in vm.paymentMethods" class="payment-method">
+      <img ng-src="{{ paymentMethod.image.svg }}">
+    </div>
+  </div>
+</div>
+
+<vi-trustpilot is-single-line="true"></vi-trustpilot>
+
+<div class="checkout-reviews">
+  <vi-review slides-to-show-desktop="1" slides-to-scroll-desktop="1" dots-desktop="false" slides-to-show-mobile="1" slides-to-scroll-mobile="1" dots-mobile="false"></vi-review>
+</div>

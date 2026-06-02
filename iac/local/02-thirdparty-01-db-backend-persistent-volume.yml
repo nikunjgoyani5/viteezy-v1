@@ -1,0 +1,28 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  namespace: viteezy-local
+  name: db-backend-pv-volume-viteezy-local
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/sda1/k8s/volumes/viteezy/db-backend" # Assumes minikube
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: viteezy-local
+  name: db-backend-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

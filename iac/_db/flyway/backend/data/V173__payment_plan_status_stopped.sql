@@ -1,0 +1,1 @@
+UPDATE payment_plans set status = "STOPPED" where status = "CANCELED";

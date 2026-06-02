@@ -1,0 +1,157 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: viteezy-staging
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: backend
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: backend
+          image: europe-docker.pkg.dev/viteezy/backend/docker:${backend}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: DATABASE_URL
+              value: db-backend-service:3306
+            - name: DATABASE_USER
+              value: viteezyUser
+            - name: DATABASE_PASSWORD
+              value: canned-juggling-discard-bronze-purchase-wannabe
+            - name: JAVA_OPTS
+              value: -XX:MaxRAMPercentage=80
+            - name: LOGGING_LEVEL
+              value: WARN
+            - name: LOGGING_LOGGERS_VITEEZY_LEVEL
+              value: DEBUG
+            - name: LOGGING_LOGGERS_JERSEY
+              value: INFO # Set to DEBUG in order to fully print incoming HTTP requests
+            - name: PAYMENT_API_KEY
+              value: test_jbWbb7azzBU6kmGHVpV8cgbke82rJs
+            - name: PAYMENT_REDIRECT_URL
+              value: https://staging.viteezy.com/confirmed
+            - name: PAYMENT_WEBHOOK_URL
+              value: https://staging.viteezy.com/viteezy/api/payment/callback
+            - name: REQUEST_REDIRECT_URL
+              value: https://staging.viteezy.com/payment-request
+            - name: PAYMENT_RECURRING_MONTHS
+              value: "1"
+            - name: PAYMENT_FIRST_DESCRIPTION
+              value: Betaling voor Viteezy
+            - name: PAYMENT_RECURRING_DESCRIPTION
+              value: Viteezy abonnement
+            - name: PAYMENT_SHIPPING_COSTS_THRESHOLD
+              value: "20"
+            - name: PAYMENT_START_DATE_IN_DAYS
+              value: "27"
+            - name: SLACK_ENVIRONMENT
+              value: test
+            - name: SLACK_URL
+              value: ""
+            - name: FRONTEND_BASE_URL
+              value: https://staging.viteezy.com
+            - name: MAIL_SERVER
+              value: in-v3.mailjet.com
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_USERNAME
+              value: 5508d55cd920211e0d3ae0cf42cf7b2d
+            - name: MAIL_PASSWORD
+              value: dcb4d667910327a2e8b92c550c82b64d
+            - name: MAIL_DEFAULT_ORDER_BCC
+              value: bas@viteezy.nl
+            - name: MAIL_PHARMACIST_CSV_RECIPIENT
+              value: c.lakhani@viteezy.nl
+            - name: MAIL_PHARMACIST_CSV_SUBJECT
+              value: TEST CSV bestanden apotheker - staging
+            - name: DELIVERY_DATE_IN_DAYS
+              value: "3"
+            - name: PAYMENT_PROCESSING_IN_DAYS
+              value: "5"
+            - name: ACTIVECAMPAIGN_API_TOKEN
+              value: 0e22c7f2a390e73e26a3b3057233745f9b989352104727fff5fd378d2734a2ce9d9cef15
+            - name: ACTIVECAMPAIGN_ACCOUNT_NAME
+              value: viteezybv1615981384
+            - name: FACEBOOK_PIXEL_ID
+              value: "793317934447450"
+            - name: FACEBOOK_APP_SECRET
+              value: 03bb9416d8edede953344b9f04b33314
+            - name: FACEBOOK_TEST_EVENT_CODE
+              value: TEST86403
+            - name: SFTP_REMOTE_HOST
+              value: sftp-gateway-transfer.a16.cldsvc.net
+            - name: SFTP_USERNAME
+              value: sftpviteezya
+            - name: SFTP_PRIVATEKEY_FILENAME
+              value: /etc/viteezy-secret-volume/private_key_viteezy_accp.pem
+            - name: POST_NL_API_KEY
+              value: 2GiKWgfvOKbgobHbpChbRavhV2A9uYNX
+            - name: KLAVIYO_URL
+              value: https://a.klaviyo.com/api
+            - name: KLAVIYO_API_KEY
+              value: pk_6fc9a732688d32affdf4b32a28154364d8
+            - name: NEWSLETTER_LIST_ID
+              value: VTHQX8
+            - name: EXISTING_CUSTOMER_LIST_ID
+              value: U9yLUt
+          startupProbe:
+            httpGet:
+              path: /health-check?type=alive
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health-check?type=alive
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 1
+          resources:
+            requests:
+              memory: 768Mi
+              cpu: 100m
+            limits:
+              memory: 1500Mi
+              cpu: 1
+          volumeMounts:
+            - name: viteezy-staging-secret-volume
+              readOnly: true
+              mountPath: "/etc/viteezy-staging-secret-volume"
+      volumes:
+      - name: viteezy-staging-secret-volume
+        secret:
+          secretName: viteezy-staging-secrets

@@ -1,0 +1,1 @@
+alter table viteezy.email_answers add column opt_in boolean default 0;

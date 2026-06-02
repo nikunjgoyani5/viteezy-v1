@@ -1,0 +1,1 @@
+UPDATE usage_goals SET is_active = false WHERE code = "energy";

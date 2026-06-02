@@ -1,0 +1,1 @@
+AlTER TABLE customers ADD COLUMN user_agent TEXT AFTER facebook_pixel;

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  namespace: viteezy-production
+  labels:
+    app: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      imagePullSecrets:
+        - name: my-ecr-secret
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: dashboard
+          image: europe-docker.pkg.dev/viteezy/dashboard/docker:${dashboard}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

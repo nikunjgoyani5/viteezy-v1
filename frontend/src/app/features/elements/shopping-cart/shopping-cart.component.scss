@@ -1,0 +1,38 @@
+vi-navigation {
+  position: sticky !important;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 0.6em;
+  right: 0.5em;
+  color: #00ab96;
+  font-size: 1.5em;
+  z-index: 2;
+}
+
+@media (max-width: 60em) {
+  .close-navigation {   
+    left: 0.5em;
+  }
+}
+
+.navigation-items-wrap {
+  width: 100%;
+}
+
+.cart-size {
+  position: absolute;
+  top: -0.2em;
+  right: -0.5em;
+  font-size: medium;
+  border-radius: 50%;
+  background-color: #E7AF60;
+  color: #fff;
+  width: 1.25em;
+  height: 1.25em;
+  text-align: center;
+}

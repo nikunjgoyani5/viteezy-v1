@@ -1,0 +1,126 @@
+footer {
+  background: $footer-background-color;
+  padding: 2.5rem 2.5rem 1.5rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  p {
+    margin-bottom: 0.75em;
+  }
+}
+
+.wrapper-footer {
+  display: flex;
+
+  > div {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 4rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 0.3em;
+  }
+}
+
+.footer-title {
+  padding-bottom: 2em;
+  display: block;
+  margin-bottom: 0;
+}
+
+.social-icon {
+  margin: 0 1em 1.5em 0;
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.footer-menu {
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    border-bottom: 1px solid $main-border-color;
+    padding: 1em 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.footer-cr {
+  text-align: center;
+  flex-grow: 1.5;
+  border-top: 2px solid $main-border-color;
+  margin: 1.5rem -2.5rem 0;
+  padding: 1.5rem 0 0;
+
+  ul {
+    display: inline-block;
+    padding: 1em 0 0;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 0.5em;
+  }
+
+  p {
+    font-weight: bold;
+  }
+}
+
+.footer-icons {
+  a {
+    padding-right: 1em;
+  }
+}
+
+@include media-large {
+  footer {
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+
+  .wrapper-footer > div {
+    padding: 0 1rem;
+  }
+
+  .footer-cr {
+    margin: 1.5rem -1.5rem 0
+  }
+}
+
+@include media-medium {
+  .wrapper-footer {
+    display: block;
+    padding: 0;
+
+    > div {
+      padding: 0;
+      margin-bottom: 3em;
+    }
+  }
+
+  .footer-title {
+    padding-bottom: 1em;
+  }
+
+  .footer-cr {
+    padding: 1.5rem 2.5rem 0;
+  }
+}

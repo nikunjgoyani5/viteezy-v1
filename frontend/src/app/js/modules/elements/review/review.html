@@ -1,0 +1,49 @@
+<ui-carousel slides="rw.reviews.slides" slides-to-show="rw.slidesToShowDesktop" slides-to-scroll="rw.slidesToScrollDesktop" dots="rw.dotsDesktop" class="desktop-carousel">
+  <carousel-item>
+    <div class="review">
+      <div class="review-title">
+        <span class="stars" data-checked="{{item.rating}}">
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+        </span>
+      </div>
+      <div class="review-content">
+        <q>
+          {{ item.content }}
+        </q>
+      </div>
+      <div class="review-footer">
+        <img class="review-picture" src="{{ item.picture }}" alt="{{ item.alt }}">
+        <p class="review-name">{{ item.name }}</p>
+      </div>
+    </div>
+  </carousel-item>
+</ui-carousel>
+
+<ui-carousel slides="rw.reviews.slides" slides-to-show="rw.slidesToShowMobile" slides-to-scroll="rw.slidesToShowMobile" dots="rw.dotsMobile" class="mobile-carousel">
+  <carousel-item>
+    <div class="review">
+      <div class="review-title">
+        <span class="stars" data-checked="{{item.rating}}">
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+        </span>
+      </div>
+      <div class="review-content">
+        <q>
+          {{ item.content }}
+        </q>
+      </div>
+      <div class="review-footer">
+        <img class="review-picture" src="{{ item.picture }}" alt="{{ item.alt }}">
+        <p class="review-name">{{ item.name }}</p>
+      </div>
+    </div>
+  </carousel-item>
+</ui-carousel>

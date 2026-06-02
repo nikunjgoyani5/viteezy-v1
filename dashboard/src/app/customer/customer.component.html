@@ -1,0 +1,119 @@
+<div class="container">
+  <h1>Klanten</h1>
+
+  <div class="form-notes-wrapper">
+    <div class="search-wrapper">
+      <form [formGroup]="emailForm" novalidate>
+        <mat-form-field>
+          <mat-label>E-mailadres</mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+        <button mat-button mat-flat-button color="primary" (click)="findCustomerByEmail()">
+          Zoeken
+        </button>
+      </form>
+      
+      <form [formGroup]="phoneForm" novalidate>
+        <mat-form-field>
+          <mat-label>Telefoonnummer</mat-label>
+          <input matInput formControlName="phoneNumber" />
+        </mat-form-field>
+        <button mat-button mat-flat-button color="primary" (click)="findCustomerByPhoneNumber()">
+          Zoeken
+        </button>
+      </form>
+
+      <form [formGroup]="postcodeForm" novalidate>
+        <mat-form-field>
+          <mat-label>Postcode</mat-label>
+          <input matInput formControlName="postcode" />
+        </mat-form-field>
+        <button mat-button mat-flat-button color="primary" (click)="findCustomerByPostcode()">
+          Zoeken
+        </button>
+      </form>
+
+      <form [formGroup]="nameForm" novalidate>
+        <mat-form-field>
+          <mat-label>Naam</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <button mat-button mat-flat-button color="primary" (click)="findCustomerByName()">
+          Zoeken
+        </button>
+      </form>
+    </div>
+    <div>
+      <div *ngIf="notes" class="notes-wrapper">
+        <app-table
+          [entities]="notes"
+          [properties]="noteProperties"
+          (actionEmitter)="onActionEmitNote($event)"
+          [rowActions]="rowActionEditDelete"
+          [pageSizeOptions]="null"
+          [hoverEnabled]="false"
+          [showPaginator]="false"
+        ></app-table>
+        <mat-icon class="note-add" (click)="openAddEditNoteDialog('Toevoegen', 'Add', null)">note_add</mat-icon>
+        <br>
+      </div>
+      <div *ngIf="logging != undefined && logging.length > 0" class="notes-wrapper">
+        <app-table
+          [entities]="logging"
+          [properties]="loggingProperties"
+          [hoverEnabled]="false"
+          [pageSize]="5"
+          [pageSizeOptions]="[10, 25, 50, 100]"
+        ></app-table>
+      </div>
+    </div>
+  </div>
+
+  <app-table *ngIf="customers"
+    [entities]="customers"
+    [properties]="customerProperties"
+    (actionEmitter)="onActionEmitCustomer($event)"
+    [rowActions]="rowActionEdit"
+    [rowClick]="rowClick"
+    [filterEnabled]="true"
+  ></app-table>
+
+  <div *ngIf="paymentPlans">
+    <hr>
+    <h2>Abonnement</h2>
+    <app-table
+      [entities]="paymentPlans"
+      [properties]="paymentPlanProperties"
+      (actionEmitter)="onActionEmitPaymentPlan($event)"
+      [rowActions]="rowActionEditStopCoupon"
+      [pageSizeOptions]="null"
+      [hoverEnabled]="false"
+    ></app-table>
+  </div>
+  
+  <div *ngIf="payments">
+    <h2>Betalingen</h2>
+    <app-table
+      [entities]="payments"
+      [properties]="paymentProperties"
+      (actionEmitter)="onActionEmitPayment($event)"
+      [rowActions]="rowActionEditNotification"
+      [pageSize]="3"
+      [pageSizeOptions]="[3, 10, 20, 50]"
+      [hoverEnabled]="false"
+    ></app-table>
+  </div>
+
+  <div *ngIf="orders">
+    <h2>Orders</h2>
+    <app-table
+      [entities]="orders"
+      [properties]="orderProperties"
+      (actionEmitter)="onActionEmitOrder($event)"
+      [rowActions]="rowActionRedoCancel"
+      [pageSize]="3"
+      [pageSizeOptions]="[3, 10, 20, 50]"
+      [hoverEnabled]="false"
+    ></app-table>
+  </div>
+</div>

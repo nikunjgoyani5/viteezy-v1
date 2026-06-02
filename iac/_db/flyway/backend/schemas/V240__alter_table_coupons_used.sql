@@ -1,0 +1,1 @@
+alter table coupons_used add status varchar(50) NOT NULL DEFAULT 'PAYMENT_CREATED';

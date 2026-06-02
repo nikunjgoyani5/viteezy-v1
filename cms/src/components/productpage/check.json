@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_productpagina_checks",
+  "info": {
+    "displayName": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  }
+}

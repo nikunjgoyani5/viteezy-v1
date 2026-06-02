@@ -1,0 +1,1 @@
+ALTER TABLE `allergies` MODIFY COLUMN name VARCHAR(50);

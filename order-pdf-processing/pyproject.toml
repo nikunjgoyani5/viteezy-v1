@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["vop*"]
+
+[project]
+name = "viteezy_order_processing"
+version = "0.2.0"
+authors = [
+    {name="Sander Voss", email="spmvoss@gmail.com"}
+]
+description = "A tool to process viteezy orders"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "pandas",
+    "numpy",
+    "unoserver",
+    "docxtpl",
+    "tqdm",
+    "xlrd",
+    "sqlalchemy",
+    "PyMySQL",
+    "ruamel.yaml",
+    "typer",
+    "colorama",
+    "shellingham",
+    "rich",
+    "pytest",
+    "python-crontab",
+    "cron-descriptor",
+    "paramiko"
+]
+
+[project.scripts]
+vop = "vop.main:main"

@@ -1,0 +1,1 @@
+ALTER TABLE ingredients ADD COLUMN sku varchar(25) DEFAULT NULL AFTER is_active;

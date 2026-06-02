@@ -1,0 +1,2 @@
+UPDATE viteezy.blend_ingredient_reasons SET description = 'Je wilt het gebruiken voordat je gaat slapen' WHERE code = 'MAGNESIUM_NUTRITION_CONSUMPTION_BEFORE_SLEEP';
+UPDATE viteezy.blend_ingredient_reasons SET description = 'Je bent een relatief jonge vrouw' WHERE code = 'IRON_YOUNG';

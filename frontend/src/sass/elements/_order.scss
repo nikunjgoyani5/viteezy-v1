@@ -1,0 +1,34 @@
+$input-spacing: 0.5em;
+
+.input-row {
+  display: flex;
+  margin: 0 - $input-spacing;
+  align-items: stretch;
+
+  > div {
+    flex-grow: 1;
+    margin: $input-spacing;
+  }
+  
+  .country-select {
+    flex-grow: initial;
+  }
+}
+
+@include media-small {
+  .input-row {
+    display: initial;
+  }
+}
+
+@include media-min-small {
+  .input-row {
+    > div {
+      margin: 2em;
+    }
+  }
+}
+
+.checkout-credentials-title {
+  margin: 1em 0 0.5em;
+}

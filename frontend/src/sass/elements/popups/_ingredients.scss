@@ -1,0 +1,180 @@
+.slide-ingredient-information {
+  height: calc(100vh - 0.1px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  position: relative;
+  background-color: white;
+
+  .icon-close {
+    position: fixed;
+    color: $white;
+    right: 0.5em;
+    top: 1.5em;
+    font-size: 20px;
+    padding-left: 17em;
+  }
+
+  @include media-mega-mobile {
+    font-size: 90%;
+  }
+
+  .section-wrapper {
+    border-bottom: 0.5px solid #E1DDDA;
+
+    padding: 0 2em 2em;
+
+    @include media-medium {
+      padding: 1em 2em;
+    }
+
+    &.no-padding {
+      padding: 0;
+    }
+
+    &.extra-padding-bottom {
+      padding-bottom: 7.5em;
+    }
+  }
+
+  .single-icon {
+    margin: 0.5em;
+
+    @include media-medium {
+      height: 60px;
+    }
+  }
+
+  .section-left {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+
+    &.extra-padding {
+      padding: 3em;
+    }
+
+    @include media-medium {
+      padding: 1em 2em !important;
+    }
+
+    @include media-medium-small {
+      margin-left: 0;
+      float: none;
+      width: initial;
+    }
+  }
+
+  .section-right {
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    @include media-medium-small {
+      height: 14em;
+      margin-left: initial;
+      width: initial;
+    }
+  }
+
+  .section-title {
+    text-align: center;
+    padding: 1em;
+  }
+
+  .ingredient-title {
+    text-decoration: underline;
+    text-decoration-color: $main-brand-color;
+  }
+
+  .title-left {
+    text-align: left;
+    padding: 1em 0 0;
+  }
+
+  .text-white {
+    color: $sub-font-color;
+  }
+
+  .text-center {
+    text-align: center;
+    margin: auto;
+
+    &.small {
+      text-align: left;
+      max-width: 40%;
+
+      @include media-medium {
+        padding: 1em;
+      }
+    }
+
+    &.big {
+      margin: 1em;
+      max-width: 90%;
+    }
+
+    @include media-medium {
+      max-width: 100% !important;
+      padding: 0;
+    }
+  }
+
+  .p-side-by-side {
+    margin: 0;
+    display: inline-block;
+  }
+
+  .ingredient-allergies {
+    float: right;
+  }
+
+  .ingredient-table {
+    margin-top: 1em;
+    width: 100%;
+
+    th {
+      background-color: #E1DDDA;
+      font-weight: bolder;
+    }
+
+    tr {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    .padding-left {
+      padding-left: 2.5%;
+    }
+  }
+}
+
+@Keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.ingredient-slide-left {
+  text-align: left;
+  transform: translateX(-250%);
+  animation: slideLeft 0.5s forwards 0s ease-in;
+}
+
+.ingredient-slide-left > * {
+  transition: none;
+}
+
+.green-link {
+  color: $main-brand-color;
+
+  &.no-underline {
+    text-decoration: none;
+  }
+}

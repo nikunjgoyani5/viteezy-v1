@@ -1,0 +1,26 @@
+.sidebar-content--menu {
+  position: fixed;
+  top: 4em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: $main-background-color;
+  padding: 1.11rem;
+  transform: translateX(-100%);
+  transition: ease-in 0.5s transform;
+  overflow-y: scroll;
+}
+
+.sidebar-content--menu-visible {
+  transform: translateX(0);
+}
+
+@include media-from-medium {
+  .sidebar-content--menu {
+    position: static;
+    background: none;
+    transform: none;
+    overflow: auto;
+  }
+}

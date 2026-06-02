@@ -1,0 +1,26 @@
+<mat-toolbar class="mat-elevation-z6 navbar" color="primary">
+  <div fxHide.gt-sm fxLayoutAlign="start center">
+    <button class="menu-button" mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">{{ title }}</span>
+  </div>
+  <div fxHide.lt-md>
+    <img src="assets/logo.svg" class="logo" />
+    <button mat-button routerLink="/customers" routerLinkActive="active">
+      <span translate>Klanten</span>
+    </button>
+    <button *ngIf="isAdmin" mat-button routerLink="/admin" routerLinkActive="active">
+      <span translate>Admin</span>
+    </button>
+  </div>
+  <span fxFlex></span>
+  <app-account-info
+    *ngIf="userdetails"
+    class="accountinfo"
+    [user]="userdetails"
+    (logoutClick)="onLogoutClick()"
+    (changePasswordClick)="onChangePasswordClick()"
+  >
+  </app-account-info>
+</mat-toolbar>

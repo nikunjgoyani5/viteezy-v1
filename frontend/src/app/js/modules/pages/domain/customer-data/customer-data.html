@@ -1,0 +1,21 @@
+<div class="membership-wrapper">
+  <div class="wrapper-compact-wide">
+    <div class="domain-page-information">
+      <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+      <h3>
+        Mijn gegevens
+      </h3>
+    </div>
+
+    <div class="domain-customer-data">
+      <form name="vm.form" novalidate ng-submit="vm.form.$valid && vm.updateCustomer()">
+        <div class="domain-customer-data-wrapper">
+          <customer-data></customer-data>
+        </div>
+        <div class="domain-customer-data-button">
+          <button type="submit" class="button submit-button mobile-wide">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

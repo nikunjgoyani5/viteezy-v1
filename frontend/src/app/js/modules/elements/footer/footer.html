@@ -1,0 +1,70 @@
+<footer ng-if="vm.showFooter">
+  <div class="wrapper wrapper-footer">
+    <div class="footer-menu">
+      <strong class="footer-title">Menu</strong>
+      <ul>
+        <li><a href="/#how-it-works">Hoe het werkt</a></li>
+        <li><a href="/#reviews">Reviews</a></li>
+        <li><a href="https://viteezy-faq.gorgias.help/nl-NL" target="_blank">FAQ</a></li>
+        <li><a href="/over-ons">Over ons</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-menu">
+      <strong class="footer-title">Doelen</strong>
+      <ul>
+        <li><a href="/detox">Detox</a></li>
+        <li><a href="/energie-vitamine">Energy Assistant</a></li>
+        <li><a href="/groene-thee-extract">Groene thee extract</a></li>
+        <li><a href="/haar-nagel-vitamine">Hair & Nail Boost</a></li>
+        <li><a href="/huid-vitamine">Skin Support</a></li>
+        <li><a href="/maca-power">Maca Power</a></li>
+        <!-- <li><a href="/prenatal">Prenatal</a></li> -->
+        <li><a href="/slaap-vitamine">Sleep-Well</a></li>
+        <li><a href="/stress-less">Stress-Less</a></li>
+        <li><a href="/maag-en-darm">Probiotica</a></li>
+        <li><a href="/brein-boost">Brain Boost</a></li>
+        <li><a href="/hormonen-controle">Hormone Control</a></li>
+      </ul>
+    </div>
+    <div class="footer-menu">
+      <strong class="footer-title">Onze producten</strong>
+      <ul>
+        <li><a href="/cranberry">Cranberry</a></li>
+        <li><a href="/ijzer">IJzer</a></li>
+        <li><a href="/kurkuma">Kurkuma</a></li>
+        <li><a href="/magnesium">Magnesium</a></li>
+        <li><a href="/omega-3-vegan">Omega 3 vegan</a></li>
+        <li><a href="/visolie">Visolie</a></li>
+        <li><a href="/vitamine-b12">Vitamine B12</a></li>
+        <li><a href="/vitamine-c">Vitamine C</a></li>
+        <li><a href="/vitamine-d">Vitamine D</a></li>
+        <li><a href="/zink">Zink</a></li>
+      </ul>
+    </div>
+    <div>
+      <strong class="footer-title">Hulp nodig?</strong>
+      <p><a href="" ui-sref="login" ng-click="vm.menuItemClick()"><i class="icon icon-account"></i> Log in op Mijn Viteezy</a><br>voor je vitamineplan</p>
+      <p>Hulp nodig? Of heb je nog een vraag? Onze klantenservice helpt je graag!</p>
+      <p><a href="https://viteezy-faq.gorgias.help/nl-NL" target="_blank">Veelgestelde vragen</a></p>
+      <p>Email: <a href="mailto:info@viteezy.nl">info@viteezy.nl</a></p>
+
+      <p>Spiegelstraat 38<br>
+        1405 HX Bussum<span ng-if="vm.country !== 'NL'">, NL</span>
+      </p>
+      <p>&nbsp;</p>
+      <strong class="footer-title">Volg ons!</strong>
+      <a href="https://www.instagram.com/viteezynl" aria-label="Link to Viteezy Instagram" target="_blank" class="social-icon"><i class="icon icon-instagram"></i></a>
+      <a href="https://www.facebook.com/viteezynl/" aria-label="Link to Viteezy Facebook" target="_blank" class="social-icon"><i class="icon icon-facebook"></i></a>
+    </div>
+  </div>
+  <div class="footer-cr">
+    <p>&copy; Viteezy <span>{{ vm.currentYear }}</span> - Alle rechten voorbehouden</p>
+
+    <ul>
+      <li><a href="mailto:info@viteezy.nl">Contact</a></li>
+      <li><a href="/terms">Algemene voorwaarden</a></li>
+      <li><a href="/privacy">Privacy policy</a></li>
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,29 @@
+.product-selector {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "\e90e";
+    font-family: Viteezy-Icons;
+    transform: rotate(-90deg);
+    display: inline-block;
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    color: #6f737b;
+    font-size: 0.6em;
+  }
+
+  select {
+    border-radius: 1em;
+    border: 1px solid $main-border-color;
+    background: $white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.3em 2em 0.3em 1em;
+    color: $darker-grey;
+  }
+
+}

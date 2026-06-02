@@ -1,0 +1,47 @@
+@mixin font-face($font-family, $file-path, $properties: (font-weight: normal, font-style: normal), $options: null) {
+  $srcold: '';
+  $src: ();
+  $filetypes: woff svg;
+  $svgname: $font-family;
+
+  @if type-of($options) == map {
+    @if map-has-key($options, file-types) {
+      $filetypes: map-get($options, file-types);
+    }
+    @if map-has-key($options, svg-name) {
+      $svgname: map-get($options, svg-name);
+    }
+  }
+
+  @each $filetype in $filetypes {
+    @if $filetype == eot {
+      $srcold: url('#{$file-path}.eot');
+      $src: append($src, url('#{$file-path}.eot?#iefix') format('embedded-opentype'), comma);
+    }
+  }
+  @each $filetype in $filetypes {
+    @if $filetype == svg {
+      $src: append($src, url('#{$file-path}.#{$filetype}##{$svgname}') format('svg'), comma);
+    }
+    @else if $filetype != eot {
+      $src: append($src, url('#{$file-path}.#{$filetype}') format('#{if($filetype == ttf, truetype, $filetype)}'), comma);
+    }
+  }
+
+  @font-face {
+    font-family: $font-family;
+
+    @if str-length($srcold) > 0 {
+      src: $srcold;
+    }
+    @if length($src) > 0 {
+      src: $src;
+    }
+
+    @each $propname in map-keys($properties) {
+      #{$propname}: map-get($properties, $propname);
+    }
+
+    font-display: swap;
+  }
+}

@@ -1,0 +1,158 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: services-ingress
+  namespace: viteezy-production
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: production
+    networking.gke.io/managed-certificates: viteezy.nl, www.viteezy.nl, api.viteezy.nl, viteezy.be, www.viteezy.be, dashboard.viteezy.com, cms.viteezy.com
+    kubernetes.io/ingress.allow-http: "true"
+    networking.gke.io/v1beta1.FrontendConfig: lb-http-to-https
+spec:
+  rules:
+  - host: "viteezy.nl"
+    http: &http_rules
+      paths:
+      - path: "/viteezy/api/"
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              name: backend-port
+      - path: "/strapi/api/"
+        pathType: Prefix
+        backend:
+          service:
+            name: strapi-app
+            port:
+              name: strapi-port
+      - path: "/uploads/"
+        pathType: Prefix
+        backend:
+          service:
+            name: strapi-app
+            port:
+              name: strapi-port
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              name: frontend-port
+  - host: "www.viteezy.nl"
+    http: *http_rules
+  - host: "api.viteezy.nl"
+    http:
+      paths:
+      - path: "/viteezy/api/"
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              name: backend-port
+  - host: "dashboard.viteezy.com"
+    http:
+      paths:
+      - path: "/viteezy/api/dashboard/"
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              name: backend-port
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard
+            port:
+              name: dashboard-port
+  - host: "cms.viteezy.com"
+    http:
+      paths:
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service:
+              name: strapi-app
+              port:
+                name: strapi-port
+  - host: "viteezy.be"
+    http: *http_rules
+  - host: "www.viteezy.be"
+    http: *http_rules
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: viteezy.nl
+  namespace: viteezy-production
+spec:
+  domains:
+    - viteezy.nl
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: www.viteezy.nl
+  namespace: viteezy-production
+spec:
+  domains:
+    - www.viteezy.nl
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: api.viteezy.nl
+  namespace: viteezy-production
+spec:
+  domains:
+    - api.viteezy.nl
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: dashboard.viteezy.com
+  namespace: viteezy-production
+spec:
+  domains:
+    - dashboard.viteezy.com
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: cms.viteezy.com
+  namespace: viteezy-production
+spec:
+  domains:
+    - cms.viteezy.com
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: viteezy.be
+  namespace: viteezy-production
+spec:
+  domains:
+    - viteezy.be
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: www.viteezy.be
+  namespace: viteezy-production
+spec:
+  domains:
+    - www.viteezy.be
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: lb-http-to-https
+  namespace: viteezy-production
+spec:
+  redirectToHttps:
+    enabled: true

@@ -1,0 +1,160 @@
+.wrapper-quiz-v2 {
+  // This one will only be used for the quiz
+  // Change this if the quiz needs to be wider on larger screens
+  max-width: 40rem;
+  margin-bottom: 5em;
+
+  h1 {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0.5em 0 1.5rem;
+  }
+
+
+  h1+h2 {
+    margin-top: -1.25rem;
+  }
+
+  h2 {
+    color: $darker-grey;
+    text-align: center;
+    font-size: 0.75em;
+    margin-bottom: 0.25rem;
+  }
+
+  .icon-brew {
+    font-size: 10rem;
+    display: inline-block;
+    padding: 0 0 0.2em;
+  }
+}
+
+.text-page {
+  text-align: center;
+
+  @include media-medium {
+    margin-top: 5rem;
+  }
+}
+
+.bottom-cta-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 2em;
+  background: linear-gradient(rgba($main-background-color, 0), $main-background-color 50%);
+
+  i.icon {
+    vertical-align: bottom;
+    display: inline-block;
+    transform: rotate(180deg);
+    padding-right: 0.5em;
+  }
+}
+
+.question-header {
+  position: relative;
+  padding-top: 3em;
+
+  i {
+    text-align: center;
+    display: block;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.form-error {
+  color: $red;
+  text-align: center;
+}
+
+.checkbox-wrap {
+  label {
+    margin-bottom: 0.5em;
+    display: inline-block;
+  }
+}
+
+$quiz-slide-animation-delay: 0.5s;
+
+.quiz-page-v2 {
+  overflow-x: hidden;
+
+  section {
+    opacity: 0;
+  }
+
+  &.quiz-next-question-entry section {
+    opacity: 1;
+    animation: next-question-entry ease-in-out $quiz-slide-animation-delay 1;
+  }
+
+  &.quiz-next-question-exit section {
+    animation: next-question-exit ease-in-out $quiz-slide-animation-delay 1;
+  }
+
+  &.quiz-previous-question-entry section {
+    opacity: 1;
+    animation: previous-question-entry ease-in-out $quiz-slide-animation-delay 1;
+  }
+
+  &.quiz-previous-question-exit section {
+    animation: previous-question-exit ease-in-out $quiz-slide-animation-delay 1;
+  }
+}
+
+@keyframes next-question-entry {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes next-question-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+
+@keyframes previous-question-entry {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes previous-question-exit {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

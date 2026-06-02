@@ -1,0 +1,79 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '@env/environment';
+
+export interface Credentials {
+  accessToken: string;
+  tokenType: string;
+  userId: number;
+}
+
+const credentialsKey = 'credentials';
+
+/**
+ * Provides storage for authentication credentials.
+ * The Credentials interface should be replaced with proper implementation.
+ */
+@Injectable({
+  providedIn: 'root',
+})
+export class CredentialsService {
+  private _credentials: Credentials | null = null;
+
+  constructor(private http: HttpClient) {
+    const savedCredentials =
+      sessionStorage.getItem(credentialsKey) ||
+      localStorage.getItem(credentialsKey);
+    if (savedCredentials) {
+      this._credentials = JSON.parse(savedCredentials);
+    }
+  }
+
+  /**
+   * Checks is the user is authenticated.
+   * @return True if the user is authenticated.
+   */
+  public isAuthenticated(): boolean {
+    return !!this.credentials;
+  }
+
+  /**
+   * Gets the user credentials.
+   * @return The user credentials or null if the user is not authenticated.
+   */
+  get credentials(): Credentials | null {
+    return this._credentials;
+  }
+
+  /**
+   * Sets the user credentials.
+   * The credentials may be persisted across sessions by setting the `remember` parameter to true.
+   * Otherwise, the credentials are only persisted for the current session.
+   * @param credentials The user credentials.
+   * @param remember True to remember credentials across sessions.
+   */
+  public setCredentials(credentials?: Credentials, remember?: boolean): void {
+    this._credentials = credentials || null;
+
+    if (credentials) {
+      const storage = remember ? localStorage : sessionStorage;
+      storage.setItem(credentialsKey, JSON.stringify(credentials));
+    } else {
+      sessionStorage.removeItem(credentialsKey);
+      localStorage.removeItem(credentialsKey);
+    }
+  }
+
+  public getToken(email: string, password: string): Observable<Credentials> {
+    const body = { email, password };
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+    return this.http.post<Credentials>(
+      `${environment.serverUrl}/users/login`,
+      body,
+      { headers }
+    );
+  }
+}

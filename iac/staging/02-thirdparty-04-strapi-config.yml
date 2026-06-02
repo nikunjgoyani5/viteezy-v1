@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: strapi-app-conf
+  namespace: viteezy-staging
+data:
+  HOST: 0.0.0.0
+  PORT: "1337"
+  NODE_ENV: production
+
+  DATABASE_CLIENT: mysql
+  DATABASE_HOST: db-backend-service
+  DATABASE_PORT: "3306"
+  DATABASE_USERNAME: strapiUser
+  DATABASE_NAME: strapi
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: strapi-app-secret
+  namespace: viteezy-staging
+type: Opaque
+data:
+  # these are base64 encoded, so echo -n value-to-be-encoded | base64
+  ADMIN_JWT_SECRET: ZTYwYjlkNDZlMzRmNTVhNWFjYzVjNTQ0Y2I1MTY3NTk=
+  API_TOKEN_SALT: ZmQxZjM5M2I3OGQxZWFkZmM2NmY2YTA1MzdmZWFjZWU=
+  APP_KEYS: N2dLK3d3ZEZEalF4R0k5S3g4S0hXdz09LEkra1NuVWJ4MldwY1hVbklFd3JrY1E9PSx3ci9UcFhjSlJZekMzaEFuK0NuM3ZnPT0sRmNxdEtrUUlIVVN3akNVNlk0Y3VRdz09
+  JWT_SECRET: NDc5MTE4NGVjMDE2YzQzYmJlNzk1YWMwODFhODIyYmU=
+  DATABASE_PASSWORD: ZnV0dXJlLWdyZWF0LWZlZWxpbmctRE9ORS1hZ2Fpbg==
+  TRANSFER_TOKEN_SALT: ZjE4MDkxYWY0ODVlOTM2YmRhYzM1OThmNWI2NWY4MTg=

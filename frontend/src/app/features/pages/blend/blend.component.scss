@@ -1,0 +1,29 @@
+.inactive-shipment-selection {
+  margin: 0 0 1rem;
+  padding: 0.75rem;
+  border: 1px solid #d8eeec;
+  border-radius: 0.5rem;
+  background: #f6fbfa;
+}
+
+.inactive-shipment-selection__label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.88rem;
+}
+
+.inactive-shipment-selection__value {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #066f69;
+}
+
+.inactive-shipment-selection__change {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #0aa99f;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Welk onderwerp heeft jouw prioriteit?</h1>
+    </div>
+    <div class="quiz-button quiz-button--icon" ng-repeat="answer in vm.questionAnswers">
+      <input type="radio" id="answer-{{answer.code}}" name="primary-goal" value="{{answer.id}}" ng-model="vm.questionConfig.answerId" ng-click="vm.submitQuestionAnswer(answer)">
+      <label for="answer-{{answer.code}}">
+        <i class="icon icon-{{answer.code}}"></i>
+        {{answer.name}}
+        <span ng-if="answer.subtitle">{{answer.subtitle}}</span>
+      </label>
+    </div>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

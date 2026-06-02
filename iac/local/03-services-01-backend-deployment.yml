@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: viteezy-local
+  labels:
+    app: backend
+spec:
+  ports:
+    - name: "http"
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: backend
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: viteezy-local
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      namespace: viteezy-local
+    spec:
+      imagePullSecrets:
+        - name: my-ecr-secret
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: backend
+          image: 364293105208.dkr.ecr.eu-west-1.amazonaws.com/viteezy_backend:${backend}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+          env:
+            - name: DATABASE_URL
+              value: db-backend-service:3306
+            - name: DATABASE_USER
+              value: viteezyUser
+            - name: DATABASE_PASSWORD
+              value: viteezypassword
+            - name: JAVA_OPTS
+              value: -XX:MaxRAMPercentage=80
+            - name: LOGGING_LEVEL
+              value: WARN
+            - name: LOGGING_LOGGERS_VITEEZY_LEVEL
+              value: INFO
+            - name: LOGGING_LOGGERS_JERSEY
+              value: INFO # Set to DEBUG in order to fully print incoming HTTP requests
+            - name: PAYMENT_API_KEY
+              value: test_jbWbb7azzBU6kmGHVpV8cgbke82rJs
+            - name: PAYMENT_REDIRECT_URL
+              value: http://frontend/confirmed
+            - name: PAYMENT_WEBHOOK_URL
+              value: http://a64970ee.ngrok.io/viteezy/api/payment/callback
+            - name: PAYMENT_RECURRING_MONTHS
+              value: "1"
+            - name: PAYMENT_FIRST_DESCRIPTION
+              value: Betaling voor Viteezy
+            - name: PAYMENT_RECURRING_DESCRIPTION
+              value: Viteezy abonnement
+            - name: PAYMENT_SHIPPING_COSTS_THRESHOLD
+              value: "20"
+            - name: PAYMENT_START_DATE_IN_DAYS
+              value: "27"
+            - name: SLACK_URL
+              value: ""
+            - name: FRONTEND_BASE_URL
+              value: http://localhost:3000
+            - name: MAIL_SERVER
+              value: smtp.gmail.com
+            - name: MAIL_PORT
+              value: "587"
+            - name: MAIL_USERNAME
+              value: support@viteezy.nl
+            - name: MAIL_PASSWORD
+              value: Henk9654325
+            - name: DELIVERY_DATE_IN_DAYS
+              value: "3"
+            - name: PAYMENT_PROCESSING_IN_DAYS
+              value: "5"
+            - name: ACTIVECAMPAIGN_API_TOKEN
+              value: 0e22c7f2a390e73e26a3b3057233745f9b989352104727fff5fd378d2734a2ce9d9cef15
+            - name: ACTIVECAMPAIGN_ACCOUNT_NAME
+              value: viteezybv1615981384
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8081
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 15
+            failureThreshold: 1
+            successThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8081
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+            periodSeconds: 15
+            failureThreshold: 1
+            successThreshold: 1

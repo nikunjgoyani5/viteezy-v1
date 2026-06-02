@@ -1,0 +1,1 @@
+AlTER TABLE customers ADD COLUMN ga_id VARCHAR(128) AFTER mailchimp_customer_id;

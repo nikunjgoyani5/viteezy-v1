@@ -1,0 +1,1 @@
+ALTER TABLE payment_plans ADD column stop_reason varchar(200);

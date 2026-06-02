@@ -1,0 +1,35 @@
+.about-usp-wrap {
+  display: flex;
+  margin: 0 -1em -3em;
+  position: relative;
+  z-index: 1;
+  top: -3em;
+}
+
+.about-usp {
+  background: $white;
+  border-radius: $main-border-radius;
+  margin: 0 1em;
+  padding: 1.5em;
+  flex-grow: 1;
+  flex-basis: 0;
+
+  h2 {
+    font-size: 2em;
+  }
+
+  p {
+    margin-top: 1em;
+  }
+}
+
+
+@include media-large {
+  .about-usp-wrap {
+    flex-wrap: wrap;
+  }
+
+  .about-usp {
+    margin: 0 1em 1em;
+  }
+}

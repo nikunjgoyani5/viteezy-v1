@@ -1,0 +1,11 @@
+<div class="interested-wrapper">
+  <h3>Ook interessant</h3>
+  <div class="interested-container">
+    <a href="/{{ ingredient.url }}" ng-click="vm.goToTop()" ng-repeat="ingredient in vm.additionalIngredients">
+      <div class="interested-item">
+        <img ng-src="assets/image/capsules/{{ ingredient.code }}-big.jpg">
+        <h5>{{ ingredient.name }}</h5>
+      </div>
+    </a>
+  </div>
+</div>

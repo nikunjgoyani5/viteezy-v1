@@ -1,0 +1,2 @@
+ALTER TABLE orders ADD COLUMN pharmacist_order_number varchar(50) AFTER tracktrace;
+ALTER TABLE orders ADD CONSTRAINT pharmacist_orders_number_fk FOREIGN KEY (pharmacist_order_number) REFERENCES pharmacist_orders (order_number);

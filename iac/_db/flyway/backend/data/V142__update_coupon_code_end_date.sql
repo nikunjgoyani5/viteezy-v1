@@ -1,0 +1,1 @@
+UPDATE coupons SET end_date = NOW() WHERE coupon_code = "NIKKIE25";

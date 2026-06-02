@@ -1,0 +1,4 @@
+DROP TABLE weekly_eight_alcoholic_drinks_answers;
+DROP TABLE weekly_eight_alcoholic_drinks;
+DROP TABLE daily_four_alcoholic_drinks_answers;
+DROP TABLE daily_four_alcoholic_drinks;

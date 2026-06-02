@@ -1,0 +1,113 @@
+.checkout-wrapper {
+  overflow: hidden;
+  margin: 3em -1em;
+
+  .checkout-main {
+    width: calc(60% - 2em);
+    margin: 0 1em;
+    float: left;
+  }
+}
+
+.checkout-sidebar {
+  float: left;
+}
+
+.checkout-main {
+  width: calc(60% - 2em);
+  float: left;
+}
+
+.checkout-sidebar {
+  width: calc(40% - 2em);
+  margin: 0 1em;
+}
+
+@include media-large {
+  .checkout-wrapper {
+    .checkout-main {
+      width: calc(60% - 2em);
+    }
+
+    .checkout-sidebar {
+      width: calc(40% - 2em);
+    }
+  }
+}
+
+@include media-medium {
+
+  .checkout-wrapper {
+    .checkout-main {
+      width: 100%;
+      margin: 0;
+    }
+
+    .checkout-sidebar {
+      width: 100%;
+    }
+  }
+
+  .checkout-wrapper {
+    margin: 3em 0;
+  }
+
+  .checkout-sidebar {
+    width: 100%;
+    margin: 0;
+  }
+
+  .checkout-sidebar {
+    margin-top: 1em;
+  }
+}
+
+.dialog-discount-wrap {
+  padding: 3em;
+}
+
+.discount-wrapper img {
+  width: 100%;
+}
+
+@include media-mega-mobile {
+  .dialog-discount-wrap {
+    padding: 1em;
+  }
+}
+
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 20em;
+  margin: 1em auto;
+
+  .payment-method {
+    flex: 1;
+    text-align: center;
+  }
+
+  img {
+    width: 4em;
+    cursor: pointer;
+  }
+}
+
+.trustpilot {
+  margin-top: 2em;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.checkout-reviews {
+  .ui-carousel .carousel-wrapper {
+    margin: 0em 0em 0em;
+  }
+
+  .carousel-dots {
+    bottom: 0em;
+  }
+}

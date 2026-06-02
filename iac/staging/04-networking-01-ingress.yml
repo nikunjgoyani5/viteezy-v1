@@ -1,0 +1,106 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: services-ingress
+  namespace: viteezy-staging
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: staging
+    networking.gke.io/managed-certificates: staging.viteezy.com, staging-dashboard.viteezy.com, staging-cms.viteezy.com
+    kubernetes.io/ingress.allow-http: "false"
+    networking.gke.io/v1beta1.FrontendConfig: lb-http-to-https
+spec:
+  rules:
+  - host: "staging.viteezy.com"
+    http:
+      paths:
+      - path: "/viteezy/api/"
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              name: backend-port
+      - path: "/strapi/api/"
+        pathType: Prefix
+        backend:
+          service:
+            name: strapi-app
+            port:
+              name: strapi-port
+      - path: "/uploads/"
+        pathType: Prefix
+        backend:
+          service:
+            name: strapi-app
+            port:
+              name: strapi-port
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              name: frontend-port
+  - host: "staging-dashboard.viteezy.com"
+    http:
+      paths:
+      - path: "/viteezy/api/dashboard/"
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              name: backend-port
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard
+            port:
+              name: dashboard-port
+  - host: "staging-cms.viteezy.com"
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: strapi-app
+            port:
+              name: strapi-port
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: staging.viteezy.com
+  namespace: viteezy-staging
+spec:
+  domains:
+    - staging.viteezy.com
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: staging-dashboard.viteezy.com
+  namespace: viteezy-staging
+spec:
+  domains:
+    - staging-dashboard.viteezy.com
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: staging-cms.viteezy.com
+  namespace: viteezy-staging
+spec:
+  domains:
+    - staging-cms.viteezy.com
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: lb-http-to-https
+  namespace: viteezy-staging
+spec:
+  redirectToHttps:
+    enabled: true

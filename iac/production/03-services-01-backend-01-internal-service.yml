@@ -1,0 +1,35 @@
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: http-hc-config
+  namespace: viteezy-production
+spec:
+  healthCheck:
+    timeoutSec: 2
+    checkIntervalSec: 5
+    port: 8080
+    type: HTTP
+    requestPath: /health-check
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: viteezy-production
+  labels:
+    app: backend
+  annotations:
+    cloud.google.com/backend-config: '{"ports": {"backend-port":"http-hc-config"}}'
+spec:
+  type: NodePort
+  ports:
+    - name: backend-port
+      port: 8080
+      nodePort: 31470
+      targetPort: 8080
+    - name: admin-port
+      port: 8081
+      nodePort: 31471
+      targetPort: 8081
+  selector:
+    app: backend

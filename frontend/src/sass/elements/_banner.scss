@@ -1,0 +1,30 @@
+#promo-banner {
+  background-color: $turquoise;
+  padding: 0.5em;
+}
+
+.banner-text {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: $white;
+  text-align: center;
+
+  .banner-btn {
+    padding: .1rem 0.5rem .2rem;
+    font-weight: 600;
+    font-size: 14px;
+    color: #00ab96;
+    background: #fff;
+    border: 1px solid #00AB96;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+
+    &:hover {
+      background: #00AB96;
+      color: #fff !important;
+      border-color: #fff;
+      box-shadow: 0 0 0 2px #fff, 0 6px 14px rgba(0,0,0,.15);
+    }
+  }
+}

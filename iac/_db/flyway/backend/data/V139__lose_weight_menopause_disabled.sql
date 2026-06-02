@@ -1,0 +1,1 @@
+UPDATE lose_weight_challenges SET is_active = false WHERE code = 'menopause';

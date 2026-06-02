@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: pharmacist-request
+  namespace: viteezy-staging
+spec:
+  schedule: "15 6 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-pharmacist-request
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "POST"
+                - "backend:8081/tasks/pharmacist-request"
+                - "--ignore-stdin"
+                - "--check-status"
+          restartPolicy: Never

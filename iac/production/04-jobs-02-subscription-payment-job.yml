@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: subscription-payment-job
+  namespace: viteezy-production
+spec:
+  schedule: "0 03 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-subscription-payment
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "--ignore-stdin"
+                - "--check-status"
+                - "-f"
+                - "backend:8081/tasks/subscription-payments"
+                - "daysAgo=1"
+          restartPolicy: Never

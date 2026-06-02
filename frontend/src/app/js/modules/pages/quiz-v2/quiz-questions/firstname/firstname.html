@@ -1,0 +1,13 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Laten we beginnen bij je voornaam</h1>
+    </div>
+
+    <form name="vm.nameForm" class="name-form" novalidate ng-submit="vm.nameForm.$valid && vm.submitQuestionAnswer(vm.user.name)" id="name-form">
+      <input type="text" name="name" class="name-input" placeholder="Naam?" ng-model="vm.user.name" required>
+      <span ng-click="vm.submitQuestionAnswer(vm.user.name)"><i class="icon icon-arrowTabbar"></i></span>
+    </form>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

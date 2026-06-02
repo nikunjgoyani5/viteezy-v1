@@ -1,0 +1,55 @@
+<div class="desktop-carousel">
+  <div class="desktop-slideshow-container">
+    <div class="review" *ngFor="let review of reviews">
+      <div class="review-title">
+        <span class="stars" data-checked="5">
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+          <i class="icon icon-interface-star-a"></i>
+        </span>
+      </div>
+      <div class="review-content">
+        <q>
+          {{ review.text }}
+        </q>
+      </div>
+      <div class="review-footer">
+        <img class="review-picture" src="{{ review.image.data.attributes.url }}" alt="{{ review.image.data.attributes.alternativeText }}">
+        <p class="review-name">{{ review.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mobile-carousel">
+  <div class="slideshow-container">
+    <div #slides class="slides fade" *ngFor="let review of reviews">
+      <div class="review">
+        <div class="review-title">
+          <span class="stars" data-checked="5">
+            <i class="icon icon-interface-star-a"></i>
+            <i class="icon icon-interface-star-a"></i>
+            <i class="icon icon-interface-star-a"></i>
+            <i class="icon icon-interface-star-a"></i>
+            <i class="icon icon-interface-star-a"></i>
+          </span>
+        </div>
+        <div class="review-content">
+          <q>
+            {{ review.text }}
+          </q>
+        </div>
+        <div class="review-footer">
+          <img class="review-picture" src="{{ review.image.data.attributes.url }}" alt="{{ review.image.data.attributes.alternativeText }}">
+          <p class="review-name">{{ review.name }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="reviews && reviews.length > 1" class="carousel-dots-wrapper">
+      <span class="carousel-dot" *ngFor="let review of reviews" (click)="currentSlide(review.id)"></span>
+    </div>
+  </div>
+</div>
+

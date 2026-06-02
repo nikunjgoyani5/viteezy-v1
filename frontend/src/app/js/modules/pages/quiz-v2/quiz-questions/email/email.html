@@ -1,0 +1,23 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Wat is je email adres?</h1>
+      <h2>Na afloop van de quiz sturen wij je vitamine aanbeveling en gezondheidstips naar je toe</h2>
+    </div>
+
+    <form name="vm.emailForm" novalidate ng-submit="vm.emailForm.$valid">
+      <div class="email-form">
+        <input type="email" name="email" class="email-input" placeholder="E-mail?" ng-model="vm.user.email" ng-pattern=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/ required>
+        <div class="email-button-wrapper">
+          <button class="button submit-button mobile-wide" ng-click="vm.submitQuestionAnswer(vm.user.email)">Volgende</button>
+          <br>
+          <button class="button-underline" ng-click="vm.skipQuestionAnswer()">Verder zonder e-mail</button>
+        </div>
+      </div>
+    </form>
+
+    <p class="input-error spacing" ng-if="vm.showEmailExistsError">Je e-mailadres komt al voor in ons systeem, <a href="" ui-sref="login">log in</a> om de quiz opnieuw te maken.</p>
+    <p class="input-error spacing" ng-if="vm.emailForm.email.$dirty && vm.emailForm.$invalid">Vul een geldig e-mail in</p>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

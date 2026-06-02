@@ -1,0 +1,127 @@
+.cart {
+  position: fixed;
+  top: 4em;
+  left: 0;
+  z-index: 1;
+  border: 0.1em solid $dark-grey;
+  padding: 0.75em;
+  background-color: $white;
+  width: calc(100vw - 1.5em);
+  max-height: 88vh;
+  overflow-y: scroll;
+
+  @include media-from-medium {
+    width: 20em;
+    left: initial;
+    right: 0;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.25em 0;
+  }
+
+  .cart-info {
+    color: $dark-blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      margin-left: 0.5em;
+    }
+
+    em, span {
+      display: block;
+      font-size: small;
+    }
+  }
+  
+  .cart-price {
+    color: $turquoise;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    height: 3em;
+    width: 100%;
+    margin: 0.5em 0;
+    text-align: center;
+  }
+
+  .continue {
+    color: $turquoise;
+    border: 0.1em solid $dark-grey;
+  }
+
+  i {
+    margin-left: 0.25em;
+  }
+
+  progress {
+    color: $turquoise;
+    display: block;
+    margin: 0 auto;
+    height: 10px;
+    width: 100%;
+    border: 0;
+    border-radius: 20px;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: $grey;
+  }
+
+  progress::-webkit-progress-bar {
+    border: 0;
+    height: 10px;
+    border-radius: 20px;
+  }
+  progress::-webkit-progress-value {
+    background: $turquoise;
+    border: 0;
+    height: 10px;
+    border-radius: 20px;
+  }
+  progress::-moz-progress-bar {
+    background: #FFF;
+    background: $turquoise;
+    border: 0;
+    height: 10px;
+    border-radius: 20px;
+  }
+
+  .cart-progress {
+    color: $dark-blue;
+    text-align: center;
+    border: 0.1em solid $dark-grey;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0.5em;
+
+    span {
+      font-size: smaller;
+    }
+
+    b {
+      color: $turquoise;
+    }
+  }
+
+}

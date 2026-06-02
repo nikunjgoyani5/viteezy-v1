@@ -1,0 +1,691 @@
+.background-wrapper {
+  background-color: $grey;
+}
+
+.domain-wrapper,
+.membership-wrapper,
+.login-wrapper {
+  min-height: calc(100vh - 5.15rem);
+  max-width: 76rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.wrapper-compact-wide {
+  .account-name {
+    padding: 0.5em;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .grey-hr {
+    border: 0;
+    border-top: 0.2em solid $dark-grey;
+  }
+}
+
+.status-container {
+  margin: 2em auto;
+  display: flex;
+  text-align: center;
+
+  .status-item {
+    flex-grow: 4;
+
+    h4 {
+      padding: 0.5em;
+    }
+  }
+}
+
+.domain-sub-menu {
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+  padding: 1em 0;
+
+  .button {
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    font-size: 1.25em;
+    margin: 0.5em 0;
+  }
+
+  @include media-min-small {
+    display: flex;
+
+    .button {
+      width: 100%;
+      margin: 0.5em 1em;
+      max-width: calc(50% - 2em);
+    }
+  }
+}
+
+.domain-customer-data-wrapper {
+  display: flow-root;
+
+  button {
+    margin: 1em;
+  }
+}
+
+.green-arrow {
+  color: $main-brand-color;
+  margin-left: 1.25em;
+}
+
+.domain-blend {
+  margin-top: 1em;
+  margin: 0 auto;
+
+  @include media-medium {
+
+    .checkout-main,
+    .checkout-sidebar {
+      width: 100%;
+    }
+  }
+}
+
+.pause-membership-wrapper,
+.stop-membership-wrapper {
+  max-width: 30em;
+  margin: 0 auto;
+}
+
+.pause-membership-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.stop-membership-wrapper {
+  text-align: left;
+
+  i {
+    display: inline !important;
+  }
+
+  .option-button {
+    float: initial;
+    width: 7.5rem;
+  }
+}
+
+.stop-button {
+  display: block;
+  background-color: $orange;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 1em;
+  color: $white;
+  margin: 2em auto;
+  width: 17.5em;
+}
+
+textarea#open-stop-reason {
+  width: 100%;
+  max-width: 25em;
+  height: 5em;
+}
+
+.pause-wrapper {
+  display: block;
+  margin: 0 auto;
+  padding: 2em 0;
+  text-align: center;
+
+  .pause-button {
+    margin-top: 1em;
+    width: 17.5em;
+  }
+
+  p {
+    margin-top: 1em;
+  }
+
+  a {
+    margin-top: 2em;
+    display: block;
+    color: $darker-red;
+  }
+}
+
+@include media-medium {
+
+  .login-form-wrapper,
+  .pause-membership-wrapper {
+    position: static;
+    transform: none;
+  }
+
+  .domain-wrapper,
+  .membership-wrapper {
+    min-height: calc(100vh - 3.65rem);
+    padding: 1em;
+  }
+
+  .domain-customer-data-wrapper {
+    padding-bottom: 5em;
+  }
+
+  .domain-customer-data-button {
+    background-color: $white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.75em 0;
+    border-top: 0.1em solid $sub-border-color;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (max-height: 50em) {
+  .pause-membership-wrapper {
+    position: static;
+    transform: none;
+
+  }
+}
+
+.green-warning {
+  text-align: center;
+  color: $turquoise;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+//domain home page
+.domain-head-wrapper {
+  background-image: url("/assets/image/content/domain-header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 20em;
+  border-radius: 10px;
+  color: $white;
+  text-align: center;
+
+  .text-wrapper {
+    padding: 5em;
+
+    * {
+      padding: 1em;
+    }
+  }
+
+  @include media-medium {
+    height: initial;
+    margin: 0.5em;
+
+    .text-wrapper {
+      padding: 1em;
+      font-size: 1.5em;
+
+      @include media-mini {
+        padding: 0.5em;
+      }
+
+      h2 {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .cta-button {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 25px;
+    padding: 0.8em;
+    width: 275px;
+    background-color: $turquoise;
+
+    @include media-medium {
+      font-size: 16px;
+    }
+
+    @include media-mini {
+      font-size: 15px;
+    }
+  }
+}
+
+.domain-head-customer {
+  display: block;
+  text-align: center;
+  padding: 1em;
+  font-size: 24px;
+}
+
+.domain-head-name {
+  color: $turquoise;
+}
+
+.domain-button-wrapper {
+  text-align: center;
+
+  a {
+    width: 90%;
+  }
+}
+
+.domain-preview-wrapper {
+  margin-top: 1em;
+  &.background-white {
+    background-color: $white;
+    border-radius: 10px;
+  }
+}
+
+@include media-min-small {
+  .domain-preview-wrapper {
+    display: flex;
+    align-items: flex-start;
+
+    .visual-cta {
+      padding: initial;
+    }
+
+    .visual-cta--section:nth-child(1) {
+      text-align: left;
+    }
+  }
+
+  .grey-line {
+    display: none;
+  }
+
+  .domain-blend-preview, .domain-item-wrapper, .domain-payment-preview {
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 1em;
+    background-color: $white;
+    border-radius: 10px;
+
+    &.background-grey {
+      background-color: $grey;
+    }
+  }
+
+  .domain-item-wrapper {
+    margin: 1em 0 1em 1em;
+  }
+}
+
+@include media-medium {
+  .domain-goal-preview {
+    margin: 1em 0;
+  }
+}
+
+.domain-item-wrapper {
+  border-radius: 10px;
+
+  h4 {
+    margin: 0 0 1em 1em;
+  }
+
+  @include media-medium {
+    padding: 1em 0;
+  }
+
+  .wrapper {
+    margin-top: 1em;
+    padding: 0;
+  }
+
+  &.background-white {
+    background-color: $white;
+
+  }
+}
+
+.domain-info-preview {
+  position: relative;
+  padding: 2em;
+  text-align: center;
+
+  h3, p {
+    padding: 0.5em;
+  }
+
+  .title-wrapper {
+    display: inline-block;
+    min-width: 3.5em;
+    background-color: $grey;
+    border-radius: 50%;
+
+    &.wide {
+      width: auto;
+      min-width: 4em;
+      border-radius: 4em;
+    }
+  }
+
+  .active-payment-plan {
+    display: inline-block;
+    min-width: 3.5em;
+    background-color: $lime-white;
+    border-radius: 50%;
+
+    .check {
+      display: block;
+      color: $turquoise;
+    }
+  }
+
+  .paused-payment-plan {
+    display: inline-block;
+    min-width: 3.5em;
+    background-color: $light-orange;
+    border-radius: 50%;
+
+    .dash {
+      display: block;
+      color: $orange;
+      font-weight: 600;
+    }
+  }
+}
+
+.domain-blend-preview {
+  background-color: $white;
+  border-radius: 10px;
+
+  @include media-min-small {
+    margin: 1em auto;
+    padding: 1em;
+  }
+
+  h4, a {
+    display: inline-block;
+    margin: 1em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+
+  a {
+    float: right;
+  }
+}
+
+.domain-goal-preview {
+  padding: 2em;
+  border-radius: 10px;
+  background-color: $white;
+
+  div {
+    padding: 1em;
+  }
+
+  h4, a {
+    display: inline-block;
+  }
+
+  a {
+    float: right;
+  }
+
+  h5, i {
+    display: inline-block;
+  }
+
+  i {
+    font-size: 1.25em
+  }
+}
+
+.domain-customer-preview {
+  margin: 2em 2em 1.25em;
+
+  h4, a {
+    display: inline-block;
+  }
+
+  a {
+    float: right;
+  }
+
+  p {
+    letter-spacing: 0;
+    line-height: 32px;
+  }
+
+  &.bottom {
+    margin: 1.25em 2em 2em;
+  }
+}
+
+.domain-payment-preview {
+  border-radius: 10px;
+  background-color: $white;
+  margin-bottom: 5em;
+
+  h4 {
+    margin-bottom: 1em;
+  }
+
+  @include media-min-small {
+    margin: 1em 0 1em 1em;
+  }
+
+  div {
+    margin: 2em;
+
+    @include media-medium {
+      margin: 1em;
+      padding: 1em 0;
+    }
+  }
+
+  h4 {
+    display: inline-block;
+  }
+
+  a, span {
+    display: block;
+  }
+
+  tr {
+    display: block;
+  }
+
+  td {
+    width: 10em;
+  }
+
+  td:first-child {
+    color: $clay;
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+}
+
+.ingredient-preview-info {
+  margin: auto 1em;
+
+  span {
+    display: block;
+    margin-top: 0.5em;
+    color: $clay;
+    font-size: 0.75em;
+  }
+}
+
+.grey-line {
+  border: 0;
+  border-top: 0.1em solid $dark-grey;
+
+  &.spacing {
+    margin: 2.5em 0;
+  }
+
+  &.small {
+    width: 80%;
+  }
+}
+
+.status-tooltip {
+  position: absolute;
+  margin-left: 2em;
+  top: 1em;
+  color: $white;
+  border-radius: 20px;
+  padding: 0.15em 0.5em;
+
+  &.active {
+    background-color: $turquoise;
+
+    &.small {
+      margin-left: 1em;
+    }
+  }
+
+  &.disabled {
+    background-color: $orange;
+  }
+}
+
+.delivery-notice {
+  width: 90%;
+  display: block;
+  margin: 2.5em auto;
+  text-align: center;
+}
+
+//domain membership page
+.membership-wrapper {
+  padding: 0.5em;
+}
+
+.payments-wrapper {
+
+  div {
+    margin: 3em;
+    background-color: $white;
+    padding: 1em;
+    border-radius: 10px;
+  }
+
+  span {
+    margin: 0.75em;
+    display: block;
+    text-align: center;
+
+    @include media-min-small {
+      display: inline-block;
+      width: 24%;
+      margin: 0;
+    }
+  }
+
+  .date, .product {
+    color: $clay;
+  }
+
+  .status {
+    color: $turquoise;
+    background-color: $lime-white;
+    border-radius: 30px;
+    padding: 0.25em;
+  }
+
+  .status.failed {
+    color: $white;
+    background-color: $darker-red;
+  }
+
+  .status.refund {
+    color: $white;
+    background-color: $orange;
+  }
+}
+
+.domain-page-information {
+  margin: 2em 0;
+
+  h3, h4 {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0.5em;
+    font-weight: 300;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
+  a {
+    color: $dark-blue-1;
+    font-size: 0.75em;
+    margin: 0;
+    display: block;
+    transform: translateY(-50%);
+    text-decoration: none;
+  }
+}
+
+.order-credentials {
+  label {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}
+
+@include media-small {
+  select.country {
+    width: 95%;
+  }
+}
+
+//domain blend page
+.icon-trash {
+  color: $dark-blue-1;
+}
+
+.price-wrapper {
+  border-bottom: 1px solid $main-border-color;
+  display: flex;
+  margin: 1em;
+  padding-bottom: 1em;
+
+  div:last-child {
+    margin-left: auto;
+  }
+
+  .ingredient-information {
+    color: $turquoise;
+  }
+}
+
+.ingredient-line {
+  border: none;
+  border-top: 1px solid $dark-grey;
+  margin: 0 1em;
+}
+
+.track-trace {
+  background-color: $turquoise;
+  color: $white;
+  text-decoration: none;
+  padding: 1em;
+  border-radius: 10px;
+
+  i {
+    margin-right: 10px;
+  }
+}

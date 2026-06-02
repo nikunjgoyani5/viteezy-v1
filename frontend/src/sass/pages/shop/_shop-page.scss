@@ -1,0 +1,53 @@
+.wrapper-content-sidebar {
+  margin: 1rem auto;
+}
+
+.sidebar-content {
+  flex-grow: 1;
+}
+
+.main-content {
+  padding: 1em 0.5em;
+}
+
+.product-totalprice {
+  position: fixed;
+  bottom: 0.75rem;
+  background-color: $main-brand-color;
+  border-radius: 2em;
+  color: #fff;
+  padding: 0.75em 2.5em 0.75em 0.5em;
+  left: 1rem;
+  text-align: center;
+  width: 8em;
+  margin: 0 auto;
+  transition: all ease-in 0.15s;
+
+  i {
+    transform: scaleX(-1) translateY(-50%);
+    position: absolute;
+    right: 1.5em;
+    top: 50%;
+  }
+
+  &:hover,
+  &.updated-price {
+    box-shadow: 0 0.2em 0.5em 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.25em) scale(1.01);
+  }
+}
+
+@include media-from-medium {
+  .wrapper-content-sidebar {
+    display: flex;
+    margin: 4rem auto;
+  }
+
+  .sidebar-content {
+    max-width: 25%;
+  }
+
+  .product-totalprice {
+    right: 1rem;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="membership-wrapper">
+  <div class="wrapper-compact-wide">
+    <div class="domain-page-information">
+      <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+      <h3>Jouw lidmaatschap stoppen</h3>
+      <h4>Waarom wil je stoppen?</h4>
+    </div>
+
+    <div class="stop-membership-wrapper">
+      <div class="quiz-button--1" ng-repeat="item in vm.reasons">
+        <input type="radio" id="answer-{{item.reason}}" name="reason" value="{{item.reason}}" ng-model="vm.reason" ng-click="vm.submitQuestionAnswer(answer.id)">
+        <label for="answer-{{item.reason}}">
+          {{item.reason}}
+        </label>
+      </div>
+      <div class="quiz-button--1">
+        <input type="radio" id="answer-other" name="reason" value="other" ng-model="vm.reason" ng-click="vm.otherReason()">
+        <label for="answer-other">
+          Anders namelijk ...
+        </label>
+      </div>
+      <textarea id="open-stop-reason" ng-model="vm.openStopReason" ng-if="vm.showOtherReason"></textarea>
+      <input type="button" class="stop-button" value="Lidmaatschap stoppen" ng-click="vm.stopMembership()">
+    </div>
+    <div class="domain-page-information">
+      <h4><a href="/domain">Laat maar zitten, ik wil helemaal niet stopzetten</a></h4>
+    </div>
+  </div>
+</div>

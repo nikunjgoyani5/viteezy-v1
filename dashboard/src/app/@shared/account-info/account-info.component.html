@@ -1,0 +1,28 @@
+<div class="hover-to-showinfo-link">
+  <div class="nameAndIcon" (click)="showUserOptions = !showUserOptions">
+    <a class="userIcon">
+      <mat-icon>person</mat-icon>
+    </a>
+  </div>
+  <mat-card *ngIf="showUserOptions" class="menu">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <app-header-icon [value]="user.email" [size]="45"></app-header-icon>
+      </div>
+      <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        (click)="changePasswordClick.emit()"
+        color="primary"
+      >
+        Change password
+      </button>
+      <button mat-raised-button (click)="logoutClick.emit()" color="primary">
+        Log out
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

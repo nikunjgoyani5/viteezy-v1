@@ -1,0 +1,15 @@
+.mat-expansion-panel-header, .mat-expansion-panel-body {
+  padding: 0.25em 0.5em !important;
+}
+
+.mat-expansion-panel {
+  margin: 0.5em 0 !important;
+  border: .05em solid #E1DDDA !important;
+  box-shadow: none !important; 
+}
+
+.mat-expansion-indicator {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

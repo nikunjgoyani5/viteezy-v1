@@ -1,0 +1,1 @@
+ALTER TABLE ingredients ADD COLUMN strapi_content_id int(11) AFTER url;

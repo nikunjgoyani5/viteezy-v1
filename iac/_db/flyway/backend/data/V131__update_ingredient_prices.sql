@@ -1,0 +1,16 @@
+UPDATE ingredient_prices SET price = 6 WHERE ingredient_id = 1;
+UPDATE ingredient_prices SET price = 6 WHERE ingredient_id = 3;
+UPDATE ingredient_prices SET price = 7 WHERE ingredient_id = 4;
+UPDATE ingredient_prices SET price = 9 WHERE ingredient_id = 5;
+UPDATE ingredient_prices SET price = 6 WHERE ingredient_id = 6;
+UPDATE ingredient_prices SET price = 7 WHERE ingredient_id = 8;
+UPDATE ingredient_prices SET price = 9 WHERE ingredient_id = 19;
+UPDATE ingredient_prices SET price = 12 WHERE ingredient_id = 20;
+UPDATE ingredient_prices SET price = 7 WHERE ingredient_id = 21;
+UPDATE ingredient_prices SET price = 12 WHERE ingredient_id = 28;
+UPDATE ingredient_prices SET price = 12 WHERE ingredient_id = 29;
+UPDATE ingredient_prices SET price = 12 WHERE ingredient_id = 30;
+UPDATE ingredient_prices SET price = 11 WHERE ingredient_id = 32;
+UPDATE ingredient_prices SET price = 15 WHERE ingredient_id = 33;
+UPDATE ingredient_prices SET price = 13 WHERE ingredient_id = 34;
+UPDATE ingredient_prices SET price = 11 WHERE ingredient_id = 35;

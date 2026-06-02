@@ -1,0 +1,16 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, abbr, acronym, em, img, strong, sub, sup, ol, ul, li, fieldset, form, label { margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; }
+html { font-family: small; font-size: 125%; }
+body, input, select, textarea, button { outline: 0; }
+body { font-size: 90%; -webkit-text-size-adjust: none; }
+input, button, select, textarea { font-size: 1em; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+input[type=search] { -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0; -webkit-appearance: none; }
+input[type=date]::-webkit-outer-spin-button,
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-input-list-button { display: none; } /* Safari fix */
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+table, caption, tbody, tfoot, thead, tr, th, td {	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+table {	border-collapse: collapse; border-spacing: 0; }
+::-moz-focus-inner { outline: 0; border: 0; }
+a:active { background: inherit; } /* IE10 fix */
+address { font-style: normal; }

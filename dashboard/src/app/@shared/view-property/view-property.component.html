@@ -1,0 +1,14 @@
+<div class="viewProperty">
+  <div class="container">
+    <div
+      *ngIf="showlabel !== false"
+      [ngStyle]="{ width: widthStyle }"
+      class="label"
+    >
+      {{ label }}
+    </div>
+    <div [ngStyle]="style" class="value">
+      {{ stringValue }}
+    </div>
+  </div>
+</div>

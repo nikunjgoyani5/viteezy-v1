@@ -1,0 +1,1 @@
+ALTER TABLE customers ADD COLUMN klaviyo_profile_id varchar(50) AFTER active_campaign_ecom_customer_id;

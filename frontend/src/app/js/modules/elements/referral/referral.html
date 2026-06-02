@@ -1,0 +1,16 @@
+<div class="referral-page" ng-class="{ 'navigation-active': vm.referralPageVisible }">
+  <div class="referral-wrapper">
+    <i class="close-circle" ng-click="vm.toggleReferralPage()">
+      <span class="cross">&#10005;</span>
+    </i>
+    <div class="referral-head-wrapper"></div>
+    <div class="referral-text-wrapper">
+      <p>Wil je met voordeel aan je gezondheidsdoelen werken? Dat kan! Voor elke vriend, collega of kennis die via jouw doorverwijzing met Viteezy begint, <strong>ontvang jij automatisch &euro;10 korting op je maandelijkse vitamines.</strong></p>
+      <hr class="grey-line small">
+      <p>En jij bent niet de enige die profiteert, want iedereen die jouw persoonlijke code gebruikt ontvangt maar liefst <strong>&euro;10 korting op hun eerste bestelling vanaf &euro;20.</strong> Win-win dus!</p>
+      <p>Deel de volgende kortingscode</p>
+      <b>{{ vm.customer.referralCode }}</b>
+      <a href="https://viteezy.nl" target="_blank" id="referral-button">Deel jouw kortingscode via whatsapp</a>
+    </div>
+  </div>
+</div>

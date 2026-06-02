@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strapi-app
+  namespace: viteezy-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strapi-app
+  template:
+    metadata:
+      labels:
+        app: strapi-app
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+        - name: strapi
+          image: europe-west4-docker.pkg.dev/viteezy/cms/docker:${strapi}
+          ports:
+            - containerPort: 1337
+              name: strapi-http
+          envFrom:
+            - configMapRef:
+                name: strapi-app-conf
+            - secretRef:
+                name: strapi-app-secret
+          volumeMounts:
+            - name: strapi-persistent-storage
+              mountPath: /opt/app/public
+      volumes:
+        - name: strapi-persistent-storage
+          persistentVolumeClaim:
+            claimName: strapi-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: strapi-app
+  namespace: viteezy-production
+spec:
+  type: NodePort
+  selector:
+    app: strapi-app
+  ports:
+    - name: strapi-port
+      protocol: TCP
+      port: 1337
+      nodePort: 31347
+      targetPort: strapi-http

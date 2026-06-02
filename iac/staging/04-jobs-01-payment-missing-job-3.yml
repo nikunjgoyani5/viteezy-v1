@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: payment-missing-job-3
+  namespace: viteezy-staging
+spec:
+  schedule: "30 10 25 * *"
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-payment-missing-3
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "--ignore-stdin"
+                - "--check-status"
+                - "-f"
+                - "backend:8081/tasks/missing-payments"
+                - "attempts=3"
+          restartPolicy: Never

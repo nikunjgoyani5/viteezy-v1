@@ -1,0 +1,27 @@
+<span *ngIf="totalPrice > 0" (click)="toggleCart()" class="menu-icon">
+  <i class="icon icon-cart"></i>
+  <div class="cart-size">
+    <span>{{ ingredients.length }}</span>
+  </div>
+</span>
+<div *ngIf="cartVisible && totalPrice > 0" class="cart">
+  <div class="cart-item" *ngFor="let ingredient of ingredients">
+    <span class="out-of-stock-badge" *ngIf="!ingredient.isActive">Tijdelijk niet beschikbaar</span>
+    <div class="cart-info">
+      <img [src]="ingredient.content?.productImage.data?.attributes.url">
+      <div>
+        <h5>{{ ingredient.content?.title }}</h5>
+        <em>30 capsules</em>
+        <span *ngIf="ingredient.content && ingredient.content.checks.length > 0">{{ ingredient.content.checks[0].text }}</span>
+      </div>
+    </div>
+    <span class="cart-price">&euro; {{ ingredient.price }}</span>
+  </div>
+  <button class="category-button category-button-highlight" (click)="redirectBlend()">Winkelwagen <i class="icon icon-cart"></i></button>
+  <button class="category-button continue" (click)="cartVisible = false">Verder winkelen</button>
+  <div class="cart-progress">
+    <progress value="{{ totalPrice }}" max="20"></progress>
+    <span *ngIf="totalPrice < 20">Besteed nog &euro; {{ 20 - totalPrice }} meer om te profiteren van <b>GRATIS verzending</b></span>
+    <span *ngIf="totalPrice >= 20">Je profiteert van de <b>GRATIS verzending</b></span>
+  </div>
+</div>

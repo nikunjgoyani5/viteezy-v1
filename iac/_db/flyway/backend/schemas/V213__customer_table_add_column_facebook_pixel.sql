@@ -1,0 +1,1 @@
+AlTER TABLE customers ADD COLUMN facebook_pixel VARCHAR(128) AFTER ga_id;

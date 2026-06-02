@@ -1,0 +1,53 @@
+.sidebar-content {
+  p {
+    margin: 0.5em 0;
+    font-weight: bold;
+  }
+
+  a, button {
+    display: inline-block;
+    color: $main-brand-color;
+    margin-bottom: 1em;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+}
+
+.type-list {
+  margin: 1.5em 0;
+  list-style: none;
+
+  li {
+    padding: 0.4em 0 0.4em 1.25em;
+    position: relative;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+.category-list {
+  list-style: none;
+  font-weight: bold;
+
+  li {
+    padding: 0.4em 0 0.4em 1.25em;
+    position: relative;
+
+    &::before {
+      content: "\e93f";
+      font-family: Viteezy-Icons;
+      position: absolute;
+      left: 0;
+      font-size: 0.4em;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $main-brand-color;
+    }
+  }
+}

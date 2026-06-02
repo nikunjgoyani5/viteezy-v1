@@ -1,0 +1,1 @@
+ALTER TABLE coupons ADD COLUMN is_recurring BOOLEAN DEFAULT false AFTER creator_id;

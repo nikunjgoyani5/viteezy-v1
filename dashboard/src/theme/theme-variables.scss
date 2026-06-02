@@ -1,0 +1,93 @@
+/*
+ * Application global variables.
+ */
+
+// Angular Material custom theme
+// See https://material.angular.io/guide/theming for more details.
+//
+// You can also read https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1
+// for more insight about Angular Material theming.
+
+@import "~@angular/material/theming";
+
+$md-primary: (
+  50: #dff3f1,
+  100: #b0e1da,
+  200: #7ccec2,
+  300: #43baa9,
+  400: #21ab96,
+  500: #00ab96,
+  600: #009c85,
+  700: #008e78,
+  800: #007e68,
+  900: #006e59,
+  A100: #a1b4ff,
+  A200: #6e8cff,
+  A400: #3b64ff,
+  A700: #214fff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$md-accent: (
+  50: #fef1e0,
+  100: #fddbb3,
+  200: #fbc380,
+  300: #f9ab4d,
+  400: #f89926,
+  500: #f78700,
+  600: #f67f00,
+  700: #f57400,
+  800: #f36a00,
+  900: #f15700,
+  A100: #ffffff,
+  A200: #ffece5,
+  A400: #ffc9b2,
+  A700: #ffb798,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$app-primary: mat-palette($md-primary);
+
+$app-accent: mat-palette($md-accent);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// Material design icons font path
+$material-design-icons-font-directory-path: "~material-design-icons-iconfont/dist/fonts/";

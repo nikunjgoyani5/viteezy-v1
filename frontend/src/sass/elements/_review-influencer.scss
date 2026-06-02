@@ -1,0 +1,64 @@
+.review-influencer-wrapper {
+  margin: 1em;
+
+  @include media-from-medium {
+    margin: 1em auto;
+  }
+
+  max-width: 30em;
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1em 0 1em;
+  }
+  
+  img {
+    width: 40%;
+    height: auto;
+    border-radius: 2.5em;
+  }
+    
+  img, div {
+    flex: 50%;
+  }
+
+  .quote-wrapper {
+    text-align: left;
+    font-weight: 600;
+    font-size: large;
+    margin-left: 1em;
+
+    .stars {
+      font-size: small;
+    }
+  }
+
+  .name {
+    display: block;
+    margin-top: 1em;
+  }
+  
+  .notice {
+    display: block;
+    margin: 1em;
+    text-align: center;
+    color: $darker-grey;
+    font-size: smaller;
+  }
+
+  a {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    text-align: center;
+
+    i.icon {
+      vertical-align: bottom;
+      display: inline-block;
+      transform: rotate(180deg);
+      padding-right: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+UPDATE payment_plans SET status = "ACTIVE" WHERE stop_reason = "Mollie subscription migration";

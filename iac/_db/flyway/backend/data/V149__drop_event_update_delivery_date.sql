@@ -1,0 +1,1 @@
+DROP EVENT update_delivery_date_event;

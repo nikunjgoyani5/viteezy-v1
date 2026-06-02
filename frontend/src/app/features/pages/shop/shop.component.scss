@@ -1,0 +1,216 @@
+@import '/src/sass/mixins/mediaqueries';
+
+body {
+  background-color: #fff;
+}
+
+@include media-from-large {
+  .main-content {
+    display: flex;
+  }
+}
+
+.navigation {
+  box-shadow: 0 2px 8px 2px #d7d3d0;
+}
+
+.add-to-checkout {
+  color: #fff;
+  background-color: #00AB96;;
+  border: none;
+  padding: .2em 0.6em;
+  
+  i {
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+  }
+}
+
+.product-display--item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 0 0.4em;
+
+  .button {
+    margin-top: 0.5em;
+    font-size: 1em;
+  }
+}
+
+.product-display--item-header {
+  min-height: 12.1em;
+
+  @include media-from-large {
+    min-height: 16em;
+  }
+}
+
+.search-wrapper {
+  margin: 0 .225em 0.75em;
+  display: flex;
+  justify-content: space-between;
+
+  @include media-from-large {
+    margin: initial;
+    height: 34.4px;
+    font-size: small;
+  }
+}
+
+.search-input-wrapper {
+  display: flex;
+  border: .05em solid #E1DDDA;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  input {
+    width: 100%;
+
+    &::placeholder {
+      font-weight: 100;
+    }
+  }
+}
+
+.search-input-wrapper:before {
+  content: "\e984";
+  font-family: Viteezy-Icons;
+  color: #00AB96;
+  font-size: 1.5em;
+  padding-left: 0.2em;
+}
+
+.filter-button-wrapper {
+  display: flex;
+  color: #00AB96;
+  border: .05em solid #E1DDDA;
+  font-size: 1.65em;
+  margin-left: .35em;
+  padding: 0.05em;
+
+  @include media-from-large {
+    display: none;
+  }
+}
+
+.breadcrumb-container, .filter-header {
+  display: flex;
+  justify-content: space-between;
+  margin: .5em 0.25em 0;
+  border-bottom: 1px solid #f7a7377a;
+
+  span:last-child {
+    font-size: medium;
+  }
+
+  @include media-from-large {
+    margin: .5em 2.25em 0;
+  }
+}
+
+@include media-from-large {
+  .filter-header {
+    display: none;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00AB96;
+  font-weight: 600;
+  font-size: medium;
+
+  .icon-home {
+    font-size: 22px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #00AB96;
+  }
+
+  .arrow {
+    color: #6f737b;
+    padding: 0 0.25em;
+  }
+}
+
+@include media-from-large {
+  .filter-container {
+    min-width: 12em;
+    padding: 0 1.5em;
+  } 
+}
+
+.filter-panel {
+  display: none;
+  color: #203048;
+  background-color: #fff;
+  height: 100vh;
+  left: 0;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: transform ease-in-out 0.25s;
+  z-index: 2;
+  padding: 0 1em;
+
+  @include media-from-large {
+    display: block;
+    position: relative;
+    padding: 0;
+    height: initial;
+    z-index: 0;
+    overflow: hidden;
+  }
+}
+
+.mobile-logo {
+  svg {
+    max-width: 11em;
+    margin: 0 auto 0;
+    display: block;
+  
+    path {
+      fill: #00AB96;
+    }
+  }
+}
+
+.checkbox-container {
+  margin: 0 .225em .75em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .mat-checkbox-wrapper {
+    padding: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+  }
+
+  mat-checkbox:hover {
+    background-color: #E1DDDA;
+  }
+
+  .mdc-checkbox__checkmark {
+    color: #00AB96 !important;
+  }
+
+  @include media-from-large {
+    display: block;
+  }
+}
+
+mat-radio-button {
+  display: block;
+  margin: 0.5em 0;
+}

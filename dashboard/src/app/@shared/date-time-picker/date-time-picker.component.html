@@ -1,0 +1,10 @@
+<mat-form-field [formGroup]="group">
+  <input
+    matInput
+    [ngxMatDatetimePicker]="picker"
+    [placeholder]="model.placeholder"
+    [formControlName]="model.id"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+</mat-form-field>

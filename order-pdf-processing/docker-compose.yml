@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  vit_tool:
+    image: viteezyorderprocessing:latest
+    command: vop process run --process-all

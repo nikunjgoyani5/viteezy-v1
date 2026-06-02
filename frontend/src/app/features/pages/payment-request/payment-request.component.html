@@ -1,0 +1,18 @@
+<div class="payment-request-wrapper">
+  <span>Betaalverzoek van Viteezy</span>
+  <div *ngIf="!allPaymentsPaid">
+    <span class="payment-amount">{{ amount }}</span>
+    <div>
+      <button class="button submit-button" (click)="sumbitPayment()">Betalen</button>
+      <div class="payment-methods">
+        <div *ngFor="let paymentMethod of paymentMethods" class="payment-method">
+          <img [src]="paymentMethod.image.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="allPaymentsPaid">
+    <span class="paid">Betaald</span>
+    <span class="signature">Bedankt!</span>
+  </div>
+</div>

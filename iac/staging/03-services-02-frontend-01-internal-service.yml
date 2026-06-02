@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: viteezy-staging
+  labels:
+    app: frontend
+spec:
+  type: NodePort
+  ports:
+    - name: frontend-port
+      port: 3000
+      nodePort: 30303
+      targetPort: 3000
+  selector:
+    app: frontend

@@ -1,0 +1,38 @@
+{
+  "name": "viteezy",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.11",
+    "@angular/common": "^17.3.11",
+    "@angular/compiler": "^17.3.11",
+    "@angular/core": "^17.3.11",
+    "@angular/forms": "^17.3.11",
+    "@angular/material": "^17.3.10",
+    "@angular/platform-browser": "^17.3.11",
+    "@angular/platform-browser-dynamic": "^17.3.11",
+    "@angular/router": "^17.3.11",
+    "@angular/upgrade": "^17.3.11",
+    "angular": "^1.8.3",
+    "angular-resource": "^1.8.3",
+    "angular-ui-carousel": " =0.1.10",
+    "angular-ui-router": "^1.0.30",
+    "ng-dialog": "=1.4.0",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.6.3",
+    "zone.js": "^0.14.7"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.8",
+    "@angular/cli": "^17.3.8",
+    "@angular/compiler-cli": "^17.3.11",
+    "@types/jasmine": "^5.1.4",
+    "jasmine-core": "^5.1.2",
+    "typescript": "^5.4.5"
+  }
+}

@@ -1,0 +1,22 @@
+<section>
+  <div class="wrapper wrapper-quiz-v2">
+    <div class="question-header">
+      <h1>Heb je één of meer van de volgende allergieën?</h1>
+    </div>
+    <div class="quiz-button-wrapper quiz-button-wrapper--until-small">
+      <div class="quiz-button" ng-repeat="answer in vm.questionAnswers">
+        <input type="checkbox" id="answer-{{answer.code}}" name="allergy-types" value="{{answer.id}}" ng-model="answer.selected" ng-click="vm.saveQuestionAnswer(answer)">
+        <label for="answer-{{answer.code}}">
+          {{answer.name}}
+          <span ng-if="answer.subtitle">{{answer.subtitle}}</span>
+        </label>
+      </div>
+      <div class="bottom-cta-wrapper">
+        <a href="" class="button submit-button" ng-click="vm.gotoNextStep()" ng-class="{'button-disabled': vm.answers.length < 1 }">Volgende
+          <i class="icon icon-arrowTabbar"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<vi-progress current="vm.questionConfig.currentProgress" total="100"></vi-progress>

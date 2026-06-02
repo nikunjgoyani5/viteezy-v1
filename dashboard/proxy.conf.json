@@ -1,0 +1,8 @@
+{
+  "/viteezy/api/dashboard/*": {
+    "target": "https://staging.viteezy.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

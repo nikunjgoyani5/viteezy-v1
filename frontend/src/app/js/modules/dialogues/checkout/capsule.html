@@ -1,0 +1,21 @@
+<div class=dialog-content-wrap>
+  <i class="icon icon-close close-capsule" ng-click="vm.closeThisPopup()"></i>
+  <h1 class="fullwidth">Voeg capsules toe aan je vitaminemix</h1>
+
+  <div class="ingredient-wrapper ingredient-wrapper-compact">
+    <div class="ingredient-compact" ng-repeat="capsule in vm.availableIngredients" ng-if="capsule.price">
+      <div class="ingredient-compact-image" ng-click="vm.openIngredientPopup(capsule.code, capsule)">
+        <img ng-src="/assets/image/capsules/{{ capsule.code }}.jpg">
+      </div>
+
+      <div class="ingredient-compact-information">
+        <h4>{{ capsule.name }}</h4>
+        <span>{{ capsule.description }}</span>
+        <a href class="add-vitamin-link" ng-click="vm.addCapsule(capsule)">+ Voeg toe voor &euro; {{ capsule.price }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-close-footer">
+    <span ng-click="vm.closeThisPopup()">Sluiten</span>
+  </div>
+</div>

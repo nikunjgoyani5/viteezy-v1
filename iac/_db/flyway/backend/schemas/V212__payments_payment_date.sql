@@ -1,0 +1,1 @@
+ALTER TABLE payments ADD COLUMN payment_date timestamp NULL AFTER creation_date;

@@ -1,0 +1,413 @@
+.product-page {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.product-container {
+    display: flex;
+    padding: 4em;
+    align-items: center;
+    justify-content: center;
+
+    @include media-medium {
+        display: block;
+        padding: 1em;
+    }
+}
+
+.leaf-top-right {
+    position: absolute;
+    right: 0;
+    top: 7.5em;
+
+    @include media-medium {
+        display: none;
+    }
+}
+
+.product-child {
+    flex: 1;
+
+    .product-head-info {
+        line-height: 36px;
+        padding: 2.5em 5em 5em;
+        max-width: 30em;
+
+        button.button.submit-button {
+            margin-right: 0.1em;
+        }
+
+        @include media-medium {
+            padding: 0.5em;
+
+            span, h2 {
+                text-align: center;
+                margin: 0 auto;
+                display: block;
+            }
+        }
+
+        h1 {
+            margin-bottom: 0.5em;
+        }
+
+        span {
+            color: $darker-grey;
+        }
+
+        p {
+            margin: 2.5em 0;
+        }
+
+        ul {
+            list-style-image: url('/assets/image/icons/check.svg');
+            margin-left: 1em;
+        }
+
+        a {
+            margin: 1em auto;
+            display: block;
+            width: 6.5em;
+        }
+    }
+
+    .product-head-picture {
+        margin: 0 auto;
+        float: right;
+        display: block;
+        width: 100%;
+        border-radius: 20px;
+
+        &.center {
+         float: initial;
+        }
+
+        @include media-medium {
+            width: 100%;
+            margin-bottom: 1em;
+        }
+    }
+}
+
+.characteristics-container {
+    background-color: $white;
+    display: flex;
+    padding: 1em;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    margin: 0.8rem 0.25em 1.6rem;
+    
+    div:nth-child(1), div:nth-child(2) {
+        margin-top: 3em;
+    }
+
+    div:nth-child(3), div:nth-child(4) {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+
+    @include media-medium {
+        flex-wrap: wrap;
+        padding: 0;
+    }
+}
+
+.characteristics-child {
+    margin: 0 auto;
+    text-align: center;
+
+    svg, img {
+      display: block;
+      margin: 0 auto 0.5em;
+      background-color: $grey;
+      padding: 1em;
+      border-radius: 0.4em;
+      width: 28px;
+      height: 28px;
+    }
+
+    @include media-medium {
+        width: 50%;
+        padding: 0;
+    }
+}
+
+.finding-title {
+    text-align: center;
+    margin: 1em;
+}
+
+.finding-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include media-medium {
+        display: block;
+        padding: 0.25em;
+    }
+}
+
+.finding-child {
+    flex: 1;
+}
+
+.finding-info {
+    max-width: 30em;
+    margin: 2.5em;
+    line-height: 36px;
+
+    @include media-medium {
+        padding: 1em 1em 0;
+        margin: 0;
+    }
+}
+
+.finding-picture {
+    float: left;
+    border-radius: 10px;
+
+    @include media-medium {
+        display: block;
+        float: initial;
+        width: 100%;
+    }
+}
+
+.orange-dots {
+    position: absolute;
+    right: 20%;
+
+    @include media-medium {
+        display: none;
+    }
+
+    &.align-dots-left {
+        left: 0;
+        bottom: 0;
+
+        @include media-medium {
+            display: none;
+        }
+    }
+}
+
+.fact-wrapper {
+    max-width: 35em;
+    margin: 5em auto;
+    text-align: left;
+
+    @include media-medium {
+        padding: 1em 1em 0;
+        margin: 0;
+    }
+
+    .fact-tooltip {
+        color: $main-brand-color;
+    }
+
+    .fact-title {
+        line-height: 36px;
+        font-size: 22px;
+    }
+}
+
+.black-dots {
+    position: absolute;
+    left: 10%;
+    z-index: 1;
+    width: 15%;
+
+    @include media-medium {
+        width: 50%;
+        left: -15%;
+    }
+}
+
+.our-product {
+    background-position: center;
+    height: 20em;
+    background-size: cover;
+    width: 50em;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: relative;
+
+    @include media-medium {
+        width: 100%;
+        height: 25em;
+    }
+}
+
+.our-product-title {
+    flex: 1;
+    color: $white;
+    text-align: center;
+    margin: auto;
+    font-size: 22px;
+
+    @include media-medium {
+        padding: 0.5em;
+    }
+}
+
+.our-product-text {
+    flex: 1;
+    color: $white;
+    text-align: center;
+    line-height: 26px;
+    font-size: 12px;
+    margin: auto;
+    padding: 1.5em;
+
+    @include media-medium {
+        font-size: 13px;
+        padding: 1em;
+    }
+}
+
+.ingredient-table-header {
+    text-align: center;
+    max-width: 35em;
+    margin: 0 auto;
+    line-height: 36px;
+    padding: 5em;
+
+    @include media-medium {
+        padding: 2.5em 1em;
+    }
+}
+
+.ingredient-table-wrapper {
+  margin: 2em auto;
+  max-width: 50em;
+
+  @include media-medium {
+    width: 90%;
+  }
+
+  .ingredient-table {
+    width: 100%;
+
+    @include media-medium {
+      font-size: 14px
+    }
+  }
+
+  td {
+    border-top: 1px solid $dark-grey;
+  }
+
+  th, td {
+    padding: 0em 1em;
+
+    @include media-medium {
+      padding: initial;
+      padding-left: 1em;
+    }
+  }
+
+  .first-row {
+    width: 60%;
+  }
+
+  .table-row-subtitle {
+    color: $darker-grey;
+  }
+}
+
+.table-container {
+  border: 1px solid $dark-grey;
+  padding: 1em;
+  line-height: 46px;
+  text-align: right;
+}
+
+.interested-wrapper {
+    text-align: center;
+    margin: 5em;
+
+    @include media-medium {
+        margin: 2em 0em;
+    }
+}
+
+.interested-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+        color: $main-font-color;
+    }
+
+    @include media-medium {
+        display: block;
+    }
+
+    img {
+        flex: 3;
+        max-width: 25em;
+        padding: 1em;
+        border-radius: 30px;
+
+        @include media-medium {
+            width: 90%;
+        }
+    }
+
+    h5, span {
+        text-align: left;
+        margin-left: 25px;
+        display: block;
+    }
+
+    span {
+        color: $darker-grey;
+    }
+}
+
+@include media-medium {
+    .interested-item {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+.disclaimer-wrapper {
+    text-align: center;
+    max-width: 70em;
+    padding: 5em;
+    margin: 0 auto;
+
+    @include media-medium {
+        text-align: left;
+        padding: 1em;
+    }
+}
+
+.shop-disclaimer {
+  display: none;
+
+  @include media-from-medium {
+    display: block;
+  }
+}
+
+.product-information-wrapper {
+  margin: 3em auto;
+  max-width: 50em;
+
+  h3 {
+    text-align: center;
+  }
+
+  a {
+    color: $main-font-color;
+  }
+
+  li {
+    margin: 0.5em 0;
+  }
+}

@@ -1,0 +1,2 @@
+ALTER TABLE ingredient_content DROP FOREIGN KEY ingredient_articles_id_ingredient_id_fk;
+ALTER TABLE ingredient_content DROP COLUMN ingredient_article_id;

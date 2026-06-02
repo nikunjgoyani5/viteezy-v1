@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_productpage_ingredient_component_headers",
+  "info": {
+    "displayName": "ingredientComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "string"
+    },
+    "percentage": {
+      "type": "string"
+    }
+  }
+}

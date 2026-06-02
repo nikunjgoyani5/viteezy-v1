@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: post-nl-fulfilment-job
+  namespace: viteezy-staging
+spec:
+  schedule: "15 7 * * *"
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-post-nl-fulfilment-request
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "--ignore-stdin"
+                - "--check-status"
+                - "-f"
+                - "backend:8081/tasks/post-nl-fulfilment-request"
+                - "daysAgo=1"
+          restartPolicy: Never

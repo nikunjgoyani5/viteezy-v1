@@ -1,0 +1,56 @@
+<div class="dialog-ingredient-information slide-ingredient-information">
+  <div class="section-wrapper no-padding">
+    <h4 class="section-title">{{ vm.ingredient.name }}</h4>
+  </div>
+
+  <div class="section-wrapper no-padding">
+    <div class="section-left extra-padding">
+      <b ng-repeat="reason in vm.getIngredientReason() | limitTo:1">{{ reason }}</b>
+
+      <p class="ingredient-reason-description">{{ vm.getIngredientReasonDescription() }}</p>
+    </div>
+    <div class="section-right" id="{{ vm.ingredient.code }}"></div>
+  </div>
+
+  <div class="section-wrapper">
+    <h3 class="section-title ingredient-title">Onze eerlijke bevindingen</h3>
+    <p>{{ vm.ingredient.content.text1 }}</p>
+  </div>
+
+  <div class="section-wrapper background {{ vm.ingredient.code }}">
+    <h3 class="section-title ingredient-title text-white">{{ vm.ingredient.content.title3 }}</h3>
+    <p class="text-white text-center small">{{ vm.ingredient.content.text3 }}</p>
+  </div>
+
+  <div class="section-wrapper">
+    <h3 class="section-title ingredient-title title-left">{{ vm.ingredient.name }}</h3>
+    <div class="ingredient-allergies right-side">
+      <img ng-if="vm.ingredient.vegan" class="single-icon" src="/assets/image/icons/vegetarian.png" alt="">
+      <img ng-if="vm.ingredient.vegan" class="single-icon" src="/assets/image/icons/vegan.png" alt="">
+      <img class="single-icon" src="/assets/image/icons/gluten.png" alt="">
+    </div>
+
+    <table class="ingredient-table">
+      <tr>
+        <th>Actieve bestanddelen</th>
+        <th>Hoeveelheid</th>
+        <th>% DRI*</th>
+      </tr>
+      <tr ng-repeat="component in vm.ingredient.components">
+        <td>{{ component.name }}</td>
+        <td>{{ component.amount }}</td>
+        <td>{{ component.percentage }}</td>
+      </tr>
+    </table>
+
+    <p>* DRI = Dagelijkse Referentie Inname volgens de Europese Verordening 1169/2011, blz 61</p>
+    <p>** geen DRI vastgesteld</p>
+    <p>
+      <b>Hulpstoffen</b>: {{ vm.ingredient.content.excipients }}
+    </p>
+  </div>
+
+  <div class="section-wrapper extra-padding-bottom">
+    <span class="text-center big">{{ vm.ingredient.content.claim }}</span>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_productpage_ingredient_component_notices",
+  "info": {
+    "displayName": "ingredientComponentNotice",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    }
+  }
+}

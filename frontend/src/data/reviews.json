@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Vera",
+    "rating": 5,
+    "content": "Sinds ik de vitamines gebruik, voel ik me veel energieker en minder opgeblazen. Zeker een aanrader!",
+    "picture": "assets/image/influencer-vera.webp",
+    "alt": ""
+  },
+  {
+    "id": 2,
+    "name": "Joni",
+    "rating": 5,
+    "content": "Ik ben fan van Viteezy! Met de persoonlijke test weet je precies aan welke vitamines jouw lichaam behoefte heeft. Na een halve maand testen merk ik al echt dat Viteezy een toevoeging is in mijn dagelijkse energie en routine. Zeker een aanrader!",
+    "picture": "assets/image/influencer-joni.webp",
+    "alt": ""
+  },
+  {
+    "id": 3,
+    "name": "Casey",
+    "rating": 5,
+    "content": "Door de quiz van Viteezy weet ik precies welke vitamines ik nodig heb en merk al binnen enkele dagen verschil. De zakjes met je naam erop en een leuke quote zijn een super ondersteuning om mijn vitamines consistent in te nemen.",
+    "picture": "assets/image/influencer-casey.webp",
+    "alt": ""
+  }
+]

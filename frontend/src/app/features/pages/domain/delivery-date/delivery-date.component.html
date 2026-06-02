@@ -1,0 +1,18 @@
+<div class="membership-wrapper">
+  <div class="wrapper-compact-wide">
+    <div class="pause-membership-wrapper">
+      <div class="domain-page-information">
+        <a href="/domain"><i class="icon icon-arrowTabbar"></i></a>
+        <h3 *ngIf="isPaymentAlreadyCreated && !nextDeliveryDate">Jouw eerstvolgende levering is al in productie en wordt bezorgd op <b>{{ deliveryDate }}</b>. Wil je de daaropvolgende levering aanpassen?</h3>
+        <h3 *ngIf="isPaymentAlreadyCreated && nextDeliveryDate">Jouw eerstvolgende levering is al in productie en wordt bezorgd op <b>{{ deliveryDate }}</b>. Wil je de daaropvolgende levering van <b>{{ nextDeliveryDate }}</b> aanpassen?</h3>
+        <h3 *ngIf="!isPaymentAlreadyCreated">Jouw eerstvolgende levering van <b>{{ deliveryDate }}</b> aanpassen naar:</h3>
+      </div>
+      <hr class="grey-line">
+      <div class="pause-wrapper">
+        <span>Selecteer een datum</span>
+        <input name="deliverydate" class="pause-input" type="date" [(ngModel)]="selectedDeliveryDate" placeholder="dd-mm-jjjj">
+        <button (click)="changeDeliveryDate()" class="button submit-button pause-button">Wijziging bevestigen</button>
+      </div>
+    </div>
+  </div>
+</div>

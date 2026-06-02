@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: post-nl-shipment-response
+  namespace: viteezy-staging
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      completions: 1
+      ttlSecondsAfterFinished: 60
+      template:
+        spec:
+          containers:
+            - name: alpine-httpie-post-nl-shipment-response
+              image: alpine/httpie:2.2.0
+              command:
+                - http
+                - "POST"
+                - "backend:8081/tasks/post-nl-shipment-response"
+                - "--ignore-stdin"
+                - "--check-status"
+          restartPolicy: Never

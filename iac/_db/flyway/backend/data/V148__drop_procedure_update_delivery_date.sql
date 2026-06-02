@@ -1,0 +1,1 @@
+DROP PROCEDURE update_delivery_date;

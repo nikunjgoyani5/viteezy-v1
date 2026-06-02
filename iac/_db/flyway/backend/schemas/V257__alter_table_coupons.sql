@@ -1,0 +1,1 @@
+ALTER TABLE coupons ADD COLUMN recurring_terms varchar(1000) NULL AFTER recurring_months;

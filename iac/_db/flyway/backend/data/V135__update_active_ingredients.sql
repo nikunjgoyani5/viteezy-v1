@@ -1,0 +1,25 @@
+UPDATE ingredients SET is_active = false WHERE code = "caffeine";
+UPDATE ingredients SET is_active = false WHERE code = "dextrose";
+UPDATE ingredients SET is_active = false WHERE code = "whey-protein-isolate";
+UPDATE ingredients SET is_active = false WHERE code = "whey-protein-concentrate";
+UPDATE ingredients SET is_active = false WHERE code = "organic-soy-protein";
+UPDATE ingredients SET is_active = false WHERE code = "organic-peas-protein";
+UPDATE ingredients SET is_active = false WHERE code = "organic-rice-protein";
+UPDATE ingredients SET is_active = false WHERE code = "micellar-casein";
+UPDATE ingredients SET is_active = false WHERE code = "organic-stevia";
+UPDATE ingredients SET is_active = false WHERE code = "red-rice-extract";
+UPDATE ingredients SET is_active = false WHERE code = "whey-protein";
+UPDATE ingredients SET is_active = false WHERE code = "vegan-protein";
+UPDATE ingredients SET is_active = false WHERE code = "peptide-collagen";
+UPDATE ingredients SET is_active = false WHERE code = "caramel";
+UPDATE ingredients SET is_active = false WHERE code = "strawberry";
+UPDATE ingredients SET is_active = false WHERE code = "coconut";
+
+UPDATE ingredients SET is_active = true WHERE code = "sleep-formula";
+UPDATE ingredients SET is_active = true WHERE code = "energy-formula";
+UPDATE ingredients SET is_active = true WHERE code = "stress-formula";
+UPDATE ingredients SET is_active = true WHERE code = "prenatal-multi";
+UPDATE ingredients SET is_active = true WHERE code = "detox-formula";
+UPDATE ingredients SET is_active = true WHERE code = "hair-and-nail-formula";
+UPDATE ingredients SET is_active = true WHERE code = "skin-formula";
+UPDATE ingredients SET is_active = true WHERE code = "libido-formula";

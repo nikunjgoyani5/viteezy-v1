@@ -1,0 +1,164 @@
+<nav *ngIf="domainMenuVisible">
+  <div class="domain-menu" [ngClass]="{ 'navigation-active': domainMenuVisible }">
+    <div>
+      <span>Snel naar ...</span>
+      <svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="Mobile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Dashboard-Quick-Menu" transform="translate(-305.000000, -20.000000)" fill="#FFFFFF"> <g id="Group-9" transform="translate(305.000000, 20.000000)"> <rect (click)="toggleDomainMenu()" id="Rectangle" x="0" y="0" width="50" height="50" rx="25"></rect> <g (click)="toggleDomainMenu()" transform="translate(21.000000, 21.000000)"> <path d="M5.40130703,3.99987609 L7.85430669,1.54741179 C8.04856444,1.35311793 8.04856444,1.03986865 7.85430669,0.846566092 L7.15359123,0.145720393 C6.96032459,-0.0485734643 6.64614241,-0.0485734643 6.45287577,0.145720393 L3.99987611,2.59818469 L1.54786756,0.145720393 C1.35360981,-0.0485734643 1.04041874,-0.0485734643 0.847152105,0.145720393 L0.146436646,0.846566092 C-0.0488122154,1.03986865 -0.0488122154,1.35311793 0.146436646,1.54741179 L2.59844519,3.99987609 L0.146436646,6.45333168 C-0.0488122154,6.64663424 -0.0488122154,6.96087482 0.146436646,7.15417738 L0.847152105,7.85502308 C1.04041874,8.04832564 1.35360981,8.04832564 1.54786756,7.85502308 L3.99987611,5.40156749 L6.45287577,7.85502308 C6.64614241,8.04832564 6.96032459,8.04832564 7.15359123,7.85502308 L7.85430669,7.15417738 C8.04856444,6.96087482 8.04856444,6.64663424 7.85430669,6.45333168 L5.40130703,3.99987609 Z" id="Fill-1" fill="#234560"></path> </g> </g> </g> </g> </svg>
+    </div>
+    <ul>
+      <li><a href="/domain/blend">Mijn producten</a></li>
+      <li><a href="/quiz-v2">Mijn doelen</a></li>
+      <li><button (click)="scrollToOrders()">Mijn bestellingen</button></li>
+      <li><a href="/domain/customer">Mijn gegevens</a></li>
+      <li *ngIf="status === 'active'"><a href="/domain/pause-membership/pause">Pauzeren</a></li>
+      <li *ngIf="status === 'active'"><a href="/domain/stop-membership">Stoppen</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="referral-page" [ngClass]="{ 'navigation-active': referralPageVisible }">
+  <div class="referral-wrapper">
+    <i class="close-circle" (click)="toggleReferralPage()">
+      <span class="cross">&#10005;</span>
+    </i>
+    <div class="referral-head-wrapper"></div>
+    <div class="referral-text-wrapper">
+      <p>Wil je met voordeel aan je gezondheidsdoelen werken? Dat kan! Voor elke vriend, collega of kennis die via jouw doorverwijzing met Viteezy begint, <strong>ontvang jij automatisch &euro;10 korting op je maandelijkse vitamines.</strong></p>
+      <hr class="grey-line small">
+      <p>En jij bent niet de enige die profiteert, want iedereen die jouw persoonlijke code gebruikt ontvangt maar liefst <strong>&euro;10 korting op hun eerste bestelling vanaf &euro;20.</strong> Win-win dus!</p>
+      <p>Deel de volgende kortingscode</p>
+      <b>{{ customer?.referralCode }}</b>
+      <a href="https://viteezy.nl" target="_blank" id="referral-button">Deel jouw kortingscode via whatsapp</a>
+    </div>
+  </div>
+</div>
+
+<div class="background-wrapper">
+  <div class="domain-wrapper">
+    <div class="domain-head-wrapper">
+      <div class="text-wrapper">
+      <h2>Beheer jouw lidmaatschap</h2>
+      <a class="cta-button" (click)="toggleReferralPage()">Geef €10,- en ontvang €10,-</a>
+      </div>
+    </div>
+
+    <span class="domain-head-customer">Lidmaatschap van <span class="domain-head-name">{{ customer?.firstName }}</span></span>
+
+    <div class="domain-button-wrapper">
+      <button class="button submit-button--4 submit-button--small" (click)="toggleDomainMenu()">Snel naar ...</button>
+    </div>
+
+    <div class="domain-preview-wrapper background-white">
+      <div class="domain-info-preview">
+        <i class="title-wrapper">
+          <h3>{{ amountOfIngredients }}</h3>
+        </i>
+        <p>Maandelijkse vitaminen, kruiden of mineralen</p>
+        <a href="/domain/blend" class="green-link no-underline">Wijzigen</a>
+      </div>
+      <hr class="grey-line small">
+      <div class="domain-info-preview">
+        <i class="title-wrapper wide">
+          <h3>&euro;{{ recurringAmount }}</h3>
+        </i>
+        <p>De <span *ngIf="recurringMonths === 3">3</span> maandelijkse kosten voor jouw vitamineplan zijn <b>&euro;{{ recurringAmount }}</b></p>
+        <a *ngIf="recurringMonths === 3" href="/domain/blend" class="green-link no-underline">Wijzigen</a>
+        <a *ngIf="recurringMonths === 1" href="/domain/blend" class="button submit-button">Krijg korting: zet om naar 3-maanden plan</a>
+      </div>
+      <hr class="grey-line small">
+      <div class="domain-info-preview" *ngIf="status === 'active'">
+        <i class="title-wrapper">
+          <span class="status-tooltip active small">{{ deliveryMonth }}</span>
+          <h3>{{ deliveryDay }}</h3>
+        </i>
+        <p>De volgende levering ontvang je <b>{{ deliveryDate }}</b></p>
+        <a href="/domain/pause-membership/change" class="green-link no-underline">Vervroegen</a> of <a href="/domain/pause-membership/change" class="green-link no-underline">Uitstellen</a>
+      </div>
+      <div class="domain-info-preview" *ngIf="status !== 'active'">
+        <i class="paused-payment-plan">
+          <h3 class="dash">&ndash;</h3>
+        </i>
+        <p>De volgende levering is onbekend. <b>Lidmaatschap staat op {{ blendStatus?.toLowerCase() }}</b></p>
+      </div>
+      <hr class="grey-line small">
+      <div class="domain-info-preview">
+        <span class="status-tooltip active" *ngIf="status === 'active'">{{ blendStatus }}</span>
+        <span class="status-tooltip disabled" *ngIf="status !== 'active'">{{ blendStatus }}</span>
+        <i class="active-payment-plan" *ngIf="status === 'active'">
+          <h3 class="check">&#10004;</h3>
+        </i>
+        <i class="paused-payment-plan" *ngIf="status !== 'active'">
+          <h3 class="dash">&ndash;</h3>
+        </i>
+        <p>Dit lidmaatschap bij Viteezy staat op <b>{{ blendStatus?.toLowerCase() }}</b></p>
+        <span *ngIf="status === 'active'">
+          <a href="/domain/pause-membership/pause" class="green-link no-underline">Pauzeren</a> of <a
+            href="/domain/stop-membership" class="green-link no-underline">Stoppen</a>
+        </span>
+        <button (click)="activateBlend()" class="button submit-button"
+          *ngIf="status !== 'active'">Heractiveren</button>
+      </div>
+      <hr class="grey-line small">
+    </div>
+    <span class="delivery-notice"><b>Let op!</b> Wil je jouw vitamineplan wijzigen? Dit kan tot 8 dagen vóór je volgende levering</span>
+    <div class="domain-preview-wrapper">
+      <div class="domain-blend-preview">
+        <h4>Producten</h4>
+        <a href="/domain/blend" class="green-link no-underline">Wijzigen</a>
+        <div class="ingredient-compact" *ngFor="let ingredient of vitamines">
+          <span class="out-of-stock-badge" *ngIf="!ingredient.isActive">Tijdelijk niet beschikbaar</span>
+          <div class="ingredient-compact-image no-content">
+            <img [src]="ingredient.image">
+          </div>
+          <div class="ingredient-preview-info">
+            <h5>{{ ingredient.title }}</h5>
+            <span>{{ ingredient.explanation }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="domain-item-wrapper background-grey">
+        <div class="domain-goal-preview">
+          <h4>Doelen</h4>
+          <a href="/quiz-v2" class="green-link no-underline">Wijzigen</a>
+          <div *ngFor="let usageGoal of usageGoalList">
+            <i class="icon {{ usageGoal.class }}"></i>
+            <h4>{{ usageGoal.name }}</h4>
+          </div>
+        </div>
+        <div class="wrapper">
+          <div class="visual-cta">
+            <div class="visual-cta--section wide">
+              <h3>Passen jouw doelen en producten nog bij je huidige situatie?</h3>
+            </div>
+            <div class="visual-cta--section">
+              <button class="button submit-button--3 submit-button--small" (click)="startQuiz()">Doe de test <i
+                  class="icon icon-interface-arrow-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="domain-item-wrapper background-white">
+        <div class="domain-customer-preview">
+          <h4>Mijn gegevens</h4>
+          <a href="/domain/customer" class="green-link no-underline">Wijzigen</a>
+          <p>{{ customer?.firstName }}</p>
+          <p>{{ customer?.phoneNumber }}</p>
+          <p>{{ customer?.email }}</p>
+        </div>
+        <hr class="grey-line small">
+        <div class="domain-customer-preview bottom">
+          <p>{{ customer?.street + ' ' + customer?.houseNumber }} <span *ngIf="customer?.houseNumberAddition">{{
+              customer?.houseNumberAddition }}</span></p>
+          <p>{{ customer?.postcode + ' ' + customer?.city }}</p>
+          <p>{{ customer?.country }}</p>
+        </div>
+      </div>
+      <div id="track-trace" class="domain-payment-preview">
+        <div>
+          <h4>Bestellingen</h4>
+          <a *ngIf="trackTraceLink" href="{{ trackTraceLink }}" target="_blank" class="track-trace"><i class="icon icon-bus"></i>Volg je laatste pakket</a>
+          <span *ngIf="!trackTraceLink">Track & trace nog niet beschikbaar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

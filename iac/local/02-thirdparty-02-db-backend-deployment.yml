@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: db-backend-service
+  name: db-backend-service
+  namespace: viteezy-local
+spec:
+  type: NodePort
+  ports:
+    - name: db-backend-port
+      port: 3306
+      nodePort: 30307
+      targetPort: 3306
+  selector:
+    app: db-backend
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: db-backend
+spec:
+  selector:
+    matchLabels:
+      app: db-backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db-backend
+    spec:
+      containers:
+        - image: mariadb:10.4
+          name: db-backend
+          args:
+            - --event-scheduler=ON
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: rootpassword
+            - name: MYSQL_DATABASE
+              value: viteezy
+            - name: MYSQL_USER
+              value: viteezyUser
+            - name: MYSQL_PASSWORD
+              value: viteezypassword
+          ports:
+            - containerPort: 3306
+              name: db-backend
+          volumeMounts:
+            - name: db-backend-persistent-storage
+              mountPath: /var/lib/mysql
+          resources:
+            requests:
+              memory: "2048Mi"
+              cpu: "1.5"
+            limits:
+              memory: "2048Mi"
+              cpu: "1.5"
+      volumes:
+        - name: db-backend-persistent-storage
+          persistentVolumeClaim:
+            claimName: db-backend-pv-claim
+      nodeSelector:
+        persistence/mysql: "true"
